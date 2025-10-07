@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MySQL vs MongoDB</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="MySQL.html">MySQL</a>
+      <a href="Mongodb.html">MongoDB</a>
+      <a href="mysql-vs-mongodb.html">MySQL vs MongoDB</a>
+      <a href="Example.html">Example Query</a>
+    </div>
+  </nav>
+
+  <!-- Sidebar with Comparison Questions -->
+  <div class="sidebar">
+
+    <a href="#q1">• Definition</a>
+    <a href="#q2">• Database </a>
+    <a href="q3">• Collection</a>
+
+  </div>
+
+  <div class="main-content">
+    <div id="q1">
+
+      <h2 style="font-size: 50px;">MongoDB</h2><br>
+      <img src="https://webimages.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" alt="MongoDB Logo"
+        style="max-width: 400px; width: 100%; margin: 10px 0; display: block;" /><br><br>
+
+      <p>
+        * MongoDB is a document-oriented NoSQL database system designed for high scalability, flexibility, and
+        performance. <br><br>
+        
+         * Unlike traditional relational databases, MongoDB stores data in a BSON (Binary JSON) format, which
+        allows for the efficient storage of JSON-like documents.<br><br>
+
+        * This structure is particularly well-suited for dynamic, unstructured, and semi-structured data, enabling
+        MongoDB to easily adapt to varying data formats and changes over time.<br><br>
+        
+         * MongoDB is an open-source, cross-platform
+        system that can run on various operating systems, such as<b style="color: teal;"> Linux, Windows, and macOS.</b><br><br>
+<div id="q2">
+       <strong style="color: green;"> Database</strong><br> <br>
+         * Database is a container for collections.<br>
+         * Each database gets its own set of files.<br>
+         * A single MongoDB server typically has multiple databases.</div><br><br>
+<div id="q3">
+       <strong style="color: green;"> Collection</strong><br><br>
+         * Collection is a group of documents.<br>
+         * Collection is equivalent to RDBMS table.<br>
+         * A collection consist inside a single database.<br>
+         * Collections do not enforce a schema.<br>
+         * A Collection can have different fields within a Documents.</div><br><br>
+
+      </p>
+    </div>
+  </div>
+
+
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL vs Mongodb</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

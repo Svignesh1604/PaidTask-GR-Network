@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Cheat Sheet</title>
+  <link rel="stylesheet" href="git-style.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="Git-performance-features.html">GIT And features</a>
+      <a href="Git-config.html">Git-configuration</a>
+      <a href="adv-disadv.html">Advantages and Disadvantages</a>
+      <a href="Git-commands.html">Git Commands</a>
+      <a href="Git-working-process.html">Git-process</a>
+    </div>
+  </nav>
+
+  <!-- Sidebar with Git Sections -->
+  <div class="sidebar">
+    <a href="#q1"> • Creating Snapshot</a>
+    <a href="#q2"> • Browsing History</a>
+    <a href="#q3"> • Branching & Merging</a>
+    <a href="#q4"> • Collaboration</a>
+    <a href="#q5"> • Rewriting History</a>
+  </div>
+
+  <div class="main-content">
+    <h1 id="q1">Creating Snapshot</h1>
+
+    <section>
+      <h2>📁 Initializing a repository</h2>
+      <div class="command-block">
+        <code>git init</code>
+        <p>Initialize a new Git repository in the current directory.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>🗂️ Staging files</h2>
+      <div class="command-block">
+        <code>git add file1.js</code>
+        <p>Stages a single file</p>
+      </div>
+      <div class="command-block">
+        <code>git add file1.js file2.js</code>
+        <p>Stages multiple files</p>
+      </div>
+      <div class="command-block">
+        <code>git add *.js</code>
+        <p>Stages files using a pattern</p>
+      </div>
+      <div class="command-block">
+        <code>git add .</code>
+        <p>Stages the current directory and all its contents</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>📊 Viewing the status</h2>
+      <div class="command-block">
+        <code>git status</code>
+        <p>Full status</p>
+      </div>
+      <div class="command-block">
+        <code>git status -s</code>
+        <p>Short status</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>✅ Committing the staged files</h2>
+      <div class="command-block">
+        <code>git commit -m "Message"</code>
+        <p>Commits with a one-line message</p>
+      </div>
+      <div class="command-block">
+        <code>git commit</code>
+        <p>Opens the default editor to type a long message</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>⏭️ Skipping the staging area</h2>
+      <div class="command-block">
+        <code>git commit -am "Message"</code>
+        <p>Stages and commits in one step (only for tracked files)</p>
+      </div>
+    </section>
+    <section>
+  <h2>🗑 Removing files</h2>
+  <div class="command-block">
+    <code>git rm file1.js</code>
+    <p>Removes from working directory and staging area</p>
+  </div>
+  <div class="command-block">
+    <code>git rm --cached file1.js</code>
+    <p>Removes from staging area only</p>
+  </div>
+</section>
+
+<section>
+  <h2>📦 Renaming or moving files</h2>
+  <div class="command-block">
+    <code>git mv file1.js file1.txt</code>
+  </div>
+</section>
+
+<section>
+  <h2>🔍 Viewing the staged/unstaged changes</h2>
+  <div class="command-block">
+    <code>git diff</code>
+    <p>Shows unstaged changes</p>
+  </div>
+  <div class="command-block">
+    <code>git diff --staged</code>
+    <p>Shows staged changes</p>
+  </div>
+  <div class="command-block">
+    <code>git diff --cached</code>
+    <p>Same as the above</p>
+  </div>
+</section>
+
+<section>
+  <h2>📜 Viewing the history</h2>
+  <div class="command-block">
+    <code>git log</code>
+    <p>Full history</p>
+  </div>
+  <div class="command-block">
+    <code>git log --oneline</code>
+    <p>Summary</p>
+  </div>
+  <div class="command-block">
+    <code>git log --reverse</code>
+    <p>Lists the commits from the oldest to the newest</p>
+  </div>
+</section>
+
+<section>
+  <h2>🔎 Viewing a commit</h2>
+  <div class="command-block">
+    <code>git show 921a2ff</code>
+    <p># Shows the given commit</p>
+  </div>
+  <div class="command-block">
+    <code>git show HEAD</code>
+    <p>Shows the last commit</p>
+  </div>
+  <div class="command-block">
+    <code>git show HEAD~2</code>
+    <p>Two steps before the last commit</p>
+  </div>
+  <div class="command-block">
+    <code>git show HEAD:file.js</code>
+    <p>Shows the version of file.js stored in the last commit</p>
+  </div>
+</section>
+
+<section>
+  <h2>↩ Unstaging files (undoing git add)</h2>
+  <div class="command-block">
+    <code>git restore --staged file.js</code>
+    <p>Copies the last version of file.js from repo to index</p>
+  </div>
+</section>
+
+<section>
+  <h2>♻ Discarding local changes</h2>
+  <div class="command-block">
+    <code>git restore file.js</code>
+    <p>Copies file.js from index to working directory</p>
+  </div>
+  <div class="command-block">
+    <code>git restore file1.js file2.js</code>
+    <p>Restores multiple files in working directory</p>
+  </div>
+  <div class="command-block">
+    <code>git restore .</code>
+    <p>Discards all local changes (except untracked files)</p>
+  </div>
+  <div class="command-block">
+    <code>git clean -fd</code>
+    <p>Removes all untracked files</p>
+  </div>
+</section>
+
+<section>
+  <h2>🕰 Restoring an earlier version of a file</h2>
+  <div class="command-block">
+    <code>git restore --source=HEAD~2 file.js</code>
+  </div>
+</section>
+
+<h1 id="q2">🧭 Browsing History</h1>
+
+<section>
+  <h2>📜 Viewing the history</h2>
+  <div class="command-block">
+    <code>git log --stat</code>
+    <p>Shows the list of modified files</p>
+  </div>
+  <div class="command-block">
+    <code>git log --patch</code>
+    <p>Shows the actual changes (patches)</p>
+  </div>
+</section>
+
+<section>
+  <h2>🔍 Filtering the history</h2>
+  <div class="command-block">
+    <code>git log -3</code>
+  </div>
+  <div class="command-block">
+    <code>git log --author="Mosh"</code>
+  </div>
+  <div class="command-block">
+    <code>git log --before="2020-08-17"</code>
+  </div>
+  <div class="command-block">
+    <code>git log --after="one week ago"</code>
+  </div>
+  <div class="command-block">
+    <code>git log --grep="GUI"</code>
+    <p>Commits with “GUI” in their message</p>
+  </div>
+  <div class="command-block">
+    <code>git log -S"GUI"</code>
+    <p>Commits with “GUI” in their patches</p>
+  </div>
+  <div class="command-block">
+    <code>git log hash1..hash2</code>
+    <p>Range of commits</p>
+  </div>
+  <div class="command-block">
+    <code>git log file.txt</code>
+    <p>Commits that touched file.txt</p>
+  </div>
+</section>
+
+<section>
+  <h2>🧾 Custom commit log format</h2>
+  <div class="command-block">
+    <code>git log --pretty=format:"%an committed %H"</code>
+  </div>
+</section>
+
+<section>
+  <h2>🔤 Creating an alias</h2>
+  <div class="command-block">
+    <code>git config --global alias.lg "log --oneline"</code>
+  </div>
+</section>
+
+<section>
+  <h2>🔎 Viewing a commit</h2>
+  <div class="command-block">
+    <code>git show HEAD~2</code>
+    <p></p>
+  </div>
+  <div class="command-block">
+    <code>git show HEAD~2:file1.txt</code>
+    <p>Shows the version of file stored in this commit</p>
+  </div>
+</section>
+
+<section>
+  <h2>🆚 Comparing commits</h2>
+  <div class="command-block">
+    <code>git diff HEAD~2 HEAD</code>
+    <p>Shows the changes between two commits</p>
+  </div>
+  <div class="command-block">
+    <code>git diff HEAD~2 HEAD file.txt</code>
+    <p>Changes to file.txt only</p>
+  </div>
+</section>
+      <section>
+  <h2>🔍 Checking out a commit</h2>
+  <div class="command-block">
+    <code>git checkout dad47ed</code>
+    <p>Checks out the given commit</p>
+  </div>
+  <div class="command-block">
+    <code>git checkout master</code>
+    <p>Checks out the master branch</p>
+  </div>
+</section>
+
+<section>
+  <h2>🐞 Finding a bad commit</h2>
+  <div class="command-block">
+    <code>git bisect start</code>
+    <p>Starts the bisect session</p>
+  </div>
+  <div class="command-block">
+    <code>git bisect bad</code>
+    <p>Marks the current commit as a bad commit</p>
+  </div>
+  <div class="command-block">
+    <code>git bisect good ca49180</code>
+    <p>Marks the given commit as a good commit</p>
+  </div>
+  <div class="command-block">
+    <code>git bisect reset</code>
+    <p>Terminates the bisect session</p>
+  </div>
+</section>
+
+<section>
+  <h2>👥 Finding contributors</h2>
+  <div class="command-block">
+    <code>git shortlog</code>
+    <p>Lists contributors with their number of commits</p>
+  </div>
+</section>
+
+<section>
+  <h2>🕵‍♂ Viewing the history of a file</h2>
+  <div class="command-block">
+    <code>git log file.txt</code>
+    <p>Shows the commits that touched file.txt</p>
+  </div>
+
+  <div class="command-block">
+    <code>git log --stat file.txt</code>
+    <p>Shows statistics (the number of changes) for file.txt</p>
+  </div>
+
+  <div class="command-block">
+    <code>git log --patch file.txt</code>
+    <p>Shows the patches (changes) applied to file.txt</p>
+  </div>
+</section>
+
+<section>
+  <h2>👤 Finding the author of lines</h2>
+  <div class="command-block">
+    <code>git blame file.txt</code>
+    <p>Shows the author of each line in file.txt</p>
+  </div>
+</section>
+
+<section>
+  <h2>🏷 Tagging</h2>
+  <div class="command-block">
+    <code>git tag v1.0</code>
+    <p>Tags the last commit as v1.0</p>
+  </div>
+
+  <div class="command-block">
+    <code>git tag v1.0 5e7a828</code>
+    <p>Tags an earlier commit</p>
+  </div>
+
+  <div class="command-block">
+    <code>git tag</code>
+    <p>Lists all the tags</p>
+  </div>
+
+  <div class="command-block">
+    <code>git tag -d v1.0</code>
+    <p>Deletes the given tag</p>
+  </div>
+</section>
+
+<h1 id="q3">Branching & Merging</h1>
+
+<section>
+  <h2>🌿 Managing branches</h2>
+
+  <div class="command-block">
+    <code>git branch bugfix</code>
+    <p>Creates a new branch called bugfix</p>
+  </div>
+
+  <div class="command-block">
+    <code>git checkout bugfix</code>
+    <p>Switches to the bugfix branch</p>
+  </div>
+
+  <div class="command-block">
+    <code>git switch bugfix</code>
+    <p>Same as the above</p>
+  </div>
+
+  <div class="command-block">
+    <code>git switch -C bugfix</code>
+    <p>Creates and switches to bugfix branch</p>
+  </div>
+
+  <div class="command-block">
+    <code>git branch -d bugfix</code>
+    <p>Deletes the bugfix branch</p>
+  </div>
+</section>
+
+<section>
+  <h2>🔍 Comparing branches</h2>
+
+  <div class="command-block">
+    <code>git log master..bugfix</code>
+    <p>Lists the commits in the bugfix branch not in master</p>
+  </div>
+
+  <div class="command-block">
+    <code>git diff master..bugfix</code>
+    <p>Shows the summary of changes</p>
+  </div>
+</section>
+
+<section>
+  <h2>📥 Stashing</h2>
+
+  <div class="command-block">
+    <code>git stash push -m "New tax rules"</code>
+    <p>Creates a new stash</p>
+  </div>
+
+  <div class="command-block">
+    <code>git stash list</code>
+    <p>Lists all the stashes</p>
+  </div>
+
+  <div class="command-block">
+    <code>git stash show stash@{1}</code>
+    <p>Shows the given stash</p>
+  </div>
+
+  <div class="command-block">
+    <code>git stash show 1</code>
+    <p>Shortcut for stash@{1}</p>
+  </div>
+
+  <div class="command-block">
+    <code>git stash apply 1</code>
+    <p>Applies the given stash to the working directory</p>
+  </div>
+
+  <div class="command-block">
+    <code>git stash drop 1</code>
+    <p>Deletes the given stash</p>
+  </div>
+
+  <div class="command-block">
+    <code>git stash clear</code>
+    <p>Deletes all the stashes</p>
+  </div>
+</section>
+
+<section>
+  <h2>🔀 Merging</h2>
+
+  <div class="command-block">
+    <code>git merge bugfix</code>
+    <p>Merges the bugfix branch into the current branch</p>
+  </div>
+
+  <div class="command-block">
+    <code>git merge --no-ff bugfix</code>
+    <p>Creates a merge commit even if fast-forward is possible</p>
+  </div>
+
+  <div class="command-block">
+    <code>git merge --squash bugfix</code>
+    <p>Performs a squash merge</p>
+  </div>
+
+  <div class="command-block">
+    <code>git merge --abort</code>
+    <p>Aborts the merge</p>
+  </div>
+</section>
+
+<section>
+  <h2>✅ Viewing the merged branches</h2>
+
+  <div class="command-block">
+    <code>git branch --merged</code>
+    <p>Shows the merged branches</p>
+  </div>
+
+  <div class="command-block">
+    <code>git branch --no-merged</code>
+    <p>Shows the unmerged branches</p>
+  </div>
+</section>
+
+<section>
+  <h2>📚 Rebasing</h2>
+
+  <div class="command-block">
+    <code>git rebase master</code>
+    <p>Changes the base of the current branch</p>
+  </div>
+</section>
+
+<section>
+  <h2>🍒 Cherry picking</h2>
+
+  <div class="command-block">
+    <code>git cherry-pick dad47ed</code>
+    <p>Applies the given commit on the current branch</p>
+  </div>
+</section>
+
+<h1 id="q4">Collaboration</h1>
+<section>
+  <h2>📥 Cloning a repository</h2>
+  <div class="command-block">
+    <code>git clone url</code>
+    <p>Clones a remote repository to your local machine</p>
+  </div>
+</section>
+
+<section>
+  <h2>🔄 Syncing with remotes</h2>
+
+  <div class="command-block">
+    <code>git fetch origin master</code>
+    <p>Fetches master from origin</p>
+  </div>
+
+  <div class="command-block">
+    <code>git fetch origin</code>
+    <p>Fetches all objects from origin</p>
+  </div>
+
+  <div class="command-block">
+    <code>git fetch</code>
+    <p>Shortcut for “git fetch origin”</p>
+  </div>
+
+  <div class="command-block">
+    <code>git pull</code>
+    <p>Fetch + merge (updates local branch)</p>
+  </div>
+
+  <div class="command-block">
+    <code>git push origin master</code>
+    <p>Pushes master branch to origin</p>
+  </div>
+
+  <div class="command-block">
+    <code>git push</code>
+    <p>Shortcut for “git push origin master”</p>
+  </div>
+</section>
+
+<section>
+  <h2>🏷 Sharing tags</h2>
+
+  <div class="command-block">
+    <code>git push origin v1.0</code>
+    <p>Pushes tag v1.0 to origin</p>
+  </div>
+
+  <div class="command-block">
+    <code>git push origin --delete v1.0</code>
+    <p>Deletes tag v1.0 from origin</p>
+  </div>
+</section>
+
+<section>
+  <h2>🌿 Sharing branches</h2>
+
+  <div class="command-block">
+    <code>git branch -r</code>
+    <p>Shows remote tracking branches</p>
+  </div>
+
+  <div class="command-block">
+    <code>git branch -vv</code>
+    <p>Shows local and remote tracking branches</p>
+  </div>
+
+  <div class="command-block">
+    <code>git push -u origin bugfix</code>
+    <p>Pushes bugfix branch to origin and sets upstream</p>
+  </div>
+
+  <div class="command-block">
+    <code>git push -d origin bugfix</code>
+    <p>Removes bugfix branch from origin</p>
+  </div>
+</section>
+
+<section>
+  <h2>🛠 Managing remotes</h2>
+
+  <div class="command-block">
+    <code>git remote</code>
+    <p>Shows the list of remote repositories</p>
+  </div>
+
+  <div class="command-block">
+    <code>git remote add upstream url</code>
+    <p>Adds a new remote called upstream</p>
+  </div>
+
+  <div class="command-block">
+    <code>git remote rm upstream</code>
+    <p>Removes the upstream remote</p>
+  </div>
+</section>
+
+  
+<h1 id="q5">Rewriting History</h1>
+
+<section>
+  <h2>↩ Undoing commits</h2>
+
+  <div class="command-block">
+    <code>git reset --soft HEAD^</code>
+    <p>Removes the last commit, keeps changes staged</p>
+  </div>
+
+  <div class="command-block">
+    <code>git reset --mixed HEAD^</code>
+    <p>Removes the last commit, unstages the changes</p>
+  </div>
+
+  <div class="command-block">
+    <code>git reset --hard HEAD^</code>
+    <p>Discards the last commit and all local changes</p>
+  </div>
+</section>
+
+<section>
+  <h2>🧹 Reverting commits</h2>
+
+  <div class="command-block">
+    <code>git revert 72856ea</code>
+    <p>Reverts the given commit</p>
+  </div>
+
+  <div class="command-block">
+    <code>git revert HEAD~3..</code>
+    <p>Reverts the last three commits</p>
+  </div>
+</section>
+
+<section>
+  <h2>🧭 Recovering lost commits</h2>
+
+  <div class="command-block">
+    <code>git reflog</code>
+    <p>Shows the history of HEAD</p>
+  </div>
+
+  <div class="command-block">
+    <code>git reflog show bugfix</code>
+    <p>Shows the history of the bugfix branch pointer</p>
+  </div>
+</section>
+
+<section>
+  <h2>✏ Amending the last commit</h2>
+
+  <div class="command-block">
+    <code>git commit --amend</code>
+    <p>Rewrites the last commit (message or content)</p>
+  </div>
+</section>
+
+<section>
+  <h2>🧩 Interactive rebasing</h2>
+
+  <div class="command-block">
+    <code>git rebase -i HEAD~5</code>
+    <p>Interactively rebases the last 5 commits</p>
+  </div>
+</section>
+</div>
+
+
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | Git Cheat Sheet</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop();
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!-- intro.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL Tutorial - Introduction</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="intro.html">Intro</a>
+      <a href="Rdbms.html"> Relational Databases & SQL Basics</a>
+      <a href="table.html">Working with Tables</a>
+      <a href="querying.html">Querying Data</a>
+      <a href="Advanced querying.html"> Advanced Querying</a>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">Information systems, data and information</a>
+    <a href="#q2">What is a Database? And a DBMS?</a>
+    <a href="#q3">Do you always need a database?</a>
+  </div>
+
+  <div class="main-content">
+    <h1>Introduction to SQL</h1>
+
+    <div id="q1" class="card">
+      <h2><u>Information systems, data and information</u></h2>
+      <p> * The modern world is completely centered around <b>information</b> and <b>data</b>.</p><br>
+      <p><b> * Data</b> is a singular unit of knowledge. It has no intrinsic value on its own. We can't extract meaning
+        out of it, without knowing more about it.
+      </p><br>
+      <p><b> * Information</b> is something that we can link to data, to be able to attach a meaning to it.
+      </p><br>
+      <p> * Let me make an example. <i> number 36 is <b>data</b></i>. Knowing that <i>36 is the age of Joe is
+          <b>information</b></i>.
+      </p><br>
+      <p>
+        * Information that the data represents the age is essential knowledge that is
+        key in an information system.
+
+      </p>
+    </div>
+
+    <div id="q2" class="card">
+      <h2>What is a Database? And a DBMS?</h2>
+      <p> * A <b>database </b> a collection of<b> information</b> carefully organized into asystem.
+      </p><br>
+      <p> * The technology that in a computer system lets us organize data and represent
+        the information that's essential for an information system is called
+        <strong> DataBase Management System (DBMS).</strong>
+      </p><br>
+      <p> * A DBMS is a software that encapsulates the data of a database, and provides us a way to store it, retrieve
+        it, edit it, persist it, and much more.</p><br>
+      <p> * We ask a DBMS to be efficient, to privately and securely store data, to handle large amounts of data.</p>
+    </div>
+
+    <div id="q3" class="card">
+      <h2>Do you always need a database?</h2>
+      <p>
+         * Do you always need a database for your app? Of course not.<br><br>
+        *  Many times you don't even need to store data.<br><br>
+         * But if you need to store data, you have various solutions.<br><br>
+         * As with everything in technology, nothing is ideal in every situation.<br><br>
+         * Computers offer many various ways to store data. The most obvious
+        alternative is <strong>files</strong><br><br>
+         * A common example is a website. Some websites use a database to store data
+        (like WordPress), some do not.<br><br>
+         * Not using a database in that case means a simpler deploy to a hosting service,
+        since you won’t need to use and maintain a database in the first place.<br><br>
+         * But when handling lots of data, a database is definitely a great way to
+        simplify your life in the long term.<br><br>
+         * As always, it's all a balance of complexity vs convenience.<br><br>
+
+
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL Tutorial</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+</body>
+
+</html>

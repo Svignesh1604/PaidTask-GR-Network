@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MySQL vs MongoDB</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="MySQL.html">MySQL</a>
+      <a href="Mongodb.html">MongoDB</a>
+      <a href="mysql-vs-mongodb.html">MySQL vs MongoDB</a>
+      <a href="Example.html">Example Query</a>
+    </div>
+  </nav>
+
+  <!-- Sidebar with Comparison Questions -->
+  <div class="sidebar">
+    <a href="#q1">• Definition</a>
+    
+
+  </div>
+
+  <div class="main-content">
+    <section id="q1">
+      <h2 style="font-size: 50px;">MySQL</h2>
+
+      <img src="images/image.png" alt="MySQL Logo" style="max-width: 500px; width: 100%; margin: 10px 0; display: block;" />
+      <p> * MySQL is an open-source relational database management system (RDBMS) that uses Structured Query Language
+        (SQL) to manage data.<br><br> 
+          *  Developed by MySQL AB and now owned by Oracle Corporation, it’s widely used due to its
+        reliability, speed, and ease of use. MySQL is a key component in many web applications, forming the backbone of
+        popular websites and services.<br><br>
+
+        * It allows users to create, modify, and maintain databases, supporting operations like data <b style="color:cornflowerblue;">insertion,
+        querying, updating, and deletion.</b><br><br>
+         *  Ideal for both small and large-scale applications, MySQL powers various types
+        of systems, from personal projects to complex enterprise environments.<br><br>
+
+        * MySQL is a Relational Database Management System (RDBMS) software that provides many features, which are as
+        follows:<br><br>
+                 <b> • Data Storage:</b> Efficiently stores large amounts of data.<br>
+                  <b>• Data Retrieval:</b> Allows quick and easy access to data.<br>
+                  <b>• Data Manipulation:</b> Supports operations like inserting, updating, and deleting data.<br>
+                  <b>• Data Security:</b> Offers robust security features to protect data.<br>
+                  <b>• Scalability:</b> Can handle small to large applications with ease.<br><br>
+                 
+
+
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL vs Mongodb</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

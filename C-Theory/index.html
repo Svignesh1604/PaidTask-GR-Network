@@ -1,0 +1,220 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Aptitude Quiz — Professional</title>
+     <link rel="stylesheet" href="Style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
+   
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo">A</div>
+                <div>
+                    <h2>C++ Aptitude Quiz</h2>
+                    <div class="meta">25 Questions · Mixed (C++ Aptitude & Coding)</div>
+                </div>
+            </div>
+
+            <div class="status">
+                <div class="pill">Questions: <strong style="margin-left:6px">25</strong></div>
+                <div class="pill">Type: MCQ</div>
+                <div class="pill">Timer: Off</div>
+            </div>
+
+            <div class="q-scroll" id="qList">
+
+            </div>
+
+            <div class="controls">
+                <button class="btn" id="startBtn">Start / Restart</button>
+                <button class="btn ghost" id="reviewBtn">Jump to Unanswered</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div class="topbar">
+                <div>
+                    <div class="title">Question <span id="cur">0</span> of <span id="total">25</span></div>
+                    <div class="progresswrap">
+                        <div class="progress" aria-hidden><i id="bar"></i></div>
+                    </div>
+                </div>
+                <div class="live">
+                    <div class="small">Score: <strong id="score">0</strong></div>
+                    <div class="small">Flagged: <strong id="flagCount">0</strong></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="qtext" id="qText">Press <strong>Start / Restart</strong> to begin the quiz.</div>
+                <div class="options" id="options"></div>
+
+                <div class="card-footer">
+                    <div class="navs">
+                        <button class="ghost" id="prevBtn">Previous</button>
+                        <button class="ghost" id="nextBtn">Next</button>
+                        <button class="ghost" id="flagBtn">Flag / Unflag</button>
+                    </div>
+                    <div>
+                        <button class="btn" id="submitBtn">Submit Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <div class="modal" id="resultModal">
+        <div class="sheet">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <h3 style="margin:0">Results</h3>
+                <button class="ghost" id="closeRes">Close</button>
+            </div>
+            <div style="display:flex;gap:18px;align-items:center;margin-top:12px">
+                <div>
+                    <div class="scorebig" id="finalScore">0 / 25</div>
+                    <div class="explain" id="percent">0%</div>
+                </div>
+                <div style="flex:1">
+                    <p class="explain">Review below to see correct answers and explanations.</p>
+                </div>
+            </div>
+            <div id="reviewList" style="margin-top:14px;max-height:50vh;overflow:auto"></div>
+        </div>
+    </div>
+
+    <script>
+        
+        const QUESTIONS = [
+            { q: 'Which of the following statements is correct?', options: ['Pointer to derived class cannot be created.', 'Derived class pointer cannot point to base class.', 'Base class pointer cannot point to derived class.', 'Pointer to base class cannot be created.'], answer: 1, },
+            { q: ' Which of the following concept of oops allows compiler to insert arguments in a function call if it is not specified?', options: ['Default arguments', 'Call by reference', 'Call by value', 'Call by pointer'], answer: 0, },
+            { q: 'How many types of polymorphisms are supported by C++?', options: ['3', '2', '1', '4'], answer: 1, },
+            { q: 'Which of the following correctly describes overloading of functions?', options: ['Ad-hoc polymorphism', 'Transient polymorphism', 'Virtual polymorphism', 'Pseudo polymorphism'], answer: 0, },
+            { q: 'How “Late binding” is implemented in C++?', options: ['Using C++ tables', 'Using Virtual tables', 'Using Indexed virtual tables', 'Using polymorphic tables'], answer: 1, },
+            { q: 'What happens when we try to compile the class definition in following code snippet? \n class Birds {};\n class Peacock : protected Birds {};\n', options: ['It will not compile because a class cannot be protectedly inherited from other class.', 'It will not compile because class body of Eagle is not defined.', 'It will not compile because class body of Birds is not defined.', 'It will compile successfully.'], answer: 3, },
+            { q: 'Which of the following also known as an instance of a class?', options: ['Friend Functions', 'Member Variables', 'Member Functions', 'object'], answer: 3, },
+            { q: ' What does the class definitions in following code represent? \n class Bike {\n Engine objEng:\n} \n class Engine\n{\nfloat CC ;\n};', options: ['kind of relationship', 'Inheritance', 'has a relationship', 'Both A and C'], answer: 2, },
+            { q: 'Which of the following means “The use of an object of one class in definition of another class”?', options: ['Encapsulation', 'Abstraction', 'Composition', 'Inheritance'], answer: 2, },
+            { q: 'Which of the following can be overloaded?', options: ['objects', 'operators', 'Functions', 'Both B and C'], answer: 3, },
+            { q: 'Which of the following function prototype is perfectly acceptable?', options: ['int Function(int Tmp = Show());', 'float = Show(int, float) Function(Tmp);', 'float Function(int Tmp = Show(int, float));', 'Both A and C.'], answer: 0, },
+            { q: 'Which of the following function declaration is/are incorrect?', options: ['int Sum(int a = 0, int b, int c = 3);', 'int Sum(int a = 5, int b);', 'int Sum(int a, int b = 2, int c = 3);', 'All are correct.', '. Both A and B are incorrect.'], answer: 4, },
+            { q: 'Which of the following statement is correct?', options: ['The default value for an argument cannot be function call.', ' C++ does not allow the redefinition of a default parameter.', 'Both A and B.', 'C++ allows the redefinition of a default parameter'], answer: 1, },
+            { q: 'Which of the following function / types of function cannot have default parameters?', options: ['Member function of class', 'Member function of structure', 'main()', 'Both B and C'], answer: 2, },
+            { q: 'What happens when a class with parameterized constructors and having no default constructor is used in a program and we create an object that needs a zero-argument constructor?', options: ['Runtime error.', 'Preprocessing error.', 'Compile-time error.', 'Runtime exception.'], answer: 2, },
+            { q: 'Copy constructor must receive its arguments by __________ .', options: ['only pass-by-reference', 'only pass-by-values', 'either only pass-by-value or only pass-by-reference', 'only pass-by-address'], answer: 0, },
+            { q: 'Which of the following gets called when an object goes out of scope?', options: ['Constructor', 'virtual function', 'main', 'Destructor'], answer: 3, },
+            { q: 'Which of the following are NOT provided by the compiler by default?', options: ['Zero-argument Constructor', 'Copy Destructor', 'Copy Constructor', 'Destructor'], answer: 1, },
+            { q: 'If the programmer does not explicitly provide a destructor, then which of the following creates an empty destructor?', options: ['Preprocessor', 'main() function', 'Linker', 'Compiler'], answer: 3, },
+            { q: 'Which of the following implicitly creates a default constructor when the programmer does not explicitly define at least one constructor for a class?', options: ['Preprocessor', 'main() function', 'Linker', 'Compiler'], answer: 3, },
+            { q: 'Which of the following never requires any arguments?', options: ['Default constructor', 'Friend function', 'Member function', 'const function'], answer: 0, },
+            { q: 'Which of the following statements are correct?', options: ['Destructor is always called explicitly.', 'Constructor is called either implicitly or explicitly, whereas destructor is always called implicitly.', 'Constructor is always called explicitly.', 'Constructor and destructor functions are not called at all as they are always inline.'], answer: 1, },
+            { q: 'To ensure that every object in the array receives a destructor call, always delete memory allocated as an array with operator __________ .', options: ['delete[] ', 'delete', 'Destructor', 'kill[] E. free[]'], answer: 0, },
+            { q: 'What is output ?\n  int main(){ \n int i=10; \n static int x=i;  \n if(x==i) \n printf(“Equal”);\n else if(x>i)\n printf(“Greater than”);\n else\n printf(“Less than”);\n return 0;\n }', options: ['Equal', 'Compiler error', 'Less than', 'Greater than'], answer: 1, },
+            { q: ' What will be output if you will compile and execute the following c code? \n #include \n int main(){ \n int a=1,2;\n int b=(1,2);\n printf(“%d %d”,a,b); \n return 0;\n } \n', options: ['1,1', '2,2', '2,1', '1,2'], answer: 3, }
+        ];
+
+        const total = QUESTIONS.length;
+        document.getElementById('total').innerText = total;
+
+        
+        let cur = 0;
+        const answers = new Array(total).fill(null);
+        const flagged = new Array(total).fill(false);
+        const qList = document.getElementById('qList');
+        const qText = document.getElementById('qText');
+        const optsWrap = document.getElementById('options');
+        const curEl = document.getElementById('cur');
+        const bar = document.getElementById('bar');
+        const scoreEl = document.getElementById('score');
+        const flagCountEl = document.getElementById('flagCount');
+
+        function buildList() {
+            qList.innerHTML = '';
+            for (let i = 0; i < total; i++) {
+                const div = document.createElement('div'); div.className = 'q-item'; div.dataset.i = i;
+                div.innerHTML = `<div class="qnum">${i + 1}</div><div class="meta-line">Q${i + 1} · <span style="color:${answers[i] === null ? 'var(--muted)' : '#7ee0d6'}">${answers[i] === null ? 'Not answered' : 'Answered'}</span></div>`;
+                div.addEventListener('click', () => { go(i); });
+                qList.appendChild(div);
+            }
+        }
+
+        function render() {
+            curEl.innerText = cur + 1;
+            const q = QUESTIONS[cur];
+            qText.innerText = q.q;
+            optsWrap.innerHTML = '';
+            q.options.forEach((o, idx) => {
+                const div = document.createElement('div'); div.className = 'option'; div.dataset.idx = idx;
+                div.innerHTML = `<div class="tag">${String.fromCharCode(65 + idx)}</div><div>${o}</div>`;
+                if (answers[cur] === idx) div.classList.add('selected');
+                div.addEventListener('click', () => { answers[cur] = idx; markLive(); render(); buildList(); });
+                optsWrap.appendChild(div);
+            });
+
+            bar.style.width = Math.round(((cur) / total) * 100) + '%';
+            scoreEl.innerText = computeScore() + ' / ' + total;
+            flagCountEl.innerText = flagged.filter(Boolean).length;
+            highlightActiveInList();
+        }
+
+        function go(i) { cur = i; render(); scrollToTop(); }
+        function next() { if (cur < total - 1) { cur++; render(); } }
+        function prev() { if (cur > 0) { cur--; render(); } }
+
+        function toggleFlag() { flagged[cur] = !flagged[cur]; flagCountEl.innerText = flagged.filter(Boolean).length; buildList(); }
+
+        function computeScore() { let sc = 0; for (let i = 0; i < total; i++) if (answers[i] === QUESTIONS[i].answer) sc++; return sc; }
+
+        function markLive() { scoreEl.innerText = computeScore() + ' / ' + total; }
+
+        function highlightActiveInList() { const items = qList.querySelectorAll('.q-item'); items.forEach(el => el.style.background = 'transparent'); if (items[cur]) items[cur].style.background = 'linear-gradient(90deg, rgba(6,182,212,0.04), rgba(124,58,237,0.03))'; }
+
+        function submitQuiz() {
+            const sc = computeScore();
+            document.getElementById('finalScore').innerText = sc + ' / ' + total;
+            const pct = Math.round((sc / total) * 100);
+            document.getElementById('percent').innerText = pct + '%';
+            // build review
+            const review = document.getElementById('reviewList'); review.innerHTML = '';
+            for (let i = 0; i < total; i++) {
+                const row = document.createElement('div'); row.style.padding = '12px'; row.style.borderBottom = '1px solid rgba(255,255,255,0.03)';
+                const your = answers[i] === null ? 'Not answered' : QUESTIONS[i].options[answers[i]];
+                const correct = QUESTIONS[i].options[QUESTIONS[i].answer];
+                row.innerHTML = `<div style="display:flex;justify-content:space-between"><div><strong>Q${i + 1}.</strong> ${QUESTIONS[i].q}</div><div style="text-align:right"><div style='color:var(--muted)'>Your: ${your}</div><div style='color:#a0f1da'>Correct: ${correct}</div></div></div><div style='color:var(--muted);margin-top:8px'>${QUESTIONS[i].explain || ''}</div>`;
+                review.appendChild(row);
+            }
+            document.getElementById('resultModal').style.display = 'flex';
+        }
+
+        function closeResults() { document.getElementById('resultModal').style.display = 'none'; }
+
+        function jumpToUnanswered() { const idx = answers.findIndex(a => a === null); if (idx === -1) go(0); else go(idx); }
+
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        
+        document.getElementById('startBtn').addEventListener('click', () => { for (let i = 0; i < total; i++) { answers[i] = null; flagged[i] = false; } cur = 0; buildList(); render(); });
+        document.getElementById('nextBtn').addEventListener('click', next);
+        document.getElementById('prevBtn').addEventListener('click', prev);
+        document.getElementById('flagBtn').addEventListener('click', toggleFlag);
+        document.getElementById('submitBtn').addEventListener('click', submitQuiz);
+        document.getElementById('reviewBtn').addEventListener('click', jumpToUnanswered);
+        document.getElementById('closeRes').addEventListener('click', closeResults);
+
+        
+        function init() { buildList(); render(); }
+        init();
+
+    </script>
+</body>
+
+</html>

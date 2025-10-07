@@ -1,0 +1,321 @@
+<!-- operations.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL Tutorial - Operations</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" >Home</a>
+      <a href="intro.html">Intro</a>
+      <a href="Rdbms.html"> Relational Databases & SQL Basics</a>
+      <a href="table.html">Working with Tables</a>
+      <a href="querying.html">Querying Data</a>
+      <a href="Advanced querying.html"> Advanced Querying</a>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">Querying data</a>
+    <a href="#q2">Joins</a>
+    <a href="#q3">Removing duplicates using DISTINCT</a>
+    <a href="#q4">Using wildcards with LIKE</a>
+    <a href="#q5">Limit and offset</a>
+    <a href="#q6">Comments</a>
+  </div>
+
+  <div class="main-content">
+    <h1>Querying Data</h1>
+
+    <div id="q1" class="card">
+      <h2><u>Querying data</u></h2>
+      <p>
+
+        * You can get data out of tables using the SELECT command.<br><br>
+        * Get all rows and columns:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;"> FROM</b> people;
+      </div><br><br>
+      age | name<br>
+      -----+--------<br>
+      37 | Joe<br>
+      8 | Ruby<br><br>
+      Get only the name column:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;"> FROM</b> people;
+      </div><br><br>
+
+      name<br>
+      --------<br>
+      Joe<br>
+      Ruby<br>
+      Count the items in the table:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> <b style="color: peru;">COUNT</b>(*) <B style="color: violet;">from</B>
+      </div>
+      people;<br><br>
+      count<br>
+      -------<br>
+      2<br>
+      You can filter rows in a table adding the WHERE clause:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> age <b style="color: violet;">FROM</b> people <b style="color: violet;">
+          WHERE</b> name=<b style="color: green;">'Joe'</b>;
+      </div><br><br>
+
+      age<br>
+      -----<br>
+      37<br>
+      * The results of a query can be ordered by column value, ascending (the
+      default) or descending, using ORDER BY:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;"> FROM</b> people <b style="color: violet;">
+          ORDER BY</b> name;
+      </div><br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;"> FROM</b> people <b style="color: violet;">
+          ORDER BY</b> name <b style="color: violet;">DESC</b>;
+      </div><br><br>
+
+      </p>
+
+    </div>
+
+    <div id="q2" class="card">
+      <h2><u>Joins</u></h2>
+      <p>
+        * Joins are a very powerful tool to merge data contained into 2 different tables.<br><br>
+        * Suppose you have 2 tables, people and cars :<br><br>
+      <div class="tag">
+        <b style="color:violet;">CREATE TABLE </b> (<br>
+        age<b style="color:peru;"> INT</b>,<br>
+        name<b style="color: peru;"> VARCHAR(20)</b><br>
+        );
+      </div><br><br>
+      <div class="tag">
+        <b style="color:violet;">CREATE TABLE </b> cars (<br>
+        brand <b style="color: peru;"> VARCHAR(20)</b><b style="color: violet;"> NOT NULL</b><br>
+        model <b style="color: peru;"> VARCHAR(20)</b><b style="color: violet;"> NOT NULL</b><br>
+        owner <b style="color: peru;"> VARCHAR(20)</b><b style="color: violet;"> NOT NULL PRIMARY</b>KEY<br>
+        );
+      </div><br><br>
+
+      We add some data:<br><br>
+
+      <div class="tag">
+        <b style="color: violet;">INSERT INTO</b> people <b style="color: violet;">VALUES</b> (<b
+          style="color: peru;">37</b>, <b style="color: green;">'Ford'</b>);<br><br>
+        <b style="color: violet;">INSERT INTO</b> people <b style="color: violet;">VALUES</b> (<b
+          style="color: peru;">8</b>, <b style="color: green;">'Ford'</b>);<br><br>
+        <b style="color: violet;">INSERT INTO</b> cars <b style="color: violet;">VALUES</b> (<b
+          style="color: green;">'Ford'</b>, <b style="color: green;">'Ford'</b>,<b
+          style="color: green;">'Ford'</b>);<br><br>
+        <b style="color: violet;">INSERT INTO</b> cars <b style="color: violet;">VALUES</b> (<b
+          style="color: green;">'Ford'</b>, <b style="color: green;">'Ford'</b>,<b style="color: green;">'Ford'</b>);
+      </div><br><br>
+      * Now say that we want to correlate the two tables, because the police stopped
+      Ruby driving, looks young, and want to know his age from their database.<br><br>
+      * We can create a join with this syntax:<br><br>
+      <div class="tag">
+
+        <b style="color: violet;">SELECT</b> age <b style="color: violet;">FROM</b> people <b
+          style="color: violet;">JOIN</b> cars<br>
+        <b style="color: violet;">ON</b> people.name = cars.owner<br>
+        <b style="color: violet;">WHERE</b> cars.model = <b style="color: green;">'Mustang'</b>;
+      </div><br>
+
+      * We'll get this result back:<br><br>
+      age<br>
+      -----<br>
+      8<br>
+      17<br>
+      * What is happening? We are joining the two tables cars on two specific
+      columns: name from the people table, and owner from the cars table.<br><br>
+      * Joins are a topic that can grow in complexity because there are many
+      different kind of joins that you can use to do fancier things with multiple
+      tables.<br><br>
+      </p>
+    </div>
+
+
+
+
+    <div id="q3" class="card">
+      <h2><u>Removing duplicates using DISTINCT</u></h2>
+      <p>
+        * Sometimes you want to filter duplicate values in a table.<br><br>
+        * For example say you have the following schema:<br><br>
+      <div class="tag">
+        <b style="color: violet;">CREATE TABLE</b> people (<br>
+        name <b style="color: peru;">VARCHAR(20)</b><br>
+        );
+      </div><br><br>
+
+      and we add entries to this table.<br><br>
+      We have lots of "Joe", apparently:<br><br>
+      <div class="tag">
+        <b style="color: violet;">INSERT INTO</b> people<b style="color: violet;">VALUES</b><br>
+        (<b style="color: green;">'Joe'</b>), (<b style="color: green;">'Anna'</b>),<br>
+        (<b style="color: green;">'Roxanne'</b>), (<b style="color: green;">'Paul'</b>),<br>
+        (<b style="color: green;">'Joe'</b>), (<b style="color: green;">'Joe'</b>), (<b
+          style="color: green;">'Joe'</b>),<br>
+        (<b style="color: green;">'Joe'</b>), (<b style="color: green;">'Joe'</b>), (<b
+          style="color: green;">'Joe'</b>),<br>
+        (<b style="color: green;">'Joe'</b>), (<b style="color: green;">'Joe'</b>), (<b
+          style="color: green;">'Joe'</b>),
+      </div><br><br>
+
+
+      If we run the query<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;"> FROM</b> people;
+      </div><br><br>
+      we get all the duplicates:<br><br>
+
+      | name |<br>
+      | -------------- |<br>
+      | Joe |<br>
+      | Anna |<br>
+      | Roxanne |<br>
+      | Paul |<br>
+      | Joe |<br>
+      | Joe |<br>
+      | Joe |<br>
+      | Joe |<br>
+      | Joe |<br>
+      | Joe |<br>
+      | Joe |<br>
+      | Joe |<br>
+      | Joe |<br><br>
+      Adding the DISTINCT keyword filters out the duplicates:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT DISTINCT</b> *<b style="color: violet;"> FROM</b> people;
+      </div><br><br>
+
+      | name |<br>
+      | -------------------- |<br>
+      | Joe |<br>
+      | Anna |<br>
+      | Roxanne |<br>
+      | Paul |<br><br>
+
+
+      </p>
+    </div>
+
+    <div id="q4" class="card">
+      <h2><u>Using wildcards with LIKE</u></h2>
+      <p>
+        * Using LIKE you can select rows from a table using wildcards.<br><br>
+        * For example you have this schema and this data:<br><br>
+      <div class="tag">
+        <b style="color: violet;">CREATE TABLE</b> people (<br>
+        name <b style="color: peru;">VARCHAR(20)</b><br>
+        );
+      </div><br><br>
+      <div class="tag">
+        <b style="color: violet;">INSERT INTO</b> people<b style="color: violet;"> VALUES</b><br>
+        (<b style="color: green;">'Joe'</b>)(<b style="color: green;">'John'</b>)(<b
+          style="color: green;">'Johanna'</b>)(<b style="color: green;">'Zoe'</b>);
+      </div><br><br>
+
+      * This query will return the first 3 rows, as they all start with "Jo":<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;">FROM</b> people<b style="color: violet;">
+          WHERE</b> name<b style="color: violet;"> LIKE</b><b style="color: green;">'Jo%'</b>;
+      </div><br><br>
+
+      Looking for rows like Joh% will only select John and Johanna:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;">FROM</b> people<b style="color: violet;">
+          WHERE</b> name<b style="color: violet;"> LIKE</b><b style="color: green;">'Joh%'</b>;
+      </div><br><br>
+
+      * Notice I used the % sign to match multiple characters.<br><br>
+
+      * You can also use _ to match one character, so you can pick Joe and Zoe
+      using:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;">FROM</b> people<b style="color: violet;">
+          WHERE</b> name<b style="color: violet;"> LIKE</b><b style="color: green;">'_oe'</b>;
+      </div><br><br>
+
+
+
+      </p>
+    </div>
+
+    <div id="q5" class="card">
+      <h2><u>Limit and offset</u></h2>
+      <p>
+        * You can limit the number of rows retrieved. This is not a standard SQL and
+        each database does this differently.<br><br> MySQL and PostgreSQL use LIMIT :<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;">FROM</b> people<b style="color: violet;"> ORDER
+          BY</b> name LIMIT <b style="color: peru;">10</b>;
+      </div><br><br>
+
+      and you can set an offset to return, in this case, the rows from 11 to 20:
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;">FROM</b> people<b style="color: violet;"> ORDER
+          BY</b> name LIMIT <b style="color: peru;"> 10</b> <b style="color: violet;">OFFSET</b> <b
+          style="color: peru;">10</b>;
+      </div><br><br>
+
+
+      </p>
+    </div>
+
+    <div id="q6" class="card">
+      <h2><u>Comments</u></h2>
+      <p>
+
+        * You can add comments to SQL queries using two hyphens at the beginning of
+        a line:<br><br>
+        <b style="color: dimgrey;"> -- just a test</b><br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT</b> * <b style="color: violet;">FROM</b> people;
+      </div><br><br>
+      * Or use /* */ to comment a portion of SQL inside a line, or to add multiple
+      lines comments:<br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT </b> * <b style="color: violet;"> FROM</b><b style="color: dimgrey;"> /* test
+          */</b> people;
+      </div><br><br>
+      <div class="tag">
+        <b style="color: violet;">SELECT </b> * <b style="color: violet;"> FROM</b><b style="color: dimgrey;"> /*
+          this is just a test */
+        </b> people;
+      </div><br><br>
+      </p>
+    </div>
+
+
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL Tutorial</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+</body>
+
+</html>

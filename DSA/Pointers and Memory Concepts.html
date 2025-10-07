@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Tutorial - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head><body>
+  <!-- Navigation Bar -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="Introduction to Data Structures.html">Introduction to Data Structures</a>
+      <a href="Pointers and Memory Concepts.html">Pointers and Memory Concepts</a>
+      <a href="Linear Data Structures.html">Linear Data Structures</a>
+      <a href="Non-Linear Data Structures.html">Non-Linear Data Structures</a>
+      <a href="Algorithms.html">Algorithms</a>
+      <a href="Practice and Interview Preparation.html">Practice and Interview Preparation</a>
+    </div>
+  </nav>  <!-- Sidebar -->  <div class="sidebar">
+    <a href="#q1">Pointer</a>
+    <a href="#q2">Structure</a>
+  </div>  <!-- Main Content -->  <div class="main-content">
+    <!-- Pointers Section -->
+    <section id="q1" class="section">
+      <h2>Pointers in C</h2>
+      <p>A pointer stores the address of a value stored in memory.</p>
+      <p><strong>Dereferencing:</strong> Accessing value stored at a pointer.</p><h3>Pointer Arithmetic</h3>
+  <p>Operators: <code>++</code>, <code>--</code>, <code>+</code>, <code>-</code></p>
+
+  <h3>Array of Pointers</h3>
+  <p>You can define arrays to hold multiple pointers.</p>
+
+  <h3>Pointer to Pointer</h3>
+  <p>C allows a pointer to store the address of another pointer.</p>
+
+  <div class="diagram">
+    <code>
+      a = 10 → [2000]<br/>
+      b = &a → [3000]<br/>
+      b points to address of a
+    </code>
+  </div>
+</section>
+
+<!-- Structure Section -->
+<section id="q2" class="section">
+  <h2>Structure</h2>
+  <p><b class="keyword">Structure</b> is a composite data type that defines a grouped list of variables that are to be placed under one name in block of memory.</p>
+
+  <h3>Declaration:</h3>
+  <pre><code>
+
+struct structure_name { data_type member1; data_type member2; // ... }; </code></pre>
+
+<h3>Advantages of Structure:</h3>
+  <ul>
+    <li>It can hold variables of different data types.</li>
+    <li>We can create objects containing different types of attributes.</li>
+    <li>It allows us to re-use the data layout across programs.</li>
+    <li>It is used to implement other data structures like linked lists, queues, trees, and graphs.</li>
+  </ul>
+
+  <h3>Example Program:</h3>
+  <pre><code>
+
+#include <stdio.h>
+
+struct employee { int id; float salary; int mobile; };
+
+int main() { struct employee e1; printf("Enter id, salary & mobile no.\n"); scanf("%d %f %d", &e1.id, &e1.salary, &e1.mobile); printf("Employee Details:\nID: %d\nSalary: %.2f\nMobile: %d\n", e1.id, e1.salary, e1.mobile); return 0; } </code></pre> </section>
+
+  </div>  <!-- Footer -->  <footer>
+    <p>&copy; 2025 Gowthamraj Network | DSA Tutorial</p>
+  </footer>  <!-- Script -->  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script></body></html>

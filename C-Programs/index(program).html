@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>C++ Programming Aptitude Test</title>
+    <link rel="stylesheet" href="style.css">
+    
+
+    <!-- Optional: highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/cpp.min.js"></script>
+
+    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 C++ Programming Aptitude Test</h1>
+           
+        </div>
+
+        <div class="timer" id="timer">Time: 120:00</div>
+
+        <div class="test-info">
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>📝 Total Questions</h3>
+                    <p id="total-questions">100 Questions</p>
+                </div>
+                <div class="info-item">
+                    <h3>⏰ Time Limit</h3>
+                    <p>120 Minutes</p>
+                </div>
+                <div class="info-item">
+                    <h3>✅ Passing Score</h3>
+                    <p>60%</p>
+                </div>
+                <div class="info-item">
+                    <h3>🎯 Difficulty</h3>
+                    <p>Intermediate to Advanced</p>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+        </div>
+
+        <div id="test-content">
+            <div class="question-container" id="questions">
+                
+            </div>
+
+            <div class="controls">
+                <button class="btn" id="prev-btn" onclick="previousQuestion()">← Previous</button>
+                <button class="btn btn-warning" id="show-answer-btn" onclick="toggleAnswer()">💡 Show Answer</button>
+                <button class="btn" id="next-btn" onclick="nextQuestion()">Next →</button>
+                <button class="btn btn-success" onclick="submitTest()" id="submitBtn" style="display:none;">Submit Test</button>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <h2>🎉 Test Completed!</h2>
+            <div class="score" id="finalScore" style="font-size:40px;margin:12px 0">85%</div>
+            <div class="performance" style="display:flex;gap:12px;justify-content:center">
+                <div class="perf-item" style="background:#fff;padding:12px;border-radius:8px;border:1px solid #eef3f8">
+                    <h3 style="margin:0 0 6px">Correct Answers</h3>
+                    <p id="correctCount" style="margin:0">8/10</p>
+                </div>
+                <div class="perf-item" style="background:#fff;padding:12px;border-radius:8px;border:1px solid #eef3f8">
+                    <h3 style="margin:0 0 6px">Time Taken</h3>
+                    <p id="timeTaken" style="margin:0">45:30</p>
+                </div>
+                <div class="perf-item" style="background:#fff;padding:12px;border-radius:8px;border:1px solid #eef3f8">
+                    <h3 style="margin:0 0 6px">Performance</h3>
+                    <p id="performance" style="margin:0">Excellent</p>
+                </div>
+            </div>
+            <button class="btn" onclick="restartTest()" style="margin-top: 30px;">Take Test Again</button>
+        </div>
+    </div>
+
+<script>
+    
+    const questions = [
+       
+  
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code: `class base {
+public: 
+    void baseFun(){ cout<<"from base"<<ENDL;} 
+}; 
+class deri:public base { 
+public: 
+    void baseFun(){ cout<< "from derived"<<ENDL;} 
+}; 
+void SomeFunc(base *baseObj) { baseObj->baseFun(); } 
+int main() { 
+    base baseObject; 
+    SomeFunc(&baseObject); 
+    deri deriObject; 
+    SomeFunc(&deriObject); 
+}`,
+      options: [
+       " from base \n from base",
+        "from derived\nfrom base", 
+        "from base\nfrom derived",
+       " Compiler Error"
+      ],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code: `class Sample {
+public: 
+    int *ptr; 
+    Sample(int i) { ptr = new int(i); }
+    ~Sample() { delete ptr; } 
+    void PrintVal() { cout << "The value is " << *ptr; } 
+}; 
+void SomeFunc(Sample x) { cout << "Say i am in someFunc " << endl; } 
+int main() { 
+    Sample s1= 10; 
+    SomeFunc(s1); 
+    s1.PrintVal(); 
+}`,
+      options: [
+        "Say i am in someFunc\nThe value is 10",
+        "Say i am in someFunc\nNull pointer assignment(Run-time error)",
+        "Compilation Error", 
+        "The value is 10"
+      ],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code: `class base
+{
+public:
+int bval;
+base(){ bval=0;}
+};
+class deri:public base
+{
+public:
+int dval;
+deri(){ dval=1;}
+};
+void SomeFunc(base *arr,int size)
+{
+for(int i=0; i<size; i++)
+{
+cout<<arr[i].bval;
+}
+cout<<endl;
+}
+int main()
+{
+base BaseArr[5];
+SomeFunc(BaseArr,5);
+deri DeriArr[5];
+SomeFunc(DeriArr,5);
+}`,
+      options: [
+        "00000\n00000",
+        "00000\n11111", 
+        "00000\n01010",
+        "Compiler Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program", 
+      code: `int main()
+{
+int a, *pa, &ra;
+pa = &a;
+ra = a;
+cout <<"a="<<a;
+return 0;
+}`,
+      options: [
+        "a=0",
+        "a=garbage value",
+        "Compiler Error: 'ra',reference must be initialized", 
+        "Runtime Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code: `const int size = 5;
+void print(int *ptr)
+{
+cout<<ptr[0];
+}
+void print(int ptr[size])
+{
+cout<<ptr[0];
+}
+void main()
+{
+int a[size] = {1,2,3,4,5};
+int *b = new int(size);
+print(a);
+print(b);
+}`,
+      options: [
+        "11",
+        "15", 
+        "Compiler Error: function 'void print(int *)' already has a body",
+        "Runtime Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code: `class some{
+public: ~some()
+{
+cout<<"some's destructor"<<endl;
+}
+};
+void main()
+{
+some s;
+s.~some();
+}`,
+      options: [
+        "some's destructor",
+        "some's destructor\nsome's destructor",
+        "Compiler Error", 
+        "Runtime Error"
+      ],
+      correct: 1,
+    },
+    {
+      section: "intermediate",
+      question: "Find the output of the following program",
+      code: `class opOverload{
+public:
+bool operator==(opOverload temp);
+};
+bool opOverload::operator==(opOverload temp){
+if(*this == temp ){
+cout<<"The both are same objects\n";
+return true;
+}
+else{
+cout<<"The both are different\n";
+return false;
+}
+}
+void main(){
+opOverload a1, a2;
+a1==a2;
+}`,
+      options: [
+        "The both are same objects",
+        "The both are different",
+        "Runtime Error: Stack Overflow",
+        "Compiler Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "intermediate",
+      question: "Find the output of the following program",
+      code: `class complex{
+double re;
+double im;
+public:
+complex() : re(1),im(0.5) {}
+bool operator==(complex &rhs);
+operator int(){}
+};
+bool complex::operator == (complex &rhs){
+if((this->re == rhs.re) && (this->im == rhs.im))
+return true;
+else
+return false;
+}
+int main(){
+complex c1;
+cout<< c1;
+}`,
+      options: [
+        "1",
+        "0",
+        "Garbage value",
+        "Compiler Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "intermediate",
+      question: "Find the output of the following program",
+      code: `class complex{
+double re;
+double im;
+public:
+complex() : re(0),im(0) {}
+complex(double n) { re=n,im=n;};
+complex(int m,int n) { re=m,im=n;}
+void print() { cout<<re<<","<<im<<endl;}
+};
+void main(){
+complex c3;
+double i=5;
+c3 = i;
+c3.print();
+}`,
+      options: [
+        "0,0",
+        "5,0",
+        "5,5", 
+        "Compiler Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code: `struct point
+{
+int x;
+int y;
+};
+struct point origin,*pp;
+main()
+{
+pp=&origin;
+printf("origin is(%d,%d)\\n",(*pp).x,(*pp).y);
+printf("origin is (%d,%d)\\n",pp->x,pp->y);
+}`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values",
+        "Compiler Error"
+      ],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+char c=' ',x,convert(z);
+getc(c);
+if((c>='a') && (c<='z'))
+x=convert(c);
+printf("%c",x);
+}
+convert(z)
+{
+return z-32;
+}`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values",
+        "Compiler Error"
+      ],
+      correct: 3,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main(int argc, char **argv)
+{
+printf("enter the character");
+getchar();
+sum(argv[1],argv[2]);
+}
+sum(num1,num2)
+int num1,num2;
+{
+retu`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values",
+        "Compiler Error"
+      ],
+      correct: 3,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`int one_d[]={1,2,3};
+main()
+{
+int *ptr;
+ptr=one_d;
+ptr+=3;
+printf("%d",*ptr);
+}`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values",
+        "Compiler Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+FILE *ptr;
+char i;
+ptr=fopen("zzz.c","r");
+while((i=fgetch(ptr))!=EOF)
+printf("%c",i);
+}`,
+      options: [
+        "contents of zzz.c followed by an infinite loop",
+        "contents of xxx.c followed by an infinite loop",
+        "Garbage values",
+        "Compiler Error"
+      ],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+int i =0;j=0;
+if(i && j++)
+printf("%d..%d",i++,j);
+printf("%d..%d,i,j);
+}`,
+      options:["0..0", "1..0", "1..1", "0,,1"],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+int i;
+i = abc();
+printf("%d",i);
+}
+abc()
+{_AX = 1000;
+}`,
+      options:["1000","0110","0001","1100",],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`int i;
+main(){
+int t;
+for ( t=4;scanf("%d",&i)-t;printf("%d\n",i))
+printf("%d--",t--);
+}
+// If the inputs are 0,1,2,3 find the o/p`,
+      options:["1--0 2--0 3--0","2--0 1--0","3--0","4--0 3--1 2--2",],
+      correct: 3,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`aaa() {
+printf("hi");
+}
+bbb(){
+printf("hello");
+}
+ccc(){
+printf("TechPreparation.com");
+}
+main()
+{
+int (*ptr[3])();
+ptr[0]=aaa;
+ptr[1]=bbb;
+ptr[2]=ccc;
+ptr[2]();
+}`,
+      options:["TechPreparation","TechPreparation.com","hi","hello",],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:` main(){
+int a= 0;int b = 20;char x =1;char y =10;
+if(a,b,x,y)
+printf("hello");
+}`,
+      options:["hi","how r u","hello","0",],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:` main(){
+unsigned int i;
+for(i=1;i>-2;i--)
+printf("c aptitude");
+}`,
+      options:["signed int","un signed int","true","false",],
+      correct: 0,
+      explanation:"i is an unsigned integer. It is compared with a signed value. Since the both types doesn't match, signed is promoted to unsigned value. The unsigned equivalent of -2 is a huge value so condition becomes false and control comes out of the loop."
+    },
+    {
+      section: "basic",
+      question: "In the following pgm add a stmt in the function fun such that the addressof 'a' gets stored in 'j'.",
+      code:` main(){
+int * j;
+void fun(int **);
+fun(&j);
+}
+void fun(int **k) {
+int a =0;
+/* add a stmt here*/
+}`,
+      options:["*k=&a","k=a","k@a","0"],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "What are the following notations of defining functions known as?",
+      code:`i. int abc(int a,float b)
+{
+/* some code */
+}
+
+ii. int abc(a,b)
+int a; float b;
+{
+/* some code*/
+}`,
+      options:["i. ANSI C notation \n ii. Kernighan & Ritche notation","i. Kernighan & Ritche notation \n ii.ANSI C notation ","return 0","null"],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+char *p;
+p="%d\n";
+p++;
+p++;
+printf(p-2,300);
+}`,
+      options:["100","200","300","400",],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main(){
+char a[100];
+a[0]='a';a[1]]='b';a[2]='c';a[4]='d';
+abc(a);
+}
+abc(char a[]){
+a++;
+printf("%c",*a);
+a++;
+printf("%c",*a);
+}`,
+      options:["The base address is modified only in function","The base address is not modified  in function","0","compiler error"],
+      correct: 0,
+      explanation:"The base address is modified only in function and as a result a points to 'b' then after incrementing to 'c' so bc will be printed."
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`func(a,b)
+int a,b;
+{
+return( a= (a==b) );
+}
+main()
+{
+int process(),func();
+printf("The value of process is %d !\n ",process(func,3,6));
+}
+process(pf,val1,val2)
+int (*pf) ();
+int val1,val2;
+{
+ret`,
+      options:["The value if process is 0?","The value if process is 0 ","0","The value if process is 0 !"],
+      correct: 3,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+static int i=5;
+if(--i){
+main();
+printf("%d ",i);
+}
+}`,
+      options:["1111","2222","0000","3333",],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+int k=ret(sizeof(float));
+printf("\n here value is %d",++k);
+}
+int ret(int ret)
+{
+ret += 2.5;
+return(ret);
+}`,
+      options:["Here value is 7.5","Here value is 7","Here value is 6","Here value is 7.2"],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+char a[]="12345\0";
+int i=strlen(a);
+printf("here in 3 %d\n",++i);
+}`,
+      options:["here in 3 5","here in 3 7","here in 3 6","here in 3 8"],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+unsigned giveit=-1;
+int gotit;
+printf("%u ",++giveit);
+printf("%u \n",gotit=--giveit);
+}
+`,
+      options:["0 12440","0 34765","0 65535","0 11111"],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+int i;
+char a[]="\0";
+if(printf("%s\n",a))
+printf("Ok here \n");
+else
+printf("Forget it\n");
+}`,
+      options:["Ok here"," Forget it"," ok","forget"],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+void *v;
+int integer=2;
+int *i=&integer;
+v=i;
+printf("%d",(int*)*v);
+}
+`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values",
+        "Compiler Error"
+      ],
+      correct: 3,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+int i=i++,j=j++,k=k++;
+printf(ì%d%d%dî,i,j,k);
+}`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values",
+        "Compiler Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+static int i=i++, j=j++, k=k++;
+printf(ìi = %d j = %d k = %dî, i, j, k);
+}`,
+      options:["i = 0 j = 1 k = 1","i = 1 j = 1 k = 1","i = 1 j = 0 k = 1","i = 1 j = 1 k = 0"],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void main()
+{
+while(1){
+if(printf("%d",printf("%d")))
+break;
+else
+continue;
+}
+}`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values",
+        "Compiler Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:` main()
+{
+unsigned int i=10;
+while(i-->=0)
+printf("%u ",i);
+}`,
+      options:["10 9 8 7 6 5 4 3 2 1 0 65535 65534Ö.."," 65534Ö.. 65535 0 1 2 3 4 5 6 7 8 9 10","0","error"],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:` #include
+main()
+{
+int x,y=2,z,a;
+if(x=y%2) z=2;
+a=2;
+printf("%d %d ",z,x);
+}`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values 0",
+        "Compiler Error"
+      ],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:` main()
+{
+int a[10];
+printf("%d",*a+1-*a+3);
+}`,
+      options:["1","3","5","4"],
+      correct: 3,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:` #define prod(a,b) a*b
+main()
+{
+int x=3,y=4;
+printf("%d",prod(x+2,y-1));
+}`,
+      options:["8","9","10","11"],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+unsigned int i=65000;
+while(i++!=0);
+printf("%d",i);
+}`,
+      options:["1","2","3","4"],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+int i=0;
+while(+(+i--)!=0)
+i-=i++;
+printf("%d",i);
+}`,
+      options:["-2","-1","1","2"],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+float f=5,g=10;
+enum{i=10,j=20,k=50};
+printf("%d\n",++k);
+printf("%f\n",f<<2);
+printf("%lf\n",f%g);
+printf("%lf\n",fmod(f,g));
+}
+`,
+      options:["compiler error","Line no 5: Error: Lvalue required \n Line no 6: Cannot apply leftshift to float \nLine no 7: Cannot apply mod ","Garbage value","Line no 5: Error: Lvalue required \n Line no 6: Cannot apply rightshift to float \nLine no 7: Cannot apply mod "],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+int i=10;
+void pascal f(int,int,int);
+f(i++,i++,i++);
+printf(" %d",i);
+}
+void pascal f(integer :i,integer:j,integer :k)
+{
+write(i,j,k);
+}`,
+      options:["Compiler error: known type integer\nCompiler error: declared function write","0","null","Compiler error: unknown type integer\nCompiler error: undeclared function write"],
+      correct: 3,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`void pascal f(int i,int j,int k)
+{
+printf(ì%d %d %dî,i, j, k);
+}
+void cdecl f(int i,int j,int k)
+{
+printf(ì%d %d %dî,i, j, k);
+}
+main()
+{
+int i=10;
+f(i++,i++,i++);
+printf(" %d\n",i);
+i=10;
+f(i++,i++,i++);
+printf(" %d",i);
+}`,
+      options:["10 11 13 \n 9 8 7","10 11 12 13 \n 12 11 10 13","compiler error","null"],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+signed char i=0;
+for(;i>=0;i++) ;
+printf("%d\n",i);
+}`,
+      options:["-128","-127","127","128"],
+      correct: 0,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+unsigned char i=0;
+for(;i>=0;i++) ;
+printf("%d\n",i);
+}`,
+      options:["finite loop","infinite loop","compiler error","null value"],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`main()
+{
+char i=0;
+for(;i>=0;i++) ;
+printf("%d\n",i);
+}`,
+      options:["compiler error","Behavior is implementation independent.","Behavior is implementation dependent.","0"],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Is the following statement a declaration/definition. Find what does it mean ?",
+      code:`int (*x)[10];`,
+      options:["10 is a pointer to array of(size x) integers","runtime error","x is a pointer to array of(size 10) integers","null"],
+      correct: 2,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`What is the output for the program given below
+typedef enum errorType{warning, error, exception,}error;
+main()
+{
+error g1;
+g1=1;
+printf("%d",g1);
+}`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values 0",
+        "Compiler Error"
+      ],
+      correct: 3,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`typedef struct error{int warning, error, exception;}error;
+main()
+{
+error g1;
+g1.error =1;
+printf("%d",g1.error);
+}`,
+      options:["0","1","2","3"],
+      correct: 1,
+    },
+    {
+      section: "basic",
+      question: "Find the output of the following program",
+      code:`#ifdef something
+int some=0;
+#endif
+main()
+{
+int thing = 0;
+printf("%d %d\n", some ,thing);
+}`,
+      options: [
+        "origin is(0,0)\norigin is (0,0)",
+        "origin is(1,1)\norigin is (1,1)",
+        "Garbage values 0",
+        "Compiler Error"
+      ],
+      correct: 3,
+    },
+    {
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#if something == 0
+int some=0;
+#endif
+main()
+{
+int thing = 0;
+printf("%d %d\n", some ,thing);
+}`,
+  options:["0 0","1 0","1 1","0 1"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int arr2D[3][3];
+printf("%d\n", ((arr2D==* arr2D)&&(* arr2D == arr2D[0])) );
+}`,
+  options:["1","2","3","4"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#include <iostream>
+using namespace std;
+
+class Vehicle {
+public:
+    Vehicle() {
+        cout << "This is a Vehicle" << endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    Car() {
+        cout << "This Vehicle is Car" << endl;
+    }
+};
+
+int main() {
+   
+    Car obj;
+    return 0;
+}`,
+  options:["Runtime error","This is a Vehicle\nThis Vehicle is Car","garbage value","This Vehicle is Car\nThis is a Vehicle"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`int swap(int *a,int *b)
+{*a=*a+*b;*b=*a-*b;*a=*a-*b;
+}
+main()
+{
+int x=10,y=20;
+swap(&x,&y);
+printf("x= %d y = %d\n",x,y);
+}`,
+  options:["x = 40 y = 10","x = 10 y = 10","x = 20 y = 10","x = 50 y = 10"],
+  correct:2,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+char *p = "ayqm";
+printf("%c",++*(p++));
+}`,
+  options:["a","b","c","d"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i=5;
+printf("%d",++i++);
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "origin is(1,1)\norigin is (1,1)",
+    "Garbage values 0",
+    "Compiler Error"
+  ],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+char *p = "ayqm";
+char c;
+c = ++*p++;
+printf("%c",c);
+}`,
+  options:["a","b","c","d"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int ( * ptr[3]) ();
+ptr[0] = aaa;
+ptr[1] = bbb;
+ptr[2] = ccc;
+ptr[2]();
+}`,
+  options:["hi","bye","hello","yeah"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i=5;
+printf("%d",i=++i ==6);
+}`,
+  options:["0","1","2","4"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+char p[ ]="%d\n";
+p[1] = 'c';
+pr`,
+  options:["a","b","c","d"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#include <iostream>
+using namespace std;
+int main() {
+  
+	int a = 10 + 20;
+  
+    cout << a;
+    return 0;
+}`,
+  options:["30","40","50","60"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:` main()
+{
+while (strcmp("some","some\0"))
+printf("Strings are not equal\n");
+}`,
+  options:["no output","compiler error","runtime error","0"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:` main()
+{
+char str1[] = {"s","o","m","e"};
+char str2[] = {"s","o","m","e","\0"};
+while (strcmp(str1,str2))
+printf("Strings are not equal\n");
+}`,
+  options:["Strings are not equal\nStrings are not equal…","o","Strings are not equal","compiler error"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i = 3;
+for (;i++=0;) printf("%d",i);
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "origin is(1,1)\norigin is (1,1)",
+    "Garbage values 0",
+    "Compiler Error :Lvalue required."
+  ],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`void main()
+{
+int *mptr, *cptr;
+mptr = (int*)malloc(sizeof(int));
+printf("%d",*mptr);
+int *cptr = (int*)calloc(sizeof(int),1);
+p`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "origin is(1,1)\norigin is (1,1)",
+    "Garbage values 0",
+    "Compiler Error :Lvalue required."
+  ],
+  correct:2,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`void main()
+{
+static int i;
+while(i<=10)
+(i>2)?i++:i--;
+printf("%d", i);
+}`,
+  options:["32763","32767","32765","32766"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i=10,j=20;
+j = i, j?(i,j)?i:j:j;
+printf("%d %d",i,j);
+}`,
+  options:["10 10","11 12","12 11","11 11"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#include <iostream>
+using namespace std;
+
+int main() {
+  
+  	for (int i = 0; i < 1; i++) {
+    	cout << "Hello World\n";
+    }
+    return 0;
+}`,
+  options:["error","Hello World","Hello World\nHello World","Hello World\nHello World\nHello World"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i=5,j=10;
+i=i&=j&&10;
+printf("%d %d",i,j);
+}`,
+  options:["1 10","2 11","4 12","5 14"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i=4,j=7;
+j = j || i++ && printf("YOU CAN");
+printf("%d %d", i, j);
+}`,
+  options:["1 4","4 1","1 2","2 1"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+register int a=2;
+printf("Address of a = %d",&a);
+printf("Value of a = %d",a);
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "origin is(1,1)\norigin is (1,1)",
+    "Garbage values 0",
+    "Compiler Error :'&' on register variable"
+  ],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main(){
+float i=1.5;
+switch(i)
+{
+case 1: printf("1");
+case 2: printf("2");
+default : printf("0");
+}
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "origin is(1,1)\norigin is (1,1)",
+    "Garbage values 0",
+    "Compiler Error: switch expression not integral"
+  ],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+extern i;
+printf("%d\n",i);
+{
+int i=20;
+printf("%d\n",i);
+}
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "Linker Error : Unresolved external symbol i",
+    "Garbage values 0",
+    "Compiler Error: switch expression not integral"
+  ],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int a=2,*f1,*f2;
+f1=f2=&a; *f2+=*f2+=a+=2.5;
+printf("\n%d %d %d",a,*f1,*f2);
+}`,
+  options:["11 11 11","14 14 14","16 16 16","18 18 18"],
+  correct:2,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#include <iostream>
+using namespace std;
+
+int main() {
+  
+  	// Initialization
+  	int i = 1;
+  
+  	// while loop that starts with i = 1 and ends
+  	// when i is greater than 5.
+     do {
+        cout << i << " ";
+      
+      	// Updation
+      	i++;
+    }while (i <= 5);
+
+    return 0;
+}`,
+  options:["1 2 3 4 5","5 4 3 2 1","0","1"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#define DIM( array, type) sizeof(array)/sizeof(type)
+main()
+{
+int arr[10];
+printf("The dimension of the array is %d", DIM(arr, int));
+}`,
+  options:["8","9","10","11"],
+  correct:2,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`int DIM(int array[])
+{
+return sizeof(array)/sizeof(int );
+}
+main()
+{
+int arr[10];
+p`,
+  options:["1","4","8","12"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i=4,j=7;
+j = j || i++ && printf("YOU CAN");
+printf("%d %d", i, j);
+}`,
+  options:["1 4","4 1","2 5","5 2"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+register int a=2;
+printf("Address of a = %d",&a);
+printf("Value of a = %d",a);
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "origin is(1,1)\norigin is (1,1)",
+    "Garbage values 0",
+    "Compiler Error: '&' on register variable"
+  ],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+float i=1.5;
+switch(i)
+{
+case 1: printf("1");
+case 2: printf("2");
+default : printf("0");
+}
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "origin is(1,1)\norigin is (1,1)",
+    "Garbage values 0",
+    "Compiler Error: switch expression not integral"
+  ],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+extern i;
+printf("%d\n",i);
+{
+int i=20;
+printf("%d\n",i);
+}
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "Linker Error : Unresolved external symbol i",
+    "Garbage values 0",
+    "Compiler Error: switch expression not integral"
+  ],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int a=2,*f1,*f2;
+f1=f2=&a; *f2+=*f2+=a+=2.5;
+printf("\n%d %d %d",a,*f1,*f2);
+}`,
+  options:["11 11 11","14 14 14","16 16 16","18 18 18"],
+  correct:2,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#include <iostream>
+using namespace std;
+
+int main() {
+  
+  	// Initialization
+  	int i = 1;
+  
+  	// while loop that starts with i = 1 and ends
+  	// when i is greater than 5.
+    while (i <= 5) {
+        cout << i << " ";
+      
+      	// Updation
+      	i++;
+    }
+    return 0;
+}`,
+  options:["1 2 3 4 5","5 4 3 2 1","0 0 0 0 0","1 1 1 1 1"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#define DIM( array, type) sizeof(array)/sizeof(type)
+main()
+{
+int arr[10];
+printf("The dimension of the array is %d", DIM(arr, int));
+}`,
+  options:["7","8","9","10"],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`int DIM(int array[])
+{
+return sizeof(array)/sizeof(int );
+}
+main()
+{
+int arr[10];
+p`,
+  options:["0","1","2","4"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+void swap();
+int x=10,y=8;
+swap(&x,&y);
+printf("x=%d y=%d",x,y);
+}
+void swap(int *a, int *b)
+{ *a ^= *b, *b ^= *a, *a ^= *b;
+}`,
+  options:["x=11 y=8","x=12 y=8","x=14 y=8","x=10 y=8"],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i = 257;
+int *iPtr = &i;
+printf("%d %d", *((char*)iPtr), *((char*)iPtr+1) );
+}`,
+  options:["0 0","1 1","4 4","5 5"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i = 258;
+int *iPtr = &i;
+printf("%d %d", *((char*)iPtr), *((char*)iPtr+1) );
+}`,
+  options:["2 1","1 2","1 4","1 5"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int i=300;
+char *ptr = &i; *++ptr=2;
+printf("%d",i);
+}`,
+  options:["555","554","556","557"],
+  correct:2,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`#include
+main()
+{
+char * str = "hello";
+char * ptr = str;
+char least = 127;
+while (*ptr++)
+least = (*ptr
+printf("%d",least);
+}`,
+  options:["0","1","2","3"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`void main()
+{
+int *i = 0x400; // i points to the address 400
+*i = 0; // set the value of memory location pointed by i;
+}`,
+  options:["Undefined behavior","defined behavior","error"," null"],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`Is the following code legal?
+struct a
+{
+int x;
+struct a b;
+}`,
+  options:["Yes","No","May be ","Do no"],
+  correct:1,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`Is the following code legal?
+typedef struct a
+{
+int x;
+aType *b;
+}aType`,
+  options:["Yes","No","May be ","Do no"],
+  correct:1,
+  explanation:"The typename aType is not known at the point of declaring the structure (forward references are not made for typedefs"
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+char a[4]="HELL";
+printf("%s",a);
+}`,
+  options:["null","HELL%@!~@!@???@~~!","HELL%@!~@!@???@~!","compiler error"],
+  correct:1,
+  explanation:"The character array has just enough memory to hold 'HELL' without a null terminator. So it prints HELL followed by garbage until it finds a NULL."
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`main()
+{
+int a=10,*j;
+void *k;
+j=k=&a;
+j++;
+k++;
+printf("\n %u %u ",j,k);
+}`,
+  options:[
+    "origin is(0,0)\norigin is (0,0)",
+    "Linker Error : Unresolved external symbol i",
+    "Garbage values 0",
+    "Compiler Error: Cannot increment a void pointer"
+  ],
+  correct:3,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`class some{
+public: ~some()
+{
+cout<<"some's destructor"<<ENDL;
+}
+};
+void main()
+{
+some s;
+s.~some();
+}`,
+  options:["some's destructor\nsome's destructor","","some's constructor\nsome's constructor",""],
+  correct:0,
+},
+
+{
+  section:"basic",
+  question:"Find the output of the following program",
+  code:`class opOverload{
+public:
+bool operator==(opOverload temp);
+};
+bool opOverload::operator==(opOverload temp){
+if(*this == temp ){
+cout<<"The both are same objects\n";
+return true;
+}
+else{
+cout<<"The both are different\n";
+return false;
+}
+}
+void main(){
+opOverload a1, a2;
+a1==a2;
+}`,
+  options:[
+    "Runtime Error: Stack Overflow",
+    "Linker Error : Unresolved external symbol i",
+    "Garbage values 0",
+    "Compiler Error: Cannot increment a void pointer"
+  ],
+  correct:0,
+},
+ {
+      
+      section:"basic",
+      question:"Find the output of the following program",
+      code:`main()
+{
+int i=_l_abc(10);
+printf("%d\n",--i);
+}
+int _l_abc(int i)
+{
+re`,
+      options:["7","8","9","10"],
+      correct:2,
+
+    },
+
+    {
+      
+      section:"basic",
+      question:"Find the output of the following program",
+      code:`#include <iostream>
+using namespace std;
+
+int main() {
+    // declaring and initializing an array of size 5
+    int arr[5] = {2, 4, 8, 12, 16};
+
+    // printing array elements
+    for (int i = 0; i < 5; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}`,
+      options:["1 3 5 7 9","2 4 8 12 16","16 12 8 4 2","0"],
+      correct:1,
+
+    }
+
+  
+
+    ];
+
+    // Test state
+    let currentQuestion = 0;
+    let answers = new Array(questions.length).fill(-1);
+    let timeLeft = 120 * 60; // seconds
+    let timerInterval;
+    let answerVisible = false;
+
+    // DOM references
+    const questionsContainer = document.getElementById('questions');
+    const timerEl = document.getElementById('timer');
+    const progress = document.getElementById('progress');
+    const testContent = document.getElementById('test-content');
+    const results = document.getElementById('results');
+    const submitBtn = document.getElementById('submitBtn');
+    const showAnswerBtn = document.getElementById('show-answer-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Escape HTML
+    function escapeHtml(text){
+        if (!text && text !== '') return '';
+        return String(text)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function startTest(){
+        document.getElementById('total-questions').textContent = `${questions.length} Questions`;
+        startTimer();
+        loadQuestion();
+    }
+
+    function startTimer(){
+        updateTimerDisplay(); // immediate
+        timerInterval = setInterval(()=>{
+            timeLeft--;
+            updateTimerDisplay();
+            if (timeLeft <= 0){
+                clearInterval(timerInterval);
+                submitTest();
+            }
+        },1000);
+    }
+
+    function updateTimerDisplay(){
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerEl.textContent = `Time: ${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+
+        if (timeLeft < 300){
+            timerEl.style.background = 'var(--danger)';
+            timerEl.style.animation = 'pulse 1s infinite';
+        } else {
+            timerEl.style.background = 'var(--accent)';
+            timerEl.style.animation = 'none';
+        }
+    }
+
+    function loadQuestion(){
+        const q = questions[currentQuestion];
+        let sectionHTML = '';
+        if (currentQuestion === 0 || questions[currentQuestion - 1].section !== q.section){
+            sectionHTML = `<div style="margin:6px 0;padding:8px;border-radius:8px;background:#f7fbff;border:1px solid #e9f4ff;font-weight:700">${escapeHtml(q.section)}</div>`;
+        }
+
+        answerVisible = false;
+        showAnswerBtn.innerHTML = '💡 Show Answer';
+
+        questionsContainer.innerHTML = `
+            ${sectionHTML}
+            <div class="question fade-in">
+                <div class="question-header">
+                    <div class="question-number">${currentQuestion + 1}</div>
+                    <div class="question-text">${escapeHtml(q.question)}</div>
+                </div>
+
+                ${q.code ? `<div class="code-block">
+                    <div class="code-toolbar">
+                        <button class="copy-btn" onclick="copyCode(${currentQuestion})">Copy</button>
+                    </div>
+                    <pre><code id="code-${currentQuestion}" class="language-cpp">${escapeHtml(q.code)}</code></pre>
+                </div>` : ''}
+
+                <div class="options">
+                    ${q.options.map((option, index) => 
+                        `<div class="option ${answers[currentQuestion] === index ? 'selected' : ''}" onclick="selectOption(${index})" data-index="${index}">${String.fromCharCode(97+index)}) ${escapeHtml(option)}</div>`
+                    ).join('')}
+                </div>
+
+                <div class="answer-container" id="answer-container">
+                    <div class="correct-answer">
+                        <strong>Correct Answer: ${String.fromCharCode(97 + q.correct)})</strong>
+                        <div>${escapeHtml(q.options[q.correct])}</div>
+                    </div>
+                    ${q.explanation ? `<div class="explanation" style="margin-top:8px"><h4 style="margin:0 0 6px">💡 Explanation:</h4><p style="margin:0">${escapeHtml(q.explanation)}</p></div>` : ''}
+                </div>
+            </div>
+        `;
+
+        // highlight code using highlight.js if available
+        if (window.hljs) {
+            document.querySelectorAll('pre code').forEach((block) => {
+                try { hljs.highlightElement(block); } catch(e){ /* ignore */ }
+            });
+        }
+
+        updateProgress();
+        updateNavigationButtons();
+    }
+
+    function selectOption(index){
+        answers[currentQuestion] = index;
+        // update visuals
+        document.querySelectorAll('.option').forEach((el, idx) => {
+            el.classList.toggle('selected', idx === index);
+        });
+    }
+
+    function toggleAnswer(){
+        const answerContainer = document.getElementById('answer-container');
+        if (!answerContainer) return;
+        answerVisible = !answerVisible;
+        answerContainer.classList.toggle('visible', answerVisible);
+        showAnswerBtn.innerHTML = answerVisible ? '🙈 Hide Answer' : '💡 Show Answer';
+
+        if (answerVisible){
+            const q = questions[currentQuestion];
+            const optEls = document.querySelectorAll('.option');
+            optEls.forEach((el, idx) => {
+                el.classList.remove('correct','incorrect');
+                if (idx === q.correct) el.classList.add('correct');
+                else if (answers[currentQuestion] === idx && idx !== q.correct) el.classList.add('incorrect');
+            });
+        } else {
+            document.querySelectorAll('.option').forEach(el => {
+                el.classList.remove('correct','incorrect');
+            });
+        }
+    }
+
+    function nextQuestion(){
+        if (currentQuestion < questions.length - 1){
+            currentQuestion++;
+            loadQuestion();
+        }
+    }
+
+    function previousQuestion(){
+        if (currentQuestion > 0){
+            currentQuestion--;
+            loadQuestion();
+        }
+    }
+
+    function updateNavigationButtons(){
+        prevBtn.disabled = currentQuestion === 0;
+        nextBtn.disabled = currentQuestion === questions.length - 1;
+
+        if (currentQuestion === questions.length - 1){
+            submitBtn.style.display = 'inline-block';
+        } else {
+            submitBtn.style.display = 'none';
+        }
+    }
+
+    function updateProgress(){
+        const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
+        progress.style.width = progressPercent + '%';
+    }
+
+    function submitTest(){
+        clearInterval(timerInterval);
+
+        let correct = 0;
+        for (let i=0;i<questions.length;i++){
+            if (answers[i] === questions[i].correct) correct++;
+        }
+        const score = Math.round((correct / questions.length) * 100);
+        const timeTaken = (120 * 60) - timeLeft;
+        const timeTakenMin = Math.floor(timeTaken / 60);
+        const timeTakenSec = timeTaken % 60;
+
+        testContent.style.display = 'none';
+        results.style.display = 'block';
+
+        document.getElementById('finalScore').textContent = score + '%';
+        document.getElementById('correctCount').textContent = `${correct}/${questions.length}`;
+        document.getElementById('timeTaken').textContent = `${String(timeTakenMin).padStart(2,'0')}:${String(timeTakenSec).padStart(2,'0')}`;
+
+        let performance = 'Poor';
+        if (score >= 90) performance = 'Excellent';
+        else if (score >= 80) performance = 'Very Good';
+        else if (score >= 70) performance = 'Good';
+        else if (score >= 60) performance = 'Average';
+
+        document.getElementById('performance').textContent = performance;
+    }
+ 
+    function restartTest(){
+        currentQuestion = 0;
+        answers = new Array(questions.length).fill(-1);
+        timeLeft = 120 * 60;
+        testContent.style.display = 'block';
+        results.style.display = 'none';
+        timerEl.style.background = 'var(--accent)';
+        timerEl.style.animation = 'none';
+        startTimer();
+        loadQuestion();
+    }
+
+    function copyCode(idx){
+        const el = document.getElementById(`code-${idx}`);
+        if (!el) return;
+        const text = el.textContent || el.innerText || '';
+        if (navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(text).then(()=>{
+                const btn = document.querySelector(`#code-${idx}`).closest('.code-block').querySelector('.copy-btn');
+                const prev = btn.textContent;
+                btn.textContent = 'Copied';
+                setTimeout(()=>btn.textContent = prev,1200);
+            }).catch(()=>{ alert('Copy failed — try manual select and copy.'); });
+        } else {
+            // fallback
+            const ta = document.createElement('textarea');
+            ta.value = text; document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); alert('Copied'); } catch(e){ alert('Copy failed'); }
+            ta.remove();
+        }
+    }
+
+    // start
+    window.onload = () => {
+        startTest();
+    };
+</script>
+</body>
+</html>

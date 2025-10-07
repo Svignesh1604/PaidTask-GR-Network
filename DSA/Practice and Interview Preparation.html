@@ -1,0 +1,604 @@
+<!-- sql.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Tutorial - Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Global Reset */
+
+
+/* Body Styling */
+
+
+/* Main Section Wrapper */
+.section {
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Title */
+.section h1,
+.section h2 {
+  text-align: center;
+  color: #2a4d69;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* QA Section */
+.qa-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Each QA box */
+.qa-box {
+  background-color: #f9f9f9;
+  border-left: 5px solid #2a4d69;
+  padding: 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.qa-box:hover {
+  background-color: #eef3f8;
+}
+
+/* Question Style */
+.question {
+  font-weight: bold;
+  color: #1c3f60;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+/* Answer Style */
+.answer {
+  color: #444;
+  font-size: 0.97rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section {
+    padding: 20px;
+  }
+
+  .qa-box {
+    padding: 15px;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+
+  .answer {
+    font-size: 0.95rem;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="logo" style="font-family: sans-serif;">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" >Home</a>
+      <a href="Introduction to Data Structures.html">Introduction to Data Structures</a>
+      <a href="Pointers and Memory Concepts.html">Pointers and Memory Concepts</a>
+      <a href="Linear Data Structures.html">Linear Data Structures</a>
+      <a href="Non-Linear Data Structures.html">Non-Linear Data Structures</a>
+      <a href="Algorithms.html">Algorithms</a>
+      <a href="Practice and Interview Preparation.html">Practice and Interview Preparation</a>
+      
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">Coding Questions</a>
+    <a href="#q2">Interview Questions</a>
+
+  </div>
+  <div class="main-content">
+<div class="section" id="q1">
+<h2>Arrays by using c :-</h2>
+1.)Program to demonstrate arrays in c
+
+<pre><code>
+
+  #include <stdio.h>
+
+int main() {
+    // Declare and initialize an array of integers
+    int numbers[5] = {10, 20, 30, 40, 50};
+
+    // Display the array elements
+    printf("Array elements are:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Element at index %d: %d\n", i, numbers[i]);
+    }
+
+    // Modify an element
+    numbers[2] = 99;
+    printf("\nAfter modifying index 2:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Element at index %d: %d\n", i, numbers[i]);
+    }
+
+    return 0;
+}
+
+</code></pre><br>
+2.) Linked list in c++<br>
+<pre><code>
+
+  #include <iostream>
+using namespace std;
+
+// Node structure
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Function to insert a node at the end
+void insertEnd(Node*& head, int value) {
+    Node* newNode = new Node{value, nullptr};
+
+    if (head == nullptr) {
+        head = newNode;
+    } else {
+        Node* temp = head;
+        while (temp->next != nullptr)
+            temp = temp->next;
+        temp->next = newNode;
+    }
+}
+
+// Function to display the list
+void displayList(Node* head) {
+    Node* temp = head;
+    cout << "Linked List: ";
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+// Function to free memory
+void deleteList(Node*& head) {
+    Node* temp;
+    while (head != nullptr) {
+        temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+
+int main() {
+    Node* head = nullptr;
+
+    // Inserting elements
+    insertEnd(head, 10);
+    insertEnd(head, 20);
+    insertEnd(head, 30);
+
+    // Displaying list
+    displayList(head);
+
+    // Deleting the list
+    deleteList(head);
+
+    return 0;
+}
+
+</code></pre><br>
+
+3.) Stack implementation in c :<br>
+<pre><code>
+  #include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 5  // Maximum size of the stack
+
+int stack[MAX];
+int top = -1;
+
+// Function to push an element to the stack
+void push(int value) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow! Cannot push %d\n", value);
+    } else {
+        top++;
+        stack[top] = value;
+        printf("%d pushed to stack.\n", value);
+    }
+}
+
+// Function to pop an element from the stack
+void pop() {
+    if (top == -1) {
+        printf("Stack Underflow! Nothing to pop.\n");
+    } else {
+        printf("%d popped from stack.\n", stack[top]);
+        top--;
+    }
+}
+
+// Function to view the top element
+void peek() {
+    if (top == -1) {
+        printf("Stack is empty.\n");
+    } else {
+        printf("Top element is: %d\n", stack[top]);
+    }
+}
+
+// Function to display all stack elements
+void display() {
+    if (top == -1) {
+        printf("Stack is empty.\n");
+    } else {
+        printf("Stack elements are:\n");
+        for (int i = top; i >= 0; i--) {
+            printf("%d\n", stack[i]);
+        }
+    }
+}
+
+// Main function to demonstrate stack
+int main() {
+    int choice, value;
+
+    while (1) {
+        printf("\nStack Menu:\n");
+        printf("1. Push\n2. Pop\n3. Peek\n4. Display\n5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to push: ");
+                scanf("%d", &value);
+                push(value);
+                break;
+
+            case 2:
+                pop();
+                break;
+
+            case 3:
+                peek();
+                break;
+
+            case 4:
+                display();
+                break;
+
+            case 5:
+                exit(0);
+
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+
+
+</div>
+<div class="section" id="q2">
+
+
+  <h2> DATA STRUCTURES INTERVIEW QUESTIONS WITH ANSWERS</h2>
+
+  <section class="qa-section">
+    <div class="section" id="q2">
+    <h1>Data Structures - Questions and Answers</h1>
+
+    <div class="qa-box">
+      <div class="question">1. What is data structure?</div>
+      <div class="answer">A data structure is a format for organizing, managing, and storing data to enable efficient access and modification.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">2. List out the areas in which data structures are applied extensively?</div>
+      <div class="answer">Compilers, Operating Systems, Databases, Artificial Intelligence, Simulation, Graphics, and Numerical analysis.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">3. What are the major data structures used in RDBMS, Network Data Model, and Hierarchical Data Model?</div>
+      <div class="answer">RDBMS - Array/Table, Network Model - Graph, Hierarchical Model - Tree.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">4. If you are using C language to implement the heterogeneous linked list, what pointer type will you use?</div>
+      <div class="answer">A void pointer (void*) is used to store different data types.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">5. Minimum number of queues needed to implement the priority queue?</div>
+      <div class="answer">Two queues are required to implement a basic priority queue.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">6. What is data structure used to perform recursion?</div>
+      <div class="answer">Stack is used internally to perform recursion.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">7. What are notations used in evaluation of arithmetic expressions using prefix and postfix forms?</div>
+      <div class="answer">Polish notation (prefix) and Reverse Polish notation (postfix).</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">8. Convert expression ((a+b)*c-(d-e)^(f+g)) to equivalent prefix and postfix notations.</div>
+      <div class="answer">Prefix: - * + a b c ^ - d e + f g<br>Postfix: a b + c * d e - f g + ^ -</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">9. What are the methods available in storing sequential files?</div>
+      <div class="answer">Contiguous storage, Linked storage, Indexed sequential storage.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">10. Whether linked list is a linear or non-linear data structure?</div>
+      <div class="answer">Linked list is a linear data structure.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">11. Define doubly linked list?</div>
+      <div class="answer">A doubly linked list is a type of linked list where each node contains a reference to both the next and the previous node.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">12. What are the issues that hamper efficiency in sorting a file?</div>
+      <div class="answer">Disk I/O time, memory limitations, algorithm complexity, and record size can affect sorting efficiency.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">13. Calculate efficiency of sequential search?</div>
+      <div class="answer">On average: (n+1)/2 comparisons; in worst case: n comparisons.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">14. Is any implicit argument passed to a function when it is called?</div>
+      <div class="answer">Yes, in object-oriented languages, the implicit argument 'this' is passed to member functions.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">15. Parenthesis is never required in postfix or prefix expressions? Why?</div>
+      <div class="answer">Correct, because operator precedence and associativity are inherently handled by the order of operators and operands.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">16. List out few of applications of tree data structure?</div>
+      <div class="answer">Expression parsing, database indexing (B-Trees), file systems, and decision-making algorithms.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">17. List out few of applications that make use of multilinked structures?</div>
+      <div class="answer">Sparse matrices, file directories, and decision trees.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">18. What is the type of the algorithm used in solving 8 queens problem?</div>
+      <div class="answer">Backtracking algorithm.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">19. In an AVL tree, at what condition balancing is to be done?</div>
+      <div class="answer">When the balance factor of any node becomes -2 or +2 after insertion or deletion.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">20. In RDBMS, what is the efficient data structure in internal storage representation?</div>
+      <div class="answer">B+ Tree is commonly used for efficient indexing and retrieval.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">21. What is the difference between array and a stack?</div>
+      <div class="answer">Array is a linear structure with random access, while stack is LIFO (Last-In-First-Out) with restricted access.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">22. How to check whether a linked list is circular?</div>
+      <div class="answer">Use Floyd's Cycle Detection Algorithm (slow and fast pointer method).</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">23. What is a node class?</div>
+      <div class="answer">A class that defines the structure and attributes of a node in linked lists or trees.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">24. When can you tell that a memory leak will occur?</div>
+      <div class="answer">When memory is allocated but not deallocated after its use, resulting in loss of reference.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">25. What are types of collision resolution techniques and methods used in each of the type?</div>
+      <div class="answer">Linear probing, Quadratic probing, Separate chaining, and Double hashing.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">26. Which is the simplest file structure? (sequential, index, random)</div>
+      <div class="answer">Sequential file structure is the simplest.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">27. What are the notations used in evaluation of arithmetic expressions using prefix and postfix forms?</div>
+      <div class="answer">Prefix notation (Polish) and Postfix notation (Reverse Polish).</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">28. List out few of applications of tree data structure?</div>
+      <div class="answer">Binary search trees, heaps, syntax trees, B-trees in databases, and directory structure in OS.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">29. Difference between calloc and malloc?</div>
+      <div class="answer">calloc() initializes memory to zero, while malloc() leaves memory uninitialized.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">30. Which file contains the definition of member function?</div>
+      <div class="answer">Member function definitions are usually written in the .cpp (source) file.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">31. How is the front of the queue calculated?</div>
+      <div class="answer">By maintaining a 'front' index that points to the first element in the queue array or node.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">32. Why is the isEmpty() member method called?</div>
+      <div class="answer">To check whether the stack, queue, or list contains any elements.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">33. Which process places data at the back of a queue?</div>
+      <div class="answer">The enqueue() operation.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">34. What is queue?</div>
+      <div class="answer">Queue is a linear data structure that follows the FIFO (First-In-First-Out) principle.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">35. What does isEmpty() member method determine?</div>
+      <div class="answer">It determines if the container has zero elements.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">36. What method removes values from the top of a stack?</div>
+      <div class="answer">The pop() method.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">37. What method is used to place a value onto the top of stack?</div>
+      <div class="answer">The push() method.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">38. How do you assign an address to an element of a pointer array?</div>
+      <div class="answer">Using the address-of operator (&), e.g., ptr[i] = &value.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">39. How many parts are there in a declaration statement?</div>
+      <div class="answer">Usually two parts: data type and variable name (optionally, initialization).</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">40. List some of the static data structures in C?</div>
+      <div class="answer">Arrays, Structures, and Static variables.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">41. Define dynamic data structure?</div>
+      <div class="answer">A data structure that allocates memory at runtime.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">42. List some of dynamic data structures in C?</div>
+      <div class="answer">Linked List, Stack, Queue, Trees using dynamic memory allocation.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">43. Define linear data structure?</div>
+      <div class="answer">A structure where elements are arranged in a sequential manner (e.g., Arrays, Linked Lists).</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">44. Define non-linear data structures?</div>
+      <div class="answer">A structure where elements are not arranged sequentially (e.g., Trees, Graphs).</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">45. State the different types of linked lists?</div>
+      <div class="answer">Singly linked list, Doubly linked list, Circular linked list, Circular doubly linked list.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">46. List the basic operations carried out in a linked list?</div>
+      <div class="answer">Insertion, Deletion, Traversal, Searching, and Updating.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">47. Define stack?</div>
+      <div class="answer">Stack is a linear data structure that follows LIFO (Last-In-First-Out) principle.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">48. List out the basic operations that can be performed on a stack.</div>
+      <div class="answer">Push, Pop, Peek (Top), and isEmpty.</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">49. State the different ways of representing expressions.</div>
+      <div class="answer">Infix, Prefix (Polish), and Postfix (Reverse Polish).</div>
+    </div>
+
+    <div class="qa-box">
+      <div class="question">50. What is sequential search?</div>
+      <div class="answer">Sequential search checks each element in a list one by one until the target is found or end is reached.</div>
+    </div>
+
+    </div>
+
+  </section>
+
+  
+</div>
+
+
+  </div>
+
+
+  
+   
+  <footer>
+    <p>© 2025 Gowthamraj Network | DSA Tutorial</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    padding: 40px 20px;
+    margin: 0;
+}
+
+.receipt {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px 40px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.receipt:hover {
+    transform: scale(1.01);
+}
+
+.receipt h2 {
+    text-align: center;
+    color: #333;
+    font-size: 26px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.receipt p {
+    margin: 12px 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Button Styling */
+.btn {
+    display: block;
+    margin: 30px auto 0;  /* Center horizontally */
+    padding: 14px 28px;
+    font-size: 16px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ✅ Mobile view - 480px and below */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .receipt {
+        padding: 20px;
+        margin: 0 10px;
+        max-width: 100%;
+    }
+
+    .receipt h2 {
+        font-size: 22px;
+    }
+
+    .receipt p {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 90%;               /* Optional: Wider on small screens */
+        font-size: 14px;
+    }
+}

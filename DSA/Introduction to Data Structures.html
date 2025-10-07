@@ -1,0 +1,708 @@
+<!-- sql.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Tutorial - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="logo" style="font-family: sans-serif;">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="Introduction to Data Structures.html">Introduction to Data Structures</a>
+      <a href="Pointers and Memory Concepts.html">Pointers and Memory Concepts</a>
+      <a href="Linear Data Structures.html">Linear Data Structures</a>
+      <a href="Non-Linear Data Structures.html">Non-Linear Data Structures</a>
+      <a href="Algorithms.html">Algorithms</a>
+      <a href="Practice and Interview Preparation.html">Practice and Interview Preparation</a>
+
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">Data structure introduction</a>
+    <a href="#q2">Classification of Data structures</a>
+    <a href="#q3">Introduction to Algorithms</a>
+    <a href="#q4">Asymptotic Analysis</a>
+
+  </div>
+
+
+  <div class="main-content">
+    <section id="q1">
+      <h1>Data structure introduction</h1>
+      <p>
+
+      <h3> What is Data Structure ?</h3><br>
+
+      * Data Structure is a way to store and organize.. data so that it can be used efficiently.<br>
+
+      As per name indicates itself that organizing the data in memory.<br>
+
+      The data structure is not any. programming language like c, c++, Java etc. It is set algonthms that we can
+      use in any programming language to structure data in memory<br>
+
+
+       <h2> Linear Data Structure </h2>
+
+      * The arrangement of data in the sequential manner is known as linear data structu The data structure used for
+      this purpose are Arrays, linked list, Stacks and queues.<br>
+
+      In this data Structures, one element is connected to only one another element in a
+
+
+
+      linear form.<br>
+
+
+      <h2>Non-linear data structure</h2> :-
+
+      * when one element is annected. to the 'n' number of elements known as non-lineair data structures.<br>
+
+      Example: trees and graphs.
+
+      In this case, elements are arranged in a random manner.<br>
+
+      Algontims and Abstract Data types ??<br>
+
+      <div class="box">Algorithms</div> -->
+
+
+      <div class="box">Abstract data types</div>-->
+
+
+      <div class="box">Set of rules</div><br>
+
+     <div class="container">
+    <h2>Introduction to Data Structures</h2>
+
+    <h3>Why Data Structures?</h3>
+    <ul>
+      <li>Abstract Data Types (ADT) provide a structure for organizing data in memory using various algorithms.</li>
+      <li>An ADT defines <strong>what</strong> operations are to be performed, while a Data Structure defines <strong>how</strong> those operations are performed.</li>
+      <li>ADT is the blueprint; Data Structure is the implementation.</li>
+    </ul>
+
+    <h3>What is Data?</h3>
+    <ul>
+      <li>Data refers to elementary values or collections of values.</li>
+      <li class="example">Example: A student's name and ID are data items about the student.</li>
+    </ul>
+
+    <h3>What is a Record?</h3>
+    <ul>
+      <li>A Record is a collection of related data items grouped together.</li>
+      <li class="example">Example: A student’s name, address, course, and marks form a record.</li>
+    </ul>
+
+    <h3>What is a File?</h3>
+    <ul>
+      <li>A file is a collection of multiple records of the same type.</li>
+      <li class="example">Example: 20 employee records together form an employee file.</li>
+    </ul>
+  <h3>What are Attributes and Entities?</h3>
+    <ul>
+      <li>An Entity represents a class of similar objects.</li>
+      <li>Each entity contains multiple Attributes representing its properties.</li>
+    </ul>
+
+    <h3>Why is there a Need for Data Structures?</h3>
+    <ul>
+      <li>Modern applications are complex and involve massive data, which makes efficient handling essential.</li>
+      <li>Processor Limitations:</span> Billions of records slow down processing.</li>
+      <li>Inefficient Search:</span> Searching through large datasets becomes slow.</li>
+      <li>Concurrency:</span> Thousands of users accessing data can cause performance issues.</li>
+    </ul>
+    <div class="note">
+      To solve these problems, data structures help organize data efficiently, minimizing search and processing time.
+    </div>
+
+    <h3>Advantages of Data Structures</h3>
+    <ul>
+      <li>Efficiency:</span> Choosing the right data structure makes programs faster and saves memory.</li>
+      <li>Reusability:</span> Data structures can be reused across multiple programs and systems.</li>
+    </ul>
+    Abstraction: The data structure specified by the
+
+      ADT diso provides level of abstraction. The client cannot see interval working of data structure, so it does
+      not have to worry about implementertion.<br>
+  </div>
+
+
+
+
+      
+    </section>
+
+    <br>
+
+    <div class="container">
+      <section id="q2">
+
+
+        <h1>Data Structure Classification</h1>
+
+        <div class="abstraction-section">
+          <h2>Abstraction</h2>
+          <p>The data structure specified by the ADT also provides a level of abstraction. The client cannot see
+            internal working of data structure, so it does not have to worry about implementation.</p>
+        </div>
+
+
+        <div class="classification-title">
+          Data Structure Classification
+        </div>
+
+        <div class="hierarchy">
+          <!-- Root Level -->
+          <div class="level">
+            <div class="node root-node">Data Structure</div>
+          </div>
+
+          <div class="connector"></div>
+
+          <!-- First Split -->
+          <div class="level">
+            <div class="branch-container">
+              <div class="node primitive-node">Primitive Data Structure</div>
+              <div class="horizontal-connector"></div>
+              <div class="node non-primitive-node">Non-Primitive Data Structure</div>
+            </div>
+          </div>
+
+          <div class="connector"></div>
+
+          <!-- Second Split (Non-Primitive) -->
+          <div class="level">
+            <div class="branch-container">
+              <div style="width: 200px;"></div>
+              <div class="node linear-node">Linear</div>
+              <div class="horizontal-connector"></div>
+              <div class="node non-linear-node">Non-Linear</div>
+            </div>
+          </div>
+
+          <div class="connector"></div>
+
+          <!-- Final Level -->
+          <div class="level">
+            <div class="branch-container">
+              <div class="node leaf-node">Static</div>
+              <div class="node leaf-node">Dynamic</div>
+              <div class="horizontal-connector"></div>
+              <div class="node leaf-node">Tree</div>
+              <div class="node leaf-node">Graph</div>
+            </div>
+          </div>
+
+          <div class="connector"></div>
+
+          <!-- Examples Level -->
+          <div class="level">
+            <div class="branch-container">
+              <div class="node leaf-node">Array</div>
+              <div class="node leaf-node">Linked List</div>
+              <div class="node leaf-node">Stack</div>
+              <div class="node leaf-node">Queue</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+        <div class="definitions">
+          <div class="definition-card primitive-card">
+            <h3>Primitive Data Structure</h3>
+            <p>These are basic data types that are directly supported by the programming language. They
+              represent single values and are used to build more complex data structures.</p>
+            <div class="examples">
+              <span class="example-tag">int</span>
+              <span class="example-tag">float</span>
+              <span class="example-tag">char</span>
+              <span class="example-tag">boolean</span>
+              <span class="example-tag">double</span>
+            </div>
+          </div>
+
+          <div class="definition-card non-primitive-card">
+            <h3>Non-Primitive Data Structure</h3>
+            <p>These are complex data structures that are derived from primitive data types. They can store
+              multiple values and have more sophisticated organization methods.</p>
+            <div class="examples">
+              <span class="example-tag">Arrays</span>
+              <span class="example-tag">Structures</span>
+              <span class="example-tag">Classes</span>
+              <span class="example-tag">Pointers</span>
+            </div>
+          </div>
+
+          <div class="definition-card linear-card">
+            <h3>Linear Data Structure</h3>
+            <p>Elements are arranged in a sequential manner where each element is connected to its previous and
+              next element. Data elements are traversed in a linear fashion.</p>
+            <div class="examples">
+              <span class="example-tag">Array</span>
+              <span class="example-tag">Linked List</span>
+              <span class="example-tag">Stack</span>
+              <span class="example-tag">Queue</span>
+            </div>
+          </div>
+
+          <div class="definition-card non-linear-card">
+            <h3>Non-Linear Data Structure</h3>
+            <p>Elements are not arranged in a sequential manner. Each element can be connected to multiple other
+              elements, forming hierarchical or network-like structures.</p>
+            <div class="examples">
+              <span class="example-tag">Tree</span>
+              <span class="example-tag">Graph</span>
+              <span class="example-tag">Heap</span>
+              <span class="example-tag">Trie</span>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
+
+
+    </p>
+
+    <h2>🔧 Operations on Data Structures</h2>
+
+    <div class="operation">
+      <h3><span class="operation-number">1</span>Traversing</h3>
+      <p><strong>Definition:</strong> Every data structure contains a set of data elements. Traversing data
+        structure means visiting each element of data structure in order to perform some specific operation,
+        like searching or sorting.</p>
+
+      <div class="example">
+        <strong>Example:</strong> If we need to calculate average of marks obtained by a student in different
+        subject, we need to traverse complete array of marks and calculate total sum, then we will divide that
+        sum by no. of subjects i.e. 5 to find average.
+      </div>
+    </div>
+
+    <div class="operation">
+      <h3><span class="operation-number">2</span>Insertion</h3>
+      <p><strong>Definition:</strong> Insertion can be defined as the process of adding the elements to the data
+        structure at any location.</p>
+
+      <div class="note">
+        <strong>Note:</strong> If the size of data structure is n, then we can only insert n-1 data elements to
+        it.
+      </div>
+    </div>
+
+    <div class="operation">
+      <h3><span class="operation-number">3</span>Deletion</h3>
+      <p><strong>Definition:</strong> The process of removing an element from the data structure is called
+        deletion. We can delete an element from data structure at any random location.</p>
+
+      <div class="note">
+        <strong>Note:</strong> If we try to delete an element from an empty data structure, then underflow
+        occurs.
+      </div>
+    </div>
+
+    <div class="operation">
+      <h3><span class="operation-number">4</span>Searching</h3>
+      <p><strong>Definition:</strong> The process of finding the location of an element within data structure is
+        called searching. There are two algorithms to perform searching:</p>
+
+      <div class="algorithms">
+        <h4>🔍 Searching Algorithms:</h4>
+        <ul>
+          <li><strong>Linear Search</strong></li>
+          <li><strong>Binary Search</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="operation">
+      <h3><span class="operation-number">5</span>Sorting</h3>
+      <p><strong>Definition:</strong> The process of arranging the data structure in a specific order is called
+        sorting. There are many algorithms that can be used to perform sorting, for example:</p>
+
+      <div class="algorithms">
+        <h4>📋 Sorting Algorithms:</h4>
+        <ul>
+          <li><strong>Insertion Sort</strong></li>
+          <li><strong>Selection Sort</strong></li>
+          <li><strong>Bubble Sort</strong></li>
+          <li><strong>And many more...</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="operation">
+      <h3><span class="operation-number">6</span>Merging</h3>
+      <p><strong>Definition:</strong> When two lists (or A and list B) of same or different type of elements,
+        clubbed or joined to produce third list.</p>
+    </div>
+
+    <div class="note">
+      <h3>📝 Key Points to Remember:</h3>
+      <ul>
+        <li>Data structures are fundamental building blocks of computer science</li>
+        <li>Each operation has its own time and space complexity</li>
+        <li>Choice of data structure depends on the specific use case</li>
+        <li>Understanding these operations is crucial for algorithm design</li>
+      </ul>
+    </div>
+    </section>
+
+
+    <div class="header">
+      <section id="q3">
+        <h1>📚 Algorithm Notes</h1>
+        <p>Data Structures & Algorithms Study Guide</p>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <h2 class="section-title">🔧 Algorithm Output Properties</h2>
+        <div class="definition">
+          <strong>Output:</strong> An algorithm should be unambiguous, which means that instructions should be
+          clear and simple.
+        </div>
+
+        <div class="definition">
+          <strong>Unambiguity:</strong> An algorithm should be unambiguous, which means that instructions
+          should be clear and simple.
+        </div>
+
+        <div class="definition">
+          <strong>Finiteness:</strong> An algorithm should have finite means limited number of instructions.
+        </div>
+
+        <div class="definition">
+          <strong>Effectiveness:</strong> An algorithm should have time as each instruction to an algorithm
+          affects the overall process.
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="highlight">
+          🚀 Approaches to Algorithm
+        </div>
+
+        <div class="algorithm-approaches">
+          <p><strong>Brute Force Algorithm:</strong> The general logic structure is applied to design an
+            algorithm. It is also known as exhaustive search algorithm that searches all possible required
+            solutions.</p>
+
+          <p style="margin-top: 20px;">Such algorithms have <strong>two types:</strong></p>
+
+          <div class="types">
+            <div class="type-card">
+              <h3>🔍 Optimizing</h3>
+              <p>Finding all solutions of a problem and then finding the best solution is known then it
+                will terminate.</p>
+            </div>
+
+            <div class="type-card">
+              <h3>⚡ Satisficing</h3>
+              <p>As soon as the best solution is found, then it will terminate or the best solution is
+                known.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header">
+      <h1>🔍 Algorithm Categories</h1>
+      <p>Divide & Conquer Strategy and Algorithm Classifications</p>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <h2 class="section-title">⚡ Divide and Conquer Strategy</h2>
+
+        <div class="divide-conquer">
+          <h3>🎯 Core Concept</h3>
+          <p>This breaks down the algorithm to solve one problem in different methods. It allows you to break
+            down problem into different methods, and what output is produced per one valid input. This valid
+            output is passed to some other function.</p>
+        </div>
+
+        <div class="greedy-section">
+          <h3>🔄 Greedy Algorithm</h3>
+          <p>It is an algorithm paradigm that makes an optimal choice on each iteration with the hope of
+            getting best solution. It is easy to implement and has faster execution time. But there are very
+            rare cases in which it produces the optimal solution.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">📊 Major Categories of Algorithms</h2>
+
+        <div class="algorithm-categories">
+          <div class="category-card">
+            <h3><span class="icon">🔢</span>Sort</h3>
+            <p>Algorithm developed for sorting the items in a certain order.</p>
+          </div>
+
+          <div class="category-card">
+            <h3><span class="icon">🔍</span>Search</h3>
+            <p>Algorithm developed for searching the items inside a data structure.</p>
+          </div>
+
+          <div class="category-card">
+            <h3><span class="icon">❌</span>Delete</h3>
+            <p>Algorithm developed for deleting the existing element from the data structure.</p>
+          </div>
+
+          <div class="category-card">
+            <h3><span class="icon">➕</span>Insert</h3>
+            <p>Algorithm developed for inserting an item inside a data structure.</p>
+          </div>
+
+          <div class="category-card">
+            <h3><span class="icon">🔄</span>Update</h3>
+            <p>Algorithm developed for updating the existing element inside a data structure.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">🎯 Algorithm Design Strategies</h2>
+
+        <div class="definition">
+          <strong>Divide & Conquer:</strong> Break down complex problems into smaller, manageable subproblems,
+          solve them independently, and combine the results.
+        </div>
+
+        <div class="definition">
+          <strong>Greedy Approach:</strong> Make locally optimal choices at each step with the hope of finding
+          a global optimum.
+        </div>
+
+        <div class="definition">
+          <strong>Dynamic Programming:</strong> Solve problems by breaking them down into simpler subproblems
+          and storing the results to avoid redundant calculations.
+        </div>
+      </div>
+    </div>
+
+    <div class="header">
+      <h1>📊 Algorithm Analysis</h1>
+      <p>Understanding Algorithm Performance & Complexity</p>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <h2 class="section-title">
+          <span class="icon">🔍</span>
+          Algorithm Analysis
+        </h2>
+
+        <div class="algorithm-intro">
+          <h3>📋 What is Algorithm Analysis?</h3>
+          <p>The algorithm can be analyzed to two ways we (i.e.) before creating the algorithm, and second is
+            after creating the algorithm. There are two analysis of an algorithm:</p>
+        </div>
+
+        <div class="analysis-types">
+          <div class="analysis-card">
+            <h3><span class="icon">📝</span>Prior Analysis</h3>
+            <p>Here, prior analysis is the theoretical analysis of an algorithm which is done before
+              implementing the algorithm.</p>
+          </div>
+
+          <div class="analysis-card">
+            <h3><span class="icon">⚡</span>Posterior Analysis</h3>
+            <p>Here, posterior analysis is a practical analysis of an algorithm. The practical analysis is
+              achieved by implementing algorithm using any programming language.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">
+          <span class="icon">⚙️</span>
+          Algorithm Complexity
+        </h2>
+
+        <div class="complexity-section">
+          <h3>🎯 Understanding Complexity</h3>
+          <p>The performance of the algorithm can be measured in two factors:</p>
+
+          <div class="complexity-types">
+            <div class="complexity-card">
+              <h4>⏱️ Time Complexity</h4>
+              <p>The time complexity of an algorithm is the amount of time required to complete one
+                execution. The time complexity of an algorithm is denoted by the big O notation.</p>
+            </div>
+
+            <div class="complexity-card">
+              <h4>💾 Space Complexity</h4>
+              <p>Here, big O notation is to represent time complexity. The time complexity is mainly
+                calculated by counting the number of steps to finish execution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="big-o-notation">
+          <h3>📈 Big O Notation</h3>
+          <p>Big O notation is used to represent the time and space complexity of algorithms. It describes the
+            upper bound of an algorithm's running time, helping us understand how the algorithm scales with
+            input size.</p>
+        </div>
+
+        <div class="highlight">
+          <h3>🔑 Key Points:</h3>
+          <ul style="margin-left: 20px; margin-top: 10px;">
+            <li>Prior Analysis is theoretical (before implementation)</li>
+            <li>Posterior Analysis is practical (after implementation)</li>
+            <li>Time Complexity measures execution time</li>
+            <li>Space Complexity measures memory usage</li>
+            <li>Big O notation represents upper bounds</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </section>
+
+
+    <div class="container">
+      <section id="q4">
+        <h1>Asymptotic Analysis</h1>
+
+        <div class="definition">
+          <strong>Asymptotic Analysis:</strong> The time required by an algorithm comes under three types:
+        </div>
+
+        <div class="case-analysis">
+          <div class="case worst-case">
+            <h3>Worst Case</h3>
+            <p>It defines the input for which the algorithm takes a huge time.</p>
+          </div>
+
+          <div class="case average-case">
+            <h3>Average Case</h3>
+            <p>It takes average time for the program execution.</p>
+          </div>
+
+          <div class="case best-case">
+            <h3>Best Case</h3>
+            <p>It defines the input for which the algorithm takes the lowest time.</p>
+          </div>
+        </div>
+
+        <div class="notation-section">
+          <h2>Asymptotic Notations</h2>
+          <p>The commonly used asymptotic notations used for calculating the running time complexity of an
+            algorithm is given below:</p>
+
+          <div class="big-o-explanation">
+            <h3>Big O Notation (O):</h3>
+            <p>This measures the performance of an algorithm by simply providing the order of growth of the
+              function.</p>
+            <p>This notation provides an upper bound on a function which ensures that function never grows
+              faster than the upper bound.</p>
+          </div>
+        </div>
+
+        <div class="graph-container">
+          <h3>Growth Rate Comparison</h3>
+          <div class="graph">
+            <div class="axis x-axis"></div>
+            <div class="axis y-axis"></div>
+            <div class="curve">
+              <svg viewBox="0 0 300 200">
+                <!-- g(n) curve (upper bound) -->
+                <path d="M 10 180 Q 80 120 150 80 Q 220 50 290 20" stroke="#3498db" stroke-width="2" fill="none" />
+                <!-- f(n) curve (actual function) -->
+                <path d="M 10 190 Q 80 140 150 100 Q 220 80 290 60" stroke="#e74c3c" stroke-width="2" fill="none" />
+                <!-- Labels -->
+                <text x="250" y="35" fill="#3498db" font-size="14">g(n)</text>
+                <text x="250" y="75" fill="#e74c3c" font-size="14">f(n)</text>
+                <!-- Axes labels -->
+                <text x="280" y="195" fill="#2c3e50" font-size="12">n</text>
+                <text x="5" y="15" fill="#2c3e50" font-size="12">T(n)</text>
+              </svg>
+            </div>
+          </div>
+          <div class="labels">
+            <span class="label fn-label">f(n)</span> - Actual algorithm complexity
+            <span class="label gn-label">g(n)</span> - Upper bound function
+          </div>
+        </div>
+
+    
+
+
+    
+      
+
+      
+
+      
+      <h3>2. Omega Notation (Ω)</h3>
+      <p>Describes best-case scenario; it provides the lower bound.</p>
+      <p><strong>Definition:</strong> f(n) = Ω(g(n)) if there exist constants such that:</p>
+      <code>f(n) ≥ c * g(n) for all n ≥ n₀</code>
+      <div class="diagram">
+        Graph: f(n) is always above c₁*g(n) after n₀.
+      </div>
+
+      <h3>3. Theta Notation (Θ)</h3>
+      <p>Mainly describes average-case scenario or when best and worst case are same.</p>
+      <p><strong>Definition:</strong> f(n) = Θ(g(n)) if:</p>
+      <code>c₁*g(n) ≤ f(n) ≤ c₂*g(n) for all n ≥ n₀</code>
+      <div class="diagram">
+        Graph: f(n) lies between c₁*g(n) and c₂*g(n).
+      </div>
+
+      ] </section><br>
+
+      <!--  -->
+
+      
+
+
+
+
+
+
+
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | DSA Tutorial</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

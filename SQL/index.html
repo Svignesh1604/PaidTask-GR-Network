@@ -1,0 +1,105 @@
+<!-- sql.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL Tutorial - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="logo" style="font-family: sans-serif;">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" >Home</a>
+      <a href="intro.html">Intro</a>
+      <a href="Rdbms.html"> Relational Databases & SQL Basics</a>
+      <a href="table.html">Working with Tables</a>
+      <a href="querying.html">Querying Data</a>
+      <a href="Advanced querying.html"> Advanced Querying</a>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">Our Motive of This book</a>
+
+  </div>
+
+
+  <div class="main-content">
+  <h1>The SQL Handbook</h1>
+  <div class="tag" >
+    <h2><u>Table of Contents</u></h2>
+    <ul>
+      <li><a href="intro.html" style="text-decoration: none;"> Information systems, data and information</a></li>
+      <li><a href="intro.html" style="text-decoration: none;"> What is a Database? And a DBMS?</a></li>
+      <li><a href="intro.html" style="text-decoration: none;"> Do you always need a database?</a></li>
+      <li><a href="Rdbms.html" style="text-decoration: none;"> Relational Databases</a></li>
+      <li><a href="Rdbms.html" style="text-decoration: none;"> Introduction to SQL</a></li>
+      <li><a href="table.html" style="text-decoration: none;"> Creating a table</a></li>
+      <li><a href="table.html" style="text-decoration: none;"> Inserting data into a table</a></li>
+      <li><a href="querying.html" style="text-decoration: none;"> Querying data</a></li>
+      <li><a href="table.html" style="text-decoration: none;"> Handling empty cell</a></li>
+      <li><a href="table.html" style="text-decoration: none;"> Unique and Primary keys</a></li>
+      <li><a href="table.html" style="text-decoration: none;"> Update data in a table</a></li>
+      <li><a href="table.html" style="text-decoration: none;"> Update a table structure</a></li>
+      <li><a href="table.html" style="text-decoration: none;"> Deleting data and tables</a></li>
+      <li><a href="querying.html" style="text-decoration: none;"> Joins</a></li>
+      <li><a href="querying.html" style="text-decoration: none;">Removing duplicates using DISTINCT</a></li>
+      <li><a href="querying.html" style="text-decoration: none;"> Using wildcards with LIKE</a></li>
+      <li><a href="Advanced querying.html" style="text-decoration: none;"> Indexes</a></li>
+      <li><a href="Advanced querying.html" style="text-decoration: none;"> Aggregating data</a></li>
+      <li><a href="Advanced querying.html" style="text-decoration: none;"> Grouping data</a></li>
+      <li><a href="querying.html" style="text-decoration: none;"> Limit and offset</a></li>
+      <li><a href="querying.html" style="text-decoration: none;"> Comments</a></li>
+    </ul>
+  </div><br><br>
+
+    <div id="q1" class="card">
+      <h2><u>Our Motive of This book</u></h2>
+      <p> * The goal of this handbook is to get you up and running with SQL, starting
+        from zero knowledge.<br>
+      </p>
+      <p>
+         * You will learn the terms and the main ideas, what is a<strong> DBMS</strong>, how to
+       <strong> structure a database</strong>, how to insert data into it, how to query the database.
+
+      </p>
+      <p>
+         * I will only teach you the basics, and once you’re done with this you’ll have the
+        knowledge you need to dive deeper.
+      </p>
+      <p>
+         * I called this <strong>“SQL Handbook” </strong>but I assume zero database knowledge, so I’m
+        first going to give you an introduction to databases, in particular relational
+        databases.
+
+      </p>
+    </div>
+
+    
+
+    
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL Tutorial</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+</body>
+
+</html>

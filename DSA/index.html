@@ -1,0 +1,96 @@
+<!-- sql.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Tutorial - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="logo" style="font-family: sans-serif;">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" >Home</a>
+      <a href="Introduction to Data Structures.html">Introduction to Data Structures</a>
+      <a href="Pointers and Memory Concepts.html">Pointers and Memory Concepts</a>
+      <a href="Linear Data Structures.html">Linear Data Structures</a>
+      <a href="Non-Linear Data Structures.html">Non-Linear Data Structures</a>
+      <a href="Algorithms.html">Algorithms</a>
+      <a href="Practice and Interview Preparation.html">Practice and Interview Preparation</a>
+      
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">Headings</a>
+
+  </div>
+
+  
+  <div class="main-content">
+  <h1>DSA</h1>
+  <div class="tag" >
+    <h2><u>Table of Contents</u></h2>
+    <ul> 
+      <li><a href="Introduction to Data Structures.html" style="text-decoration: none;"> Data structure introduction</a></li>
+      <li><a href="Introduction to Data Structures.html" style="text-decoration: none;"> Classification of  Data structure</a></li>
+      <li><a href="Introduction to Data Structures.html" style="text-decoration: none;"> Introduction Algorithm</a></li>
+      <li><a href="Introduction to Data Structures.html" style="text-decoration: none;"> Asymptotic Analysis</a></li>
+      <li><a href="Pointers and Memory Concepts.html" style="text-decoration: none;"> DS-pointer</a></li>
+      <li><a href="Pointers and Memory Concepts.html" style="text-decoration: none;"> DS-Structure</a></li>
+      <li><a href="Linear Data Structures.html" style="text-decoration: none;">DS-Array </a></li>
+      <li><a href="Linear Data Structures.html" style="text-decoration: none;">DS-Linked list </a></li>
+      <li><a href="Linear Data Structures.html" style="text-decoration: none;">DS-Stack </a></li>
+      <li><a href="Linear Data Structures.html" style="text-decoration: none;">DS-Queue </a></li>
+      <li><a href="Non-Linear Data Structures.html" style="text-decoration: none;"> DS-Skip list</a></li>
+      <li><a href="Non-Linear Data Structures.html" style="text-decoration: none;">DS-Tree </a></li>
+      <li><a href="Non-Linear Data Structures.html" style="text-decoration: none;">Types OF tree </a></li>
+      <li><a href="Non-Linear Data Structures.html" style="text-decoration: none;">DS-Graph </a></li>
+      <li><a href="Algorithms.html" style="text-decoration: none;"> Graph Traversal Algorithms</a></li>
+      <li><a href="Algorithms.html" style="text-decoration: none;"> Searching </a></li>
+      <li><a href="Algorithms.html" style="text-decoration: none;"> Searching Algorithms with example</a></li>
+      <li><a href="Algorithms.html" style="text-decoration: none;"> Sorting Algorithms </a></li>
+      <li><a href="Practice and Interview Preparation.html" style="text-decoration: none;"> Data structure interview questions with Answers[50 questions with answers] </a></li>
+      <li><a href="Practice and Interview Preparation.html" style="text-decoration: none;"> Data Structure Coding Questions </a></li>
+      <li><a href="Practice and Interview Preparation.html" style="text-decoration: none;"> END </a></li>
+    </ul>
+  </div><br><br>
+
+   
+    
+
+    
+  </div>
+  
+  <footer>
+    <p>© 2025 Gowthamraj Network | DSA Tutorial</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

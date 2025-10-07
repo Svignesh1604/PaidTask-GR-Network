@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Chatbot with Icon</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Chat Icon Image */
+    #chat-icon {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 70px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #chat-icon img {
+      width: 66px;
+      height: 66px;
+    }
+
+    /* Chatbot Box */
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    .chat-header {
+      background: #015fcf;
+      color: white;
+      padding: 12px 15px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .chat-body {
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .chat-message.bot {
+      background: #e6f1ff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .option {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .option:hover {
+      background-color: #0056b3;
+    }
+
+    .response {
+      background-color: #e0f0ff;
+      padding: 10px;
+      margin: 5px 0 15px 15px;
+      border-left: 4px solid #007bff;
+      display: none;
+      border-radius: 4px;
+    }
+
+    /* Default Styles (Desktop First) */
+    #chat-icon {
+      width: 70px;
+      height: 60px;
+    }
+
+    #chat-icon img {
+      width: 66px;
+      height: 66px;
+    }
+
+    #chatbot {
+      width: 350px;
+    }
+
+    /* Mobile View - Smaller Screens */
+    @media (max-width: 768px) {
+      #chat-icon {
+        width: 90px;
+        height: 90px;
+        bottom: 80px;
+        right: 15px;
+      }
+
+      #chat-icon img {
+        width: 86px;
+        height: 86px;
+      }
+
+      #chatbot {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+        bottom: 15px;
+        border-radius: 12px;
+      }
+
+      .chat-header {
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      .chat-body {
+        max-height: 60vh;
+        padding: 10px;
+      }
+
+      .option {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .response {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+
+    /* Large Desktop Screens */
+    @media (min-width: 1200px) {
+      #chat-icon {
+        width: 80px;
+        height: 80px;
+      }
+
+      #chat-icon img {
+        width: 76px;
+        height: 76px;
+      }
+
+      #chatbot {
+        width: 400px;
+      }
+    }
+
+    /* Extra Small Mobile Devices (max-width: 360px) */
+    @media (max-width: 360px) {
+      #chat-icon {
+        width: 75px;
+        height: 75px;
+        bottom: 70px;
+        right: 10px;
+      }
+
+      #chat-icon img {
+        width: 70px;
+        height: 70px;
+      }
+
+      #chatbot {
+        width: 95%;
+        left: 2.5%;
+        right: 2.5%;
+        bottom: 10px;
+        border-radius: 10px;
+      }
+
+      .chat-header {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .chat-body {
+        max-height: 55vh;
+        padding: 8px;
+      }
+
+      .option {
+        font-size: 13px;
+        padding: 7px;
+      }
+
+      .response {
+        font-size: 13px;
+        padding: 7px;
+        margin-left: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Chat Icon as Image -->
+
+  <div id="chat-icon" onclick="openChatbot()">
+    <img src="bot.jpg" alt="Chat Icon">
+  </div>
+
+
+  <!-- Chatbot Box -->
+  <div id="chatbot">
+    <div class="chat-header">
+      Let's Chat
+      <button onclick="closeChatbot()">−</button>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <div class="chat-message bot">
+        <strong style="font-family: sans-serif;"> Hello, nice to meet you!<br>
+          Welcome to Gowthamraj Network India Private Limited.<br><br></strong>
+        How can I help you today? Please choose an option below:
+      </div>
+
+      <div class="option" onclick="toggleResponse('startLearning')">1. Start Learning</div>
+      <div id="startLearning-response" class="response"></div>
+
+      <div class="option" onclick="toggleResponse('feesDetails')">2. Fees Details</div>
+      <div id="feesDetails-response" class="response"></div>
+
+      <div class="option" onclick="toggleResponse('appointment')">3. Book Appointment</div>
+      <div id="appointment-response" class="response"></div>
+
+      <div class="option" onclick="toggleResponse('offlineWorkshops')">4. Offline Workshops</div>
+      <div id="offlineWorkshops-response" class="response"></div>
+
+      <div class="option" onclick="toggleResponse('offline')">5. Offline Events</div>
+      <div id="offline-response" class="response"></div>
+
+      <div class="option" onclick="toggleResponse('online')">6. Online Events</div>
+      <div id="online-response" class="response"></div>
+
+      <div class="option" onclick="toggleResponse('careers')">
+        7. Explore Career Opportunities (both Intern and Full Time)
+      </div>
+      <div id="careers-response" class="response"></div>
+
+    </div>
+  </div>
+
+  <script>
+    const chatbot = document.getElementById('chatbot');
+    const chatIcon = document.getElementById('chat-icon');
+
+    function openChatbot() {
+      chatbot.style.display = 'flex';
+      chatIcon.style.display = 'none';
+    }
+
+    function closeChatbot() {
+      chatbot.style.display = 'none';
+      chatIcon.style.display = 'flex';
+    }
+
+    const messages = {
+      startLearning: `
+    🎓 <strong>1. Subscription Link:</strong><br>
+    <a href="https://gowthamrajnetwork.com/subscription/plans/" target="_blank">👉 Visit Subscription Page</a><br><br>
+    <strong>2. Already Subscribed?</strong><br>
+    Login using the password provided by the company:<br>
+    <a href="https://gowthamrajnetwork.com/login/" target="_blank">🔑 Login Here</a><br><br>
+    Then visit <strong>My Profile</strong> to start your learning.
+  `,
+
+      feesDetails: `
+    💰 <strong>1. Subscription Link:</strong><br>
+    <a href="https://gowthamrajnetwork.com/subscription/plans/" target="_blank">👉 Visit Fees Page</a><br><br>
+
+    <strong>2. Company Entry / Learning Materials / Course Access Fees:</strong><br>
+    <ul>
+      <li><strong>For Graduates & Freshers:</strong> ₹750</li>
+      <li><strong>For College Students (Second Year to Final Year):</strong> ₹550<br>
+          <em>(First-year students can also apply)</em>
+      </li>
+      <li><strong>For Working Professionals (Instructor Role):</strong> ₹750</li>
+      <li><strong>For Students & Graduates from Financially Low Backgrounds:</strong> ₹450</li>
+    </ul>
+
+    📌 <em>These discounted fees are valid until <strong>May 1, 2025</strong>.</em><br>
+    🧾 <strong>This is a one-time mandatory fee</strong> to access all company resources for a lifetime.
+  `,
+
+      appointment: `
+    📅 <strong>1. Book Appointment:</strong><br>
+    <a href="https://gowthamrajnetwork.com/myprofile/" target="_blank">📌 Click here to Book Appointment</a><br><br>
+    <strong>2. Already Booked?</strong><br>
+    <a href="https://gowthamrajnetwork.com/login/" target="_blank">🔑 Click here to Login</a><br><br>
+    Then go to <strong>My Profile</strong> and login with your password.<br>
+    📝 <em>Note: Subscription is a one-time fee for lifetime access to all our resources.</em>
+  `,
+
+      offlineWorkshops: `
+    🏫 <strong>1. Get Lifetime Learning Subscription:</strong><br>
+    <a href="https://gowthamrajnetwork.com/subscription/plans/" target="_blank">📌 Click here for Subscription</a><br><br>
+    <strong>2. Already Subscribed?</strong><br>
+    <a href="https://gowthamrajnetwork.com/login/" target="_blank">🔑 Login Here</a><br><br>
+    Then visit <strong>My Profile</strong> to register for Offline Workshops.
+  `,
+
+      offline: `
+    🎉 <strong>1. Get Lifetime Learning Subscription:</strong><br>
+    <a href="https://gowthamrajnetwork.com/subscription/plans/" target="_blank">📌 Click here for Subscription</a><br><br>
+    <strong>2. Already Subscribed?</strong><br>
+    <a href="https://gowthamrajnetwork.com/login/" target="_blank">🔑 Login Here</a><br><br>
+    Then visit <strong>My Profile</strong> to register for Offline Events.
+  `,
+
+      online: `
+    💻 <strong>1. Get Lifetime Learning Subscription:</strong><br>
+    <a href="https://gowthamrajnetwork.com/subscription/plans/" target="_blank">📌 Click here for Subscription</a><br><br>
+    <strong>2. Already Subscribed?</strong><br>
+    <a href="https://gowthamrajnetwork.com/login/" target="_blank">🔑 Login Here</a><br><br>
+    Then visit <strong>My Profile</strong> to register for Online Events.
+  `,
+
+      careers: `
+    🧑‍💼 <strong>A. Check Job Description:</strong><br>
+    <a href="https://gowthamrajnetwork.com/Careers/" target="_blank">📌 Click here for Careers</a><br><br>
+    <strong>B. Apply for the Job:</strong><br>
+    <a href="https://tinyurl.com/grnetworkhiring" target="_blank">📄 Click here for Application</a><br><br>
+    📢 <em>Note: Company Entry/Access Fees between ₹450 - ₹750 is mandatory for attending interviews and must be paid before interviews if shortlisted.</em>
+  `
+    };
+
+    function toggleResponse(option) {
+      const responseDiv = document.getElementById(option + '-response');
+      if (responseDiv.style.display === 'block') {
+        responseDiv.style.display = 'none';
+      } else {
+        responseDiv.innerHTML = messages[option];
+        responseDiv.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+
+</html>

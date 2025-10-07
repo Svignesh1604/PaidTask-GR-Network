@@ -1,0 +1,527 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Tutorial - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head><body>
+  <!-- Navigation Bar -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="Introduction to Data Structures.html">Introduction to Data Structures</a>
+      <a href="Pointers and Memory Concepts.html">Pointers and Memory Concepts</a>
+      <a href="Linear Data Structures.html">Linear Data Structures</a>
+      <a href="Non-Linear Data Structures.html">Non-Linear Data Structures</a>
+      <a href="Algorithms.html">Algorithms</a>
+      <a href="Practice and Interview Preparation.html">Practice and Interview Preparation</a>
+    </div>
+  </nav>  <!-- Sidebar -->  <div class="sidebar">
+    <a href="#q1">Array</a>
+    <a href="#q2">Linked List</a>
+    <a href="#q3">Stack</a>
+    <a href="#q4">Queue</a>
+    
+  </div>  <!-- Main Content -->  <div class="main-content">
+    
+    
+
+<div class="section" id="q1"><br>
+  <h2>Array</h2>
+  <p>Arrays are defined as collection of similar type of data items stored at contiguous memory locations.</p>
+
+  <h3>Array Declaration:</h3>
+  <pre class="code">int arr[10]; char arr[10]; float arr[5];</pre>
+
+  <h3>Program Using Array:</h3>
+  <pre class="code">
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    for(int i = 0; i &lt; 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+  </pre>
+
+  <h3>Complexity of Array Operations</h3>
+  <div class="case-analysis">
+    <div class="case average-case">
+      <strong>Access:</strong> O(1)<br />
+      <strong>Search:</strong> O(n)<br />
+      <strong>Insertion:</strong> O(n)<br />
+      <strong>Deletion:</strong> O(n)
+    </div>
+    <div class="case worst-case">
+      <strong>Worst Case Space:</strong> O(n)
+    </div>
+  </div>
+
+  <h3 class="red">Memory Allocation of Array</h3>
+  <p>Each element in an array is accessed via indexing. Indexing styles:</p>
+  <ul>
+    <li><strong>0-based Indexing:</strong> <code>arr[0]</code> is the first element</li>
+  </ul>
+  <h3>Passing array to the function</h3>
+  <pre><code>
+    #include <stdio.h>
+      int summation (int[]);
+      void main()
+      {
+        int arr[5]={0,1,2,3,4};
+        int sum=summation (arr);
+        printf ("%d",sum);
+      }
+      int summation (int arr[])
+      {
+        int sum=0,i;
+        for (i=0;i<+5;i++)
+        {
+          sum = sum+arr[i];
+        }
+        return sum ;
+      }
+  </code></pre>
+</div>
+
+<div class="section">
+  <h2>2D Array</h2>
+  <p>2D arrays are arrays of arrays, represented as a matrix of rows and columns.</p>
+
+  <h3>Declaration</h3>
+  <p>The syntax for Declaration of two dimensional array is as follows </p><br>
+  <p class="code">int arr[max_rows][max_columns];</p>
+
+  <h3>Memory Layout</h3>
+  <div class="grid">
+    <div>a[0][0]</div><div>a[0][1]</div><div>a[0][2]</div><div>...</div>
+    <div>a[1][0]</div><div>a[1][1]</div><div>a[1][2]</div><div>...</div>
+    <div>a[2][0]</div><div>a[2][1]</div><div>a[2][2]</div><div>...</div>
+  </div>
+
+  <h3>Access Example</h3>
+  <p>Due to fact that elements of 2D arrays can be random accessed</p><br>
+  <pre class="code">int x = a[i][j];  // where i = row, j = column</pre>
+
+  <h3>Initialization</h3>
+  <p>The syntax to declare and initialize the 2D array is given as follows :</p><br>
+  <pre class="code">int arr[2][2] = {0, 1, 2, 3};</pre>
+  <p><strong>Total elements:</strong> rows × columns</p>
+
+  <h3>Memory Mapping</h3>
+  <p> The size of a two dimensional array is equal to the multiplication of number of rows and number of columns present in the array.</p><br>
+  <p> A 3x3 two dimensional array is a shown :-</p><br>
+  <p><strong>Row Major:</strong> a11 → a12 → a13</p>
+  <p><strong>Column Major:</strong><br> a11 ↓ a21 ↓ a31</p>
+
+  <div class="formula">
+    Row Major Address: B.A + ((i × n) + j) × size
+  </div>
+  <div class="formula">
+    Column Major Address: B.A + ((j × m) + i) × size
+  </div>
+</div>
+
+<div class="section" id="q2"><br>
+
+  <h2>Linked List</h2>
+
+  <h3 class="red">Why Linked List?</h3>
+  <ul>
+    <li>Fixed size in arrays causes memory wastage.</li>
+    <li>Insertion beyond size not possible.</li>
+    <li>Solution: Use <span class="red">Linked List</span>.</li>
+  </ul>
+
+  <h3 class="red">Drawbacks of using array :-</h3>
+  <p>
+    * we cannot insert more than  3 elements in above example because only 3 spaces are allocated by  3 elements.<br><br>
+    * In case of array,the wastage of memory can occur<br><br>
+    * In array , we can providing fixed-size at compile time, due to which wastage of memory occurs.The solution to this problem is to use linked list.<br>
+  </p><br>
+
+  <h3 class="red">What is Linked List?</h3>
+  <p>A linked list is a collection of elements (nodes) not stored in contiguous memory.</p>
+  <p>Each node contains <strong>data</strong> and <strong>address (next)</strong> parts.</p>
+
+  <div class="diagram">
+    Head → [10 | 4900] → [15 | 5000] → [5 | 3000] → [20 | NULL]
+  </div>
+
+  <h3 class="red">Declaration:</h3>
+  <div class="code">
+    struct node {<br/>
+     int data;<br/>
+     struct node *next;<br/>
+    };
+  </div>
+
+  <h3 class="red">Types of Linked List</h3>
+  <p><strong>Singly Linked List</strong>: Each node points to the next node.</p>
+  <div class="diagram">
+    [1 | 200] → [2 | 300] → [3 | NULL]
+  </div>
+  <p>NULL</span> indicates the end of the list.</p>
+
+  <h2>2. Doubly Linked List</h2>
+    <p>As name suggests, the doubly linked list contains two pointers. We define it in three parts: the data part and two address parts.</p>
+
+    <div class="diagram">
+      <span>[ NULL | 1 | 200 ]</span>
+      <span>[ 100 | 2 | 300 ]</span>
+      <span>[ 200 | 3 | NULL ]</span><br>
+      <span style="margin-left: 0;">head → 100</span>
+    </div>
+
+    <h3>Representation of doubly linked list</h3>
+    <div class="code">
+struct node {
+    int data;
+    struct node *next;
+    struct node *prev;
+};
+    </div>
+
+    <h2>3. Circular Linked List</h2>
+    <p>A circular linked list is a variation of singly linked list. The only difference is the last node does not point to NULL.</p>
+
+    <div class="diagram">
+      <span>[ 7 | 200 ]</span>
+      <span>[ 8 | 300 ]</span>
+      <span>[ 10 | 100 ]</span><br>
+      <span style="margin-left: 0;">head → 100</span>
+    </div>
+
+    <h3>Representation of circular linked list</h3>
+    <div class="code">
+struct node {
+    int data;
+    struct node *next;
+};
+    </div>
+
+    <h2>4. Doubly Circular Linked List</h2>
+    <p>The doubly circular linked list has features of both circular linked list and doubly linked list.</p>
+
+    <div class="diagram">
+      <span>[ 300 | 1 | 200 ]</span>
+      <span>[ 100 | 2 | 300 ]</span>
+      <span>[ 200 | 3 | 100 ]</span><br>
+      <span style="margin-left: 0;">head → 100</span>
+    </div>
+
+    <p>The last node is attached to the first node, creating a circle. It does not contain NULL in previous/next.</p>
+
+    <h3>Representation</h3>
+    <div class="code">
+struct node {
+    int data;
+    struct node *next;
+    struct node *prev;
+};
+    </div>
+
+    <h1>Complexity</h1>
+        <table>
+            <tr>
+                <th rowspan="2">Singly Linked List</th>
+                <th colspan="4">Average</th>
+                <th rowspan="2">Worst</th>
+            </tr>
+            <tr>
+                <td>Access</td>
+                <td>Search</td>
+                <td>Insertion</td>
+                <td>Deletion</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>O(n)</td>
+                <td>O(n)</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+                <td>O(n)</td>
+            </tr>
+        </table>
+
+        <h2>Operations on Singly Linked List</h2>
+        <h3>1) Node Creation</h3>
+        <pre><code>
+struct node {
+    int data;
+    struct node *next;
+};
+
+struct node *head, *ptr;
+ptr = (struct node*) malloc(sizeof(struct node));
+        </code></pre>
+
+        <h3>2) Insertion</h3>
+        <ul>
+            <li><strong>Insertion at beginning</strong> – It involves inserting any element at the front of the list. We just need a few links adjustment to make new node as head.</li>
+            <li><strong>Insertion at end of list</strong> – New node can be inserted as the only node or at the end of list.</li>
+            <li><strong>Insertion after specified node</strong> – Skip desired number of nodes to insert at desired location.</li>
+        </ul>
+
+        <h3>3) Deletion and Traversing</h3>
+        <ul>
+            <li><strong>Deletion at beginning</strong> – Just few pointer adjustments.</li>
+            <li><strong>Deletion at end</strong> – Logic changes based on whether list is empty or not.</li>
+            <li><strong>Traversing</strong> – Visit each node at least once to perform an operation.</li>
+            <li><strong>Searching</strong> If the element is found on any of the location of that element is returned otherwise,null is returned</li>
+        </ul>
+
+        <h2>Operations on Doubly Linked List</h2>
+        <h3>1) Node Creation</h3>
+        <pre><code>
+struct node {
+    struct node *prev;
+    int data;
+    struct node *next;
+};
+
+struct node *head;
+        </code></pre>
+
+        <h3>2) Insertion</h3>
+        <ul>
+            <li>Insertion at beginning – Adding node into beginning of linked list.</li>
+            <li>Insertion at end – Adding node to the end.</li>
+        </ul>
+
+        <h3>3) Deletion and Traversing</h3>
+        <ul>
+            <li><strong>Deletion at beginning</strong> – Just few pointer adjustments.</li>
+            <li><strong>Deletion at end</strong> – Logic changes based on whether list is empty or not.</li>
+            <li><strong>Traversing</strong> – Visit each node at least once to perform an operation.</li>
+            <li><strong>Searching</strong> If the element is found on any of the location of that element is returned otherwise,null is returned</li>
+        </ul>
+
+
+        
+
+  </div>
+
+  <div class="section" id="q3"> 
+
+<h2>Stack :-</h2>
+    <div class="line">A stack is a linear data structure that follows LIFO...</div>
+    <h3>Operations on the Stack :-</h3>
+    <div class="line">1) Push()</div>
+    <div class="line">2) Pop()</div>
+    <div class="line">3) Peek()</div>
+    <div class="line">4) Count()</div>
+    <div class="line">5) Change()</div>
+    <div class="line">6) Display()</div>
+
+    <h3>Example Skip List Insertion (visual diagram):</h3>
+    <div class="diagram">
+      <img src="skiplist-diagram.png" alt="Skip list diagram step">
+    </div>
+
+    <h2>POP Operation</h2>
+    <div class="note">
+      <ul>
+        <li>Before deleting the element from the stack, we check whether the stack is empty.</li>
+        <li>If we try to delete the element from empty stack, then underflow condition occurs.</li>
+        <li>First access the element which is pointed by top.</li>
+        <li>Once the top operation is performed, top is decremented by 1 i.e. top = top - 1.</li>
+      </ul>
+    </div>
+
+    <div class="stack-diagram">
+      <div class="box">30</div>
+      <div class="box">20</div>
+      <div class="box">10</div>
+      <span style="margin-left:10px;">← Initial Stack</span>
+    </div>
+
+    <h2>Applications of Stack</h2>
+    <ol>
+      <li><strong>Recursion:</strong> Stack is used to store function calls and previous states.</li>
+      <li><strong>DFS (Depth First Search):</strong> Uses stack for graph traversal.</li>
+      <li><strong>Backtracking:</strong> Helps to return to the previous state to explore new paths.</li>
+      <li><strong>Memory Management:</strong> Stack helps allocate memory in contiguous blocks.</li>
+    </ol>
+
+    <div class="algo-box">
+      <div class="algo">
+        <strong>Push Operation</strong><br/>
+        <code>
+          begin<br/>
+          if top = n then Stack Full<br/>
+          top = top + 1<br/>
+          stack[top] = item<br/>
+          end
+        </code><br>
+        <p>Time complexity:0(1)</p>
+      </div>
+
+      <div class="algo">
+        <strong>Pop Operation</strong><br/>
+        <code>
+          if top = 0 then empty<br/>
+          item = stack[top]<br/>
+          top = top - 1<br/>
+          end
+        </code><br>
+        <p>Time Complexity:0(1)</p>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="section" id="q4">
+ <h2>Queue</h2>
+    <div class="note">
+      A queue can be defined as an ordered list where insertion is at the rear end and deletion at the front.
+      It follows FIFO (First In First Out).
+    </div>
+
+    <div class="queue-diagram">
+      <div class="box">10</div>
+      <div class="box">20</div>
+      <div class="box">30</div>
+      <span style="margin-left:10px;">← front | rear →</span>
+    </div>
+
+    <h3>Complexity of Queue</h3>
+    <table class="table">
+      <tr>
+        <th></th>
+        <th>Access</th>
+        <th>Search</th>
+        <th>Insertion</th>
+        <th>Deletion</th>
+      </tr>
+      <tr>
+        <td>Average</td>
+        <td>O(n)</td>
+        <td>O(n)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+      </tr>
+      <tr>
+        <td>Worst</td>
+        <td>O(n)</td>
+        <td>O(n)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+      </tr>
+    </table>
+    <h2>Operations on Queue :-</h2>
+    1.) <strong> Enqueue </strong> Enqueue is used to insert element at near end of the queue.It returns void.<br><br>
+    2.)<strong> Dequeue </strong> Dequeue operations performs the deletion from front end of queue .the dequeue operation can also be assigned to void.<br><br>
+    3.)<strong> Peek </strong> This returns,element which is pointed by front pointer in the queue but does not delete.<br><br>
+    4.)<strong> queue overflow(is FULL) </strong> when queue is completely full, then it shows overflow condition.<br><br>
+    5.) <strong> queue overflow(is empty)</strong> when there is no element in the queue then it throws underflow condition.<br><br>
+
+
+     <h2>Types of Queue</h2>
+    <ol>
+      <li><strong>Linear Queue:</strong> Insertion happens at rear, deletion at front. Follows FIFO.
+        <div class="queue-diagram">
+          <div class="box">10</div>
+          <div class="box">20</div>
+          <div class="box">30</div>
+          
+        </div>
+      </li>
+      <li><strong>Circular Queue:</strong> Last element connects back to the first forming a circle. Useful in buffers.</li>
+    </ol>
+
+    <section>
+      <h2>1. Circular Queue</h2>
+      <img src="circular-queue.png" alt="Circular Queue Diagram">
+      <p>Drawback of linear queue is overcome in circular queue. If empty space is available, new element can be added in empty space by simply incrementing value of rear.</p>
+    </section>
+
+    <section>
+      <h2>2. Priority Queue</h2>
+      <p>The queue to which each element has some priority associated with it. Based on priority of the element, elements are arranged in a priority queue. If elements occur with same priority, they are served according to FIFO principle.</p>
+    </section>
+
+    <section>
+      <h2>3. Array Representation of Queue</h2>
+      <div class="array-box">
+        <div>H</div><div>E</div><div>L</div><div>L</div><div>O</div>
+      </div>
+      <div class="index">
+        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+      </div>
+      <p><strong>Front</strong> → 0, <strong>Rear</strong> → 4</p>
+      <p class="note">(Fig: Queue after inserting an element)</p>
+    </section>
+
+    <section>
+      <h2>4. Queue After Deletion</h2>
+      <div class="array-box">
+        <div>E</div><div>L</div><div>L</div><div>O</div><div></div>
+      </div>
+      <div class="index">
+        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+      </div>
+      <p><strong>Front</strong> → 1</p>
+      <p class="note">(Fig: Queue after deleting an element)</p>
+    </section>
+
+    <section>
+      <h2>5. Queue Insertion Algorithm</h2>
+      <pre>
+Step 1: IF REAR = MAX - 1
+        Write OVERFLOW
+        Go to step [END OF IF]
+
+Step 2: IF FRONT = -1 and REAR = -1
+        SET FRONT = REAR = 0
+        ELSE
+        SET REAR = REAR + 1
+
+Step 3: SET QUEUE[REAR] = NUM
+Step 4: EXIT
+      </pre>
+    </section>
+
+    <section>
+      <h2>6. Queue Deletion Algorithm</h2>
+      <pre>
+Step 1: IF FRONT = -1 OR FRONT > REAR
+        Write UNDERFLOW
+        ELSE
+        SET VAL = QUEUE[FRONT]
+        SET FRONT = FRONT + 1
+
+Step 2: EXIT
+      </pre>
+    </section>
+
+
+  </div>
+
+
+  </div>  <!-- Footer -->  <footer>
+    <p>&copy; 2025 Gowthamraj Network | DSA Tutorial</p>
+  </footer>  <!-- Script -->  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script></body></html>

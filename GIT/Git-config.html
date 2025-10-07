@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Cheat Sheet</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tag {
+      background-color: #f3f4f6;
+      color: #1f2937;
+      font-family: monospace;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="Git-performance-features.html">GIT And features</a>
+      <a href="Git-config.html">Git-configuration</a>
+      <a href="adv-disadv.html">advantages and disadvantages</a>
+      <a href="Git-commands.html">Git Commands</a>
+      <a href="Git-working-process.html">Git-process</a>
+
+    </div>
+  </nav>
+  <div class="sidebar">
+    <a href="#q1"> •Git configuration </a>
+    <a href="#q2"> •Starting A Project </a>
+    <a href="#q3"> •Day-To-Day Work </a>
+    <a href="#q4"> •Git branching model </a>
+    <a href="#q5"> •Review your work </a>
+    <a href="#q6"> •Tagging known commits </a>
+    <a href="#q7"> •Reverting changes </a>
+    <a href="#q8"> •Synchronizing repositories </a>
+    <a href="#q9"> •Explanation </a>
+    <a href="#q10"> •Git installation </a>
+    <a href="#q11"> •Ignoring Files </a>
+    <a href="#q12">  •Git Help</a>
+    <a href="#q13">  •Deleting a Branch</a>
+    
+
+  </div>
+
+  <div class="main-content">
+    <div id="q1">
+
+      <h2>
+        <u> Git configuration</u>
+      </h2>
+      <p>
+      <ul>
+        <li><code><div class="tag">
+
+         $ git config --global user.name "Your Name"</code>
+    </div><br />Set the name attached to your commits and tags.</li><br>
+    <li><code><div class="tag"> 
+          $ git config --global user.email "you@example.com"</code>
+  </div><br />Set the e-mail address attached to commits and tags.</li><br>
+  <li><code><div class="tag">
+          $ git config --global color.ui auto</code></div><br />Enable colorized Git output.</li>
+  </ul>
+  </p>
+  </div><br>
+
+  <div id="q2">
+    <h2>
+      <u> Starting A Project</u>
+    </h2>
+    <p>
+      <li><code><div class="tag">
+        $ git init [project name]</code>
+  </div><br />Create a new local repository. If a project name is given, Git creates a folder. If not, it initializes in
+  the current directory.</li><br>
+  <li><code> <div class="tag">
+          $ git clone [project url]</code></div><br />Download a project and its entire version history from a remote
+    repo.</li><br>
+  </ul>
+  </p>
+  </div><br>
+
+  <div id="q3">
+    <h2><u>Day-To-Day Work</u></h2><br>
+    <ul>
+      <li><span class="tag"><code>$ git status</code></span><br> — Displays the status of your working directory.
+        Options
+        include new,
+        staged, and modified files. It will retrieve branch name, current commit
+        identifier, and changes pending commit.</li><br>
+      <li><span class="tag"><code>$ git add [file]</code></span><br> — Add a file to the staging area. Use in place of
+        the
+        full file path to add all
+        changed files from the current directory down into the directory tree.</li><br>
+      <li><span class="tag"><code>$ git diff [file]</code></span><br> — Show changes between working directory and
+        staging
+        area.</li><br>
+      <li><span class="tag"><code>$ git diff --staged [file]</code></span><br> — Shows any changes between the staging
+        area
+        and the repository.</li><br>
+      <li><span class="tag"><code>$ git checkout -- [file]</code></span><br> — Discard changes in working directory.
+        This
+        operation is unrecoverable</li><br>
+      <li><span class="tag"><code>$ git reset [file]</code></span><br> — Revert your repository to a previous known
+        working
+        state</li><br>
+      <li><span class="tag"><code> git commit</code></span><br> — Create a new commit from changes added to the staging
+        area.The commit must have a message!</li><br>
+      <li><span class="tag"><code>$ git rm [file]</code></span><br> — Remove file from working directory and staging
+        area
+      </li><br>
+      <li><span class="tag"><code>$ $ git stash</code></span><br> — Put current changes in your working directory into
+        stash
+        for later use.</li><br>
+      <li><span class="tag"><code>$ git stash pop</code></span><br> — Apply stored stash content into working directory,
+        and
+        clear stash.</li><br>
+      <li><span class="tag"><code>$ git stash drop</code></span><br> — Delete a specific stash from all your previous
+        stashes. </li><br>
+    </ul>
+  </div>
+
+  <div id="q4">
+    <h2><u>Git branching model</u> </h2>
+    <ul>
+      <li><span class="tag"><code>$ git branch [-a]</code></span><br> — List all local branches in repository. With -a:
+        show
+        all branches
+        (with remote).</li><br>
+      <li><span class="tag"><code>$ git branch [branch_name]</code></span><br> — Create new branch, referencing the
+        current
+        HEAD.</li><br>
+      <li><span class="tag"><code>$ git checkout [-b][branch_name]</code></span><br> — Switch working directory to the
+        specified branch. With -b: Git will
+        create the specified branch if it does not exist.</li><br>
+      <li><span class="tag"><code>$ git merge [from name]</code></span><br> — Join specified [from name] branch into
+        your
+        current branch (the one
+        you are on currently).</li><br>
+      <li><span class="tag"><code>$ git branch -d [name]</code></span><br> —Remove selected branch, if it is already
+        merged
+        into any other.
+        -D instead of -d forces deletion.</li><br>
+
+    </ul>
+  </div>
+
+  <div id="q5">
+    <h2><u>Review your work</u></h2>
+    <ul>
+      <li><span class="tag"><code>$ git log [-n count]</code></span><br> — List commit history of current branch. -n
+        count
+        limits list to last n
+        commits.</li><br>
+      <li><span class="tag"><code>$ git log --oneline --graph --decorate</code></span><br> — An overview with reference
+        labels and history graph. One commit
+        per line.</li><br>
+      <li><span class="tag"><code>$ git log ref..</code></span><br> — List commits that are present on the current
+        branch
+        and not merged
+        into ref. A ref can be a branch name or a tag name.</li><br>
+      <li><span class="tag"><code>$ git log ..ref</code></span><br> — List commit that are present on ref and not merged
+        into current
+        branch.</li><br>
+      <li><span class="tag"><code>$ git reflog </code></span><br> — List operations (e.g. checkouts or commits) made on
+        local repository.</li><br>
+
+    </ul>
+  </div>
+
+  <div id="q6">
+    <h2><u>Tagging known commits</u></h2>
+    <ul>
+      <li><span class="tag"><code>$ git tag</code></span><br> —List all tags.</li><br>
+      <li><span class="tag"><code>$ git tag [name] [commit sha]</code></span><br> — Create a tag reference named name
+        for
+        current commit. Add commit
+        sha to tag a specific commit instead of current one</li><br>
+      <li><span class="tag"><code>$ git tag -a [name] [commit sha]</code></span><br> — Create a tag object named name
+        for
+        current commit</li><br>
+      <li><span class="tag"><code>$ git tag -d [name]</code></span><br> — Remove a tag from local repository.</li><br>
+
+    </ul>
+  </div>
+
+  <div id="q7">
+    <h2><u>Reverting changes</u></h2>
+    <ul>
+      <li><span class="tag"><code>$ git reset [--hard] [target reference]</code></span><br> - Switches the current
+        branch to
+        the target reference, leaving
+        a difference as an uncommitted change. When --hard is used,
+        all changes are discarded.</li><br>
+      <li><span class="tag"><code>$ git revert [commit sha]</code></span><br> - Create a new commit, reverting changes
+        from the
+        specified commit.
+        It generates an inversion of changes.</li><br>
+    </ul>
+  </div>
+
+  <div id="q8">
+    <h2><u>Synchronizing repositories</u></h2>
+    <ul>
+      <li><span class="tag"><code>$ git fetch [remote]</code></span><br> — Fetch changes from the remote, but not update
+        tracking branches</li><br>
+      <li><span class="tag"><code>$ git fetch --prune [remote]</code></span><br> — Delete remote Refs that were removed
+        from
+        the remote repository</li><br>
+      <li><span class="tag"><code>$ git pull [remote]</code></span><br> — Fetch changes from the remote and merge
+        current
+        branch with its
+        upstream.</li><br>
+      <li><span class="tag"><code>$ git push [--tags] [remote]</code></span> <br>— Push local changes to the remote. Use
+        --tags to push tags.</li><br>
+      <li><span class="tag"><code>$ git push -u [remote] [branch]</code></span><br> — Push local branch to remote
+        repository. Set its copy as an upstream.</li><br>
+
+    </ul>
+  </div>
+
+  <div id="q9">
+    <h2><u>Explanation</u></h2>
+    <div class="tag">
+
+      <p>
+        <b style="color: darkcyan;">Commit</b> — — an object<br>
+        <b style="color: darkcyan;">Branch</b> — — a reference to a commit; can have a tracked upstream<br>
+        <b style="color: darkcyan;">Tag</b> — — a reference (standard) or an object (annotated)<br>
+        <b style="color: darkcyan;">Head</b> — — a place where your working directory is now<br>
+      </p>
+    </div>
+  </div><br>
+
+  <div id="q10">
+    <h2>
+      <u>Git installation</u>
+    </h2>
+    <p>
+      * For GNU/Linux distributions, Git should be available in the standard
+      system repository. For example, in Debian/Ubuntu please type in
+      the terminal:<br>
+    <div class="tag">
+      <code>
+  $ sudo apt-get install git
+</code>
+    </div><br>
+
+    * If you need to install Git from source, you can get it from<br>
+
+    <a href=""> git-scm.com/downloads.</a><br><br>
+
+
+
+    * An excellent Git course can be found in the great<strong> Pro Git </strong> book by
+    Scott Chacon and Ben Straub. The book is available online for free
+    at
+
+    <a href=""> git-scm.com/downloads.</a><br><br>
+    </p>
+  </div>
+
+  <div id="q11">
+    <h2><u>Ignoring Files</u></h2>
+    <p>
+      <div class="tag"><code>$ cat .gitignore</code></div><br>
+      <div class="tag"><code>/logs/*</code></div><br>
+      <div class="tag"><code>!logs/.gitkeep</code></div><br>
+      <div class="tag"><code>/tmp</code></div><br>
+      <div class="tag"><code>*.swp</code></div><br><br>
+
+      * Verify the .gitignore file exists in your project and ignore certain type
+of files, such as all files in <b>logs</b> directory (excluding the<b> .gitkeep</b> file),
+whole <b>tmp</b> directory and all files<b> *.swp</b>. File ignoring will work for the
+directory (and children directories) where <b>.gitignore</b> file is placed.
+      
+    </p>
+  </div>
+  <div id="q12">
+    <h2><u>Git Help </u></h2>
+    <p>
+     * If you are having trouble remembering commands or options
+for commands, you can use Git help.
+    </p>
+    <div class="tag">
+      <code>$ git <command> -help</code>
+    </div><br>
+    <span>See all the available options for the specific command -</span>
+  </div><br>
+  <div class="tag">
+    <code>$ git help --all</code>
+  </div><br>
+  <p>If you find yourself stuck in the list view, SHIFT + G to jump the
+end of the list, then q to exit the view.</p>
+
+
+<div id="q13">
+    <h2>
+      <u> Deleting a Branch</u>
+    </h2>
+    <p>
+      <li><code><div class="tag">
+        $ git branch -d <branch name></code>
+  
+  </p>
+  </div><br>
+  </div>
+
+ 
+  
+  
+
+
+
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | Git Cheat Sheet</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

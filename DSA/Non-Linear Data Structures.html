@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Tutorial - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="Introduction to Data Structures.html">Introduction to Data Structures</a>
+      <a href="Pointers and Memory Concepts.html">Pointers and Memory Concepts</a>
+      <a href="Linear Data Structures.html">Linear Data Structures</a>
+      <a href="Non-Linear Data Structures.html">Non-Linear Data Structures</a>
+      <a href="Algorithms.html">Algorithms</a>
+      <a href="Practice and Interview Preparation.html">Practice and Interview Preparation</a>
+    </div>
+  </nav> <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="#q1">Skip list</a>
+    <a href="#q2">Tree</a>
+    <a href="#q3">Types of Tree</a>
+    <a href="#q4">Graph</a>
+
+  </div> 
+  <div class="main-content">
+
+<div class="section" id="q1">
+     <h2 class="highlight">Skip List</h2>
+        <p><strong>What is a skip list?</strong></p>
+        <p>A skip list is a probabilistic data structure used to store a linked list of elements in a sorted manner.</p>
+
+        <p><strong>Structure</strong> – Built in two layers: lowest (regular linked list) and top layer (express lane).</p>
+
+        <h3>Complexity Table</h3>
+        <table>
+            <tr>
+                <th>Sl. No.</th>
+                <th>Complexity</th>
+                <th>Average</th>
+                <th>Worst</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Access</td>
+                <td>O(logn)</td>
+                <td>O(n)</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Search</td>
+                <td>O(logn)</td>
+                <td>O(n)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Delete</td>
+                <td>O(logn)</td>
+                <td>O(n)</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Insert</td>
+                <td>O(logn)</td>
+                <td>O(n)</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Space</td>
+                <td>-</td>
+                <td>O(n logn)</td>
+            </tr>
+        </table>
+
+<h3>Basic Operations and Algorithm</h3>
+        <ul>
+            <li><strong>Insertion</strong> – Add a node to a particular location.</li>
+            <li><strong>Deletion</strong> – Delete a node from specific location.</li>
+            <li><strong>Search</strong> – Search for a node in skip list.</li>
+        </ul>
+
+        <pre><code>
+Algorithm of Insertion:
+Insertion(L, key)
+local update[0...maxLevel+1]
+q ← header
+for i = L → 1:
+    while q.forward[i] &lt; key:
+        q ← q.forward[i]
+    update[i] ← q
+        </code></pre>
+
+</div>
+
+<div class="section" id="q2">
+
+  <h1>Tree</h1>
+
+    <section>
+      <h2>1. Definition</h2>
+      <p>A tree is a data structure defined as collection of objects or entities known as nodes that are linked together to represent hierarchical data.</p>
+      <img src="tree-diagram.png" alt="Tree Diagram">
+    </section>
+
+    <section>
+      <h2>2. Basic Terms of Tree</h2>
+      <ul>
+        <li><strong>Links:</strong> A node labeled with a number.</li>
+        <li><strong>Root Node:</strong> Topmost node in hierarchy.</li>
+        <li><strong>Child Node:</strong> A node is child if linked to a parent.</li>
+        <li><strong>Siblings:</strong> Nodes with same parent.</li>
+        <li><strong>Leaf Node:</strong> Node with no children.</li>
+        <li><strong>Ancestor Node:</strong> Predecessor node in path.</li>
+        <li><strong>Descendant Node:</strong> Successor node in path.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Properties of Tree Data Structures</h2>
+      <ul>
+        <li><strong>Recursive Structure:</strong> Tree is recursive, meaning subtrees are trees.</li>
+        <li><strong>Number of Edges:</strong> n nodes → (n-1) edges</li>
+        <li><strong>Depth of Node:</strong> Path length from root to node</li>
+        <li><strong>Height:</strong> Longest path from node to leaf</li>
+      </ul>
+    </section>
+
+    <h2>Implementation of Tree</h2>
+    <p>The tree data structure can be created dynamically using pointers. The tree's memory is shown below:</p>
+
+    <div class="tree-box">
+      <div class="node">left</div>
+      <div class="node">DATA</div>
+      <div class="node">right</div>
+    </div>
+
+    <div class="tree-children">
+      <span>B</span>
+      <span>X</span>
+      <span>C</span>
+    </div>
+
+    <pre class="code">
+struct node {
+    int data;
+    struct node *left;
+    struct node *right;
+};
+    </pre>
+
+    <p>The above structure defines a binary tree because each node has utmost two children.</p>
+
+    <h3>Application of Tree</h3>
+    <ol>
+      <li>Storing hierarchical data - file systems, folders.</li>
+      <li>Used in databases to organize data.</li>
+      <li>Used in dictionaries (tries) for fast search.</li>
+      <li>Used in heaps for priority queues.</li>
+    </ol>
+
+
+    
+
+</div>
+<div class="section" id="q3">
+<h2>Types of Tree Data Structure</h2>
+    <h3>1. General Tree</h3>
+    <p>In a general tree, a node can have 0 or more children.</p>
+
+    <div class="tree-diagram">
+      <pre>
+             A
+          /  |  \
+        B   F   J
+       /|\  |\   |\
+      C D E G H  K L M
+      </pre>
+    </div>
+
+    <h3>2. Binary Tree</h3>
+    <p>A tree where a node can have maximum two children.</p>
+    <div class="tree-diagram">
+      <pre>
+         1
+        / \
+       2   3
+      / \   \
+     5   6   7
+      </pre>
+    </div>
+
+
+    <h2>Binary Tree Logical Representation</h2>
+    <p>Each node has two pointers: left and right.</p>
+
+    <div class="tree-diagram">
+      <pre>
+         1
+        / \
+       2   3
+      / \   \
+     5   6   X
+      </pre>
+    </div>
+
+    <h3>Properties of Binary Tree</h3>
+    <ul>
+      <li>Max nodes at level i: 2<sup>i</sup></li>
+      <li>Height = longest root-to-leaf path</li>
+      <li>Max nodes at height h: 2<sup>h+1</sup> - 1</li>
+      <li>Min nodes at height h: h + 1</li>
+      <li>Min height: log₂(n+1) - 1</li>
+      <li>Max height: h = n - 1</li>
+    </ul>
+
+    <h2>Types of Binary Tree</h2>
+    <h3>1. Full / Strict Binary Tree</h3>
+    <p>Each node has 0 or 2 children</p>
+
+    <div class="tree-diagram">
+      <pre>
+         A
+        / \
+       B   C
+      / \
+     D   E
+      </pre>
+    </div>
+
+    <h3>2. Complete Binary Tree</h3>
+    <p>All levels filled except the last (filled from left)</p>
+
+    <div class="tree-diagram">
+      <pre>
+             10
+           /    \
+         20      30
+        /  \    /  \
+      40  50  60  70
+     /
+    80
+      </pre>
+    </div>
+
+    <h2>Perfect Binary Tree</h2>
+    <p>A tree in which all the internal nodes have 2 children and all leaf nodes are at the same level.</p>
+    <div class="tree tree-1">
+      <ul>
+        <li>1
+          <ul>
+            <li>2
+              <ul>
+                <li>4</li>
+                <li>5</li>
+              </ul>
+            </li>
+            <li>3
+              <ul>
+                <li>6</li>
+                <li>7</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <p class="note">
+      <strong>Note:</strong> All the perfect binary trees are complete binary trees as well as the full binary trees. But vice versa is not true. All complete binary trees and full binary trees are not the perfect binary trees.
+    </p>
+
+    <h2>Balanced Binary Tree</span></h2>
+    <p>A balanced binary tree is a tree in which both left and right trees differ by almost 1.</p>
+    <div class="tree tree-2">
+      <ul>
+        <li>4
+          <ul>
+            <li>2
+              <ul>
+                <li>1</li>
+                <li>3</li>
+              </ul>
+            </li>
+            <li>6
+              <ul>
+                <li>5</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <p>Above tree is balanced: diff b/w left subtree & right subtree is ≤ 1</p>
+
+    <h2>Binary Search Tree (BST)</span></h2>
+    <p>
+      A Binary Search Tree can be defined as a class of binary trees in which nodes are arranged in a specific order, also called as ordered binary tree. <br/>
+      Similarly, value of all nodes in the right subtree is greater than or equal to value of root.
+    </p>
+    <div class="tree tree-3">
+      <ul>
+        <li>30
+          <ul>
+            <li>25
+              <ul>
+                <li>22
+                  <ul>
+                    <li>14</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>60
+              <ul>
+                <li>45
+                  <ul>
+                    <li>41</li>
+                  </ul>
+                </li>
+                <li>75</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <p><strong>Root node → </strong></p>
+
+    <h1>Binary Search Tree (BST)</h1>
+
+  <div class="box">
+    <strong>Example:</strong> Create a binary search tree using elements:  
+    <code>43, 10, 90, 60, 12, 57, 11, 9, 30</code><br><br>
+    <strong>Steps:</strong>
+    <ol>
+      <li>Insert 43 as the root node.</li>
+      <li>Insert next elements. If less than root/sub-root, go left; otherwise go right.</li>
+    </ol>
+  </div>
+
+    <h2>Steps of BST Construction</h2>
+  <p><strong>Step 1 to Step 9:</strong> Nodes are added one by one maintaining BST rules. Each level shows how tree expands with insertion.</p>
+
+  <h2 class="highlight">Operations on Binary Search Tree (BST)</h2>
+  <table>
+    <tr>
+      <th>Sr.No.</th>
+      <th>Operation</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Searching in BST</td>
+      <td>Finding location of a specific element in BST.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Insertion in BST</td>
+      <td>Adding a new element while maintaining BST properties.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Deletion in BST</td>
+      <td>Removing node (cases vary based on number of children).</td>
+    </tr>
+  </table>
+
+  <h2>AVL Tree</h2>
+  <div class="box">
+    <strong>AVL Tree:</strong> Introduced by Adelson-Velsky and Landis in 1962.  
+    AVL = Height-balanced BST with balance factor rule.<br>
+    <code>Balance factor (x) = height(left subtree) - height(right subtree)</code>
+  </div>
+
+  <h3>Balance Factor Conditions</h3>
+  <ul>
+    <li>0 → Equal height on both sides</li>
+    <li>1 → Left subtree is one level higher</li>
+    <li>-1 → Right subtree is one level higher</li>
+  </ul>
+
+  <h3>AVL Tree Example</h3>
+  <p>Given tree with nodes: <code>50, 25, 75, 10, 30, 60, 80</code></p>
+  <p>Each node has balance factor in range [-1, 1], so it's a valid AVL tree.</p>
+
+  <h3>Time Complexity</h3>
+  <table>
+    <tr>
+      <th>Algorithm</th>
+      <th>Average Case</th>
+      <th>Worst Case</th>
+    </tr>
+    <tr>
+      <td>Space</td>
+      <td>O(n)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>Search</td>
+      <td>O(log n)</td>
+      <td>O(log n)</td>
+    </tr>
+    <tr>
+      <td>Insert</td>
+      <td>O(log n)</td>
+      <td>O(log n)</td>
+    </tr>
+    <tr>
+      <td>Delete</td>
+      <td>O(log n)</td>
+      <td>O(log n)</td>
+    </tr>
+  </table>
+
+  <h3>Why AVL Tree?</h3>
+  <p>Prevents the BST from becoming skewed. Maintains height = log(n), hence improves time complexity to O(log n).</p>
+
+  <h2>Operations on AVL Tree</h2>
+  <table>
+    <tr>
+      <th>Sr.No.</th>
+      <th>Operation</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Insertion</td>
+      <td>Same as BST, but AVL tree may require rebalancing using rotations.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Deletion</td>
+      <td>Same as BST, but may disturb balance and need rotation.</td>
+    </tr>
+  </table>
+
+  <h3>AVL Rotations</h3>
+  <p>Performed when balance factor goes beyond -1 to 1. Types:</p>
+  <ul>
+    <li>Left Rotation:- inserted node is in the left subtree of left subtree of A</li>
+    <li>Right Rotation:- inserted node is in the right subtree of right subtree of A</li>
+    <li>Left-Right Rotation:- inserted node is in the right subtree of left subtree of A</li>
+    <li>Right-Left Rotation:- inserted node is in the left subtree of right subtree of A</li>
+  </ul>
+
+</div>
+<div class="section" id="q4">
+
+<h3>Graph</h3>
+    <p>A graph is a collection of <strong>vertices</strong> and <strong>edges</strong> connecting them.</p>
+    <p><strong>Definition:</strong> G = (V, E) where V is set of vertices and E is set of edges.</p>
+
+     <h4>Directed and Undirected Graph</h4>
+    <div class="graph-diagram">
+      <p class="red">Fig: Undirected Graph</p>
+      <code>A -- B &nbsp; B -- E &nbsp; A -- D &nbsp; D -- E</code>
+      <p class="red">Fig: Directed Graph</p>
+      <code>A → B &nbsp; B → E &nbsp; A → D &nbsp; D → E</code>
+    </div>
+
+
+    <h3>Graph Terminology</h3>
+    <ol>
+      <li><strong>Path:</strong> Sequence of nodes to reach terminal node from initial node</li>
+      <li><strong>Closed Path:</strong> Initial node = terminal node</li>
+      <li><strong>Simple Path:</strong> All nodes are distinct except start and end in closed simple path</li>
+      <li><strong>Cycle:</strong> Path with repeated nodes/edges from start to end</li>
+      <li><strong>Connected Graph:</strong> Path exists between every pair of nodes</li>
+      <li><strong>Complete Graph:</strong> Every node is connected to every other node</li>
+      <li><strong>Weighted Graph:</strong> Each edge has associated data like weight</li>
+      <li><strong>Digraph:</strong> Directed graph with direction on edges</li>
+      <li><strong>Loop:</strong> Edge connecting a node to itself</li>
+      <li><strong>Adjacent Nodes:</strong> Nodes connected directly by an edge</li>
+      <li><strong>Degree of a node :</strong>A degree of a node is a number of edges that are connected with that node. A node with degree 0 is called isolated</li>
+    </ol>
+
+
+     <h1>Graph Representation</h1>
+    <p>We simply mean technique which is to be used in order to store some graph into the computer's memory.</p>
+
+    <h2>1) Sequential Representation</h2>
+    <p>In this, we use an adjacency matrix to store mapping represented by vertices and edges. A graph having <strong>n</strong> vertices will have a dimension of <strong>n × n</strong>.</p>
+    <ul>
+      <li>An entry <code>m[i][j]</code> in adjacency matrix of an <strong>undirected</strong> graph G will be 1 if an edge exists between v<sub>i</sub> and v<sub>j</sub>.</li>
+    </ul>
+
+    <h3>Undirected Graph</h3>
+    <table>
+      <caption>Adjacency Matrix</caption>
+      <thead>
+        <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>A</th><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><th>B</th><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><th>C</th><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><th>D</th><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><th>E</th><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Directed Graph</h3>
+    <table>
+      <caption>Adjacency Matrix</caption>
+      <thead>
+        <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>A</th><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><th>B</th><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><th>C</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><th>D</th><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><th>E</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Weighted Directed Graph</h3>
+    <table>
+      <caption>Adjacency Matrix</caption>
+      <thead>
+        <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>A</th><td>0</td><td>4</td><td>0</td><td>10</td><td>0</td></tr>
+        <tr><th>B</th><td>0</td><td>0</td><td>2</td><td>0</td><td>6</td></tr>
+        <tr><th>C</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><th>D</th><td>0</td><td>0</td><td>0</td><td>0</td><td>10</td></tr>
+        <tr><th>E</th><td>0</td><td>0</td><td>5</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <h2>2) Linked Representation</h2>
+    <p>In this, we use an adjacency list for storing graph connections.</p>
+
+    <h3>Adjacency List for Undirected Graph</h3>
+    <ul class="adj-list">
+      <li><strong>A</strong> → B → D</li>
+      <li><strong>B</strong> → A → C → E</li>
+      <li><strong>C</strong> → B</li>
+      <li><strong>D</strong> → A → E</li>
+      <li><strong>E</strong> → B → D</li>
+    </ul>
+
+    <h2>Graph Adjacency List</h2>
+  <p>An adjacency list is maintained for each node present in graph which stores node value and a pointer to next adjacent node to respective node.</p>
+  <div class="graph-diagram">
+    <img src="YOUR_IMAGE_URL_FOR_GRAPH" alt="Directed Graph Example">
+  </div>
+  <p><strong>Directed Graph:</strong> Sum of lengths of all the adjacency lists is equal to the number of edges present in the graph.</p>
+  
+  
+  
+  
+
+
+</div>
+
+
+  </div> 
+  <footer>
+    <p>&copy; 2025 Gowthamraj Network | DSA Tutorial</p>
+  </footer> <!-- Script -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

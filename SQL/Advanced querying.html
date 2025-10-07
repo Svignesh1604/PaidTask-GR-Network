@@ -1,0 +1,206 @@
+<!-- operations.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Tutorial - Operations</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav class="topnav">
+        <div class="logo">Gowthamraj Network</div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" >Home</a>
+            <a href="intro.html">Intro</a>
+            <a href="Rdbms.html"> Relational Databases & SQL Basics</a>
+            <a href="table.html">Working with Tables</a>
+            <a href="querying.html">Querying Data</a>
+            <a href="Advanced querying.html"> Advanced Querying</a>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <a href="#q1">Indexes</a>
+        <a href="#q2">Aggregating data</a>
+        <a href="#q3"> Grouping data </a>
+    </div>
+
+    <div class="main-content">
+        <h1> Advanced Querying</h1>
+
+        <div id="q1" class="card">
+            <h2><u>Indexes</u></h2>
+            <p>
+                *  When the data in a database table becomes a lot the database could start
+                becoming slow in doing some operations.<br><br>
+                 *  To prevent this you can add indexes.<br><br>
+                *   When you try to look for specific information in book, you look at the index
+                and jump to the page it tells you.<br><br>
+                 *  That's pretty similar to what indexes do in databases. It's a way to tell the
+                database what to optimize for when looking for data.<br><br>
+
+                 *  Indexes start to become a rather advanced topic especially when relations
+                between tables get complex.<br><br>
+                 *  To put things simply, which indexes to add does not depend on the schema,
+                but rather on the queries you do.<br><br>
+                 *  For example if you have a users table with a name field, and you frequently
+                get that value in a SELECT, then name should be an index.<br><br>
+                 *  You create an index using this syntax:<br><br>
+            <div class="tag">
+                <b style="color: violet;">CREATE</b> INDEX index_name <b style="color: violet;"> ON </b> users (name);
+            </div><br><br>
+
+             *  The same goes for rows using in WHERE clauses on big tables.<br><br>
+             *  Indexes can improve performance, at a cost however: they make selection
+            faster, but slow down insertions and updates.<br><br>
+            *   Also, they increase disk space usage.<br><br>
+            *   As with everything, it's a tradeoff and the performance benefits must be
+            carefully measured.<br><br>
+             *  The good thing is you can add and remove indexes when you run into
+            performance issues, so it's not something you have to optimize for in the
+            beginning.<br><br>
+            </p>
+        </div>
+
+        <div id="q2" class="card">
+            <h2><u>Aggregating data</u></h2>
+            <p>
+                 *  You can ask the database to perform a few operations on the data stored in a
+                table.<br><br>
+                 *  For example doing a sum of the values of a numeric field.<br><br>
+                 *  Or calculating the average.<br><br>
+                 *  For example let's take this database schema and sample data:<br><br>
+            <div class="tag">
+                <b style="color: violet;">CREATE TABLE</b> people (
+                name <b style="color: peru;">VARCHAR(20),</b>
+                age <b style="color: peru;"> INT</b>
+                );
+            </div><br><br>
+
+            <div class="tag">
+                <b style="color: violet;">INSERT INTO </b> people <b style="color: violet;">VALUES</b>
+                (<b style="color: green;">'Joe'</b>,<b style="color: peru;"> 20</b>),
+                (<b style="color: green;">'John'</b>,<b style="color: peru;"> 30</b>),
+                (<b style="color: green;">'Johanna'</b>,<b style="color: peru;"> 25</b>),
+                (<b style="color: green;">'Zoe'</b>,<b style="color: peru;"> 23</b>),
+            </div><br><br>
+            AVG() calculates the average.<br><br>
+             *  If you want to get the average age of those people, you can do this:<br><br>
+            <div class="tag">
+                <b style="color: violet;">SELECT</b> <b style="color: peru;">AVG</b>(age) <b
+                    style="color: violet;">FROM</b> people;
+            </div><br><br>
+
+
+            And here's the result:
+            | avg |<br>
+            | ---- |<br>
+            | 24.5 |<br>
+             *  You typically alias the result of the function to a name of your choosing:<br><br>
+
+            <div class="tag">
+                <b style="color: violet;">SELECT</b> <b style="color: peru;">AVG</b>(age) <b
+                    style="color: violet;">as</b>Average <b style="color: peru;">AVG</b>(age)</div><br><br>
+
+                | average |<br>
+                | ------- |<br>
+                | 24.5 |<br>
+                In the same vein, SUM() calculates the sum.<br><br>
+
+                <div class="tag">
+                    <b style="color: violet;">SELECT</b> <b style="color: peru;">SUM</b>(age) <b
+                        style="color: violet;">as</b>total <b style="color: violet;">FROM</b> people;
+                </div><br><br>
+
+                | total |<br>
+                | ----- |<br>
+                | 98 |<br>
+                Use MAX() or MIN() to get the maxiumum or minumum value:<br><br>
+                <div class="tag">
+                    <b style="color: violet;">SELECT</b><b style="color: peru;">MAX</b>(age) ,<b
+                        style="color: peru;">MIN</b>(age) <b style="color: violet;">FROM</b> people;
+                </div><br><br>
+
+                | max | min |<br>
+                | --- | --- |<br>
+                | 30 | 20 |<br>
+
+
+                </p>
+            </div>
+
+            <div id="q3" class="card">
+                <h2><u>Grouping data</u></h2>
+                <p>
+                    *   You can group data using the GROUP BY clause:<br><br>
+                <div class="tag">
+
+                    <b style="color: violet;">SELECT</b>
+                    <...> <b style="color: violet;">FROM</b> people <b style="color: violet;">GROUP BY</b> department;
+                </div><br><br>
+                For example let's take this database schema and sample data:<br><br>
+
+                <div class="tag">
+                    <b style="color: violet;">CREATE TABLE</b> people (
+                    name <b style="color: peru;">VARCHAR(20),</b>
+                    department <b style="color: peru;"> VARCHAR(20),</b>
+                    age <b style="color: peru;"> INT</b>
+                    );
+                </div><br><br>
+
+
+                <div class="tag">
+                    <b style="color: violet;">INSERT INTO </b> people <b style="color: violet;">VALUES</b>
+                    (<b style="color: green;">'Joe'</b>,<b style="color: green;">'Sales'</b>,<b style="color: peru;">
+                        20</b>),
+                    (<b style="color: green;">'John'</b>,<b style="color: green;">'Sales'</b>,<b style="color: peru;">
+                        30</b>),
+                    (<b style="color: green;">'Johanna'</b>,<b style="color: green;">'IT'</b>,<b style="color: peru;">
+                        25</b>),
+                    (<b style="color: green;">'Zoe'</b>,<b style="color: green;">'IT'</b>,<b style="color: peru;">
+                        23</b>),
+                </div><br><br>
+
+                *   We want to get the average age of each department.<br><br>
+                Here's how we can do that:<br><br>
+                <div class="tag">
+
+                    <b style="color: violet;">SELECT </b> department,<b style="color: peru;"> AVG </b>(age) <b
+                        style="color: violet;"> as </b> total <b style="color: violet;">FROM </b>people<b
+                        style="color: violet;"> GROUP BY</b> department;
+                </div><br><br>
+
+
+                And here's the result:<br><br>
+
+                | department | total |<br>
+                | ---------- | ------ |<br>
+                | Sales | 25 |<br>
+                | IT | 24 |<br>
+
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Gowthamraj Network | SQL Tutorial</p>
+        </footer>
+
+        <script>
+            function toggleMenu() {
+                document.getElementById("navLinks").classList.toggle("show");
+            }
+        </script>
+</body>
+
+</html>

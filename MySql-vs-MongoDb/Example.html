@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MySQL vs MongoDB</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="MySQL.html">MySQL</a>
+      <a href="Mongodb.html">MongoDB</a>
+      <a href="mysql-vs-mongodb.html">MySQL vs MongoDB</a>
+      <a href="Example.html">Example Query</a>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">• Sample code for testing MySQL</a>
+    <a href="#q2">• Sample code for testing MongoDB</a>
+
+
+  </div>
+  <div class="main-content">
+    <div id="q1">
+      <h2>
+        <u>Sample code for testing MySQL</u>
+      </h2>
+      <p>
+        <strong> CREATE TABLE:</strong><BR>
+
+
+
+      <div class="tag">
+        <b style="color:violet;">CREATE TABLE </b>employees (<br>
+        employee_id INT <b style="color:peru;"> PRIMARY KEY</b>,<br>
+        first_name<b style="color: peru;"> VARCHAR(50),</b><br>
+        last_name<b style="color: peru;"> VARCHAR(50),</b><br>
+        department_id INT
+        );
+      </div><br><br>
+
+      <strong>INSERT DATA : </strong> <br><br>
+      <div class="tag">
+        <b style="color: peru;">INSERT INTO</b> employees (employee_id, first_name, last_name, department_id)
+        <b style="color: peru;"></b>VALUES (<b style="color: blue;">1</b>,<b style="color: darkgoldenrod;"> 'John'</b>,
+        <b style="color: darkgoldenrod;"> 'Doe'</b>, <b style="color: violet;">101</b>);
+      </div><br><br>
+
+      <strong>SELECT DATA : </strong> <br><br>
+      <div class="tag">
+        <b style="color: peru;">SELECT</b> first_name, last_name <b style="color: peru;">FROM</b> employees<b
+          style="color: peru;"> WHERE </b> department_id =<b style="color: blue;"> 101</b>;
+      </div><br><br>
+
+      <strong>UPDATE DATA : </strong> <br><br>
+      <div class="tag">
+        <b style="color: peru;">UPDATE</b> employees <b style="color: peru;">SET</b> department_id <b
+          style="color: red;">=</b> <b style="color: blue;">102</b><b style="color: peru;"> WHERE</b> employee_id = <b
+          style="color: blue;"> 1</b>;
+      </div><br><br>
+      <strong>DELETE DATA : </strong> <br><br>
+      <div class="tag">
+        <b style="color: peru;"> DELETE FROM </b> employees<b style="color: peru;"> WHERE</b> employee_id <b
+          style="color: red;">=</b> <b style="color: blue;"> 1</b>;
+      </div><br><br>
+
+      <strong>JOIN TABLES : </strong> <br><br>
+
+      <div class="tag">
+        <b style="color: peru;">SELECT</b> employees.first_name, employees.last_name, departments.department_name<br>
+        <b style="color: peru;">FROM</b> employees<br>
+        <b style="color: peru;">INNER JOIN</b> departments<b style="color: peru;"> ON</b> employees.department_id <b
+          style="color: red;">=</b> departments.department_id;
+      </div><br><br>
+
+
+      </p>
+    </div>
+    <div id="q2">
+      <h2><u>Sample code for testing MongoDB</u></h2>
+      <p>
+
+        <strong>INSERT DOCUMENTS: </strong> <br><br>
+      <div class="tag">
+        <b style="color: green;"> db.employees.insertOne</b>({
+        <b style="color: green;"> employee_id</b>: <b style="color: blue;">1</b>,
+        <b style="color: green;">first_name</b> :'<b style="color: darkgoldenrod;"> 'John'</b>',
+        <b style="color: green;">last_name</b>: '<b style="color: darkgoldenrod;"> 'Doe'</b>',
+        <b style="color: green;">department_id</b> : <b style="color: violet;">101</b>
+        });
+      </div><br><br>
+
+      <strong>QUERY DOCUMENTS: </strong> <br><br>
+      <div class="tag">
+        <b style="color: green;">db.employees.find</b>({<b style="color: green;"> department_id</b> : <b
+          style="color: violet;">101</b> }, {<b style="color: green;"> first_name:</b> <b style="color: violet;">1</b>,
+        <b style="color: green;">last_name:</b> <b style="color: violet;">1</b> });
+      </div><br><br>
+
+      <strong>UPDATE DOCUMENTS: </strong> <br><br>
+      <div class="tag">
+
+        <b style="color: green;"> db.employees.updateOne</b>(
+        {<b style="color: green;"> employee_id</b>: <b style="color: violet;">1</b> },
+        { <b style="color: green;"> $set</b>: { <b style="color: green;"> department_id</b>: <b
+          style="color: violet;">102</b> } }
+        );
+      </div><br><br>
+
+      <strong>DELETE DOCUMENTS: </strong> <br><br>
+      <div class="tag">
+        <b style="color: green;"> db.employees.deleteOne</b>({ <b style="color: green;"> employee_id</b>: <b
+          style="color: violet;">1</b> });
+      </div><br><br>
+
+
+
+      <strong>TEXT SEARCH: </strong> <br><br>
+      <div class="tag">
+        <b style="color: green;">db.articles.createIndex</b>({ <b style="color: green;">content :</b> <b
+          style="color: yellow;">'text'</b> });
+        <b style="color: green;">db.articles.find</b>({ <b style="color: green;">$text :</b>{<b
+          style="color: green;">$search :</b> <b style="color: yellow;">'important'</b> } });
+      </div><br><br>
+
+
+
+
+
+      <strong>CREATE USER: </strong> <br><br>
+      <div class="tag">
+        <b style="color: green;">db.createUser</b> ({
+        <b style="color: green;"> user</b> :<b style="color: yellow;"> "admin"</b>,
+        <b style="color: green;">pwd</b> : <b style="color: yellow;">"adminPassword"</b>,
+        <b style="color: green;"> roles</b> : [{<b style="color: green;"> role </b><b style="color: yellow;">
+          "readWrite"</b>, <b style="color: green;">db</b> : <b style="color: yellow;">"myDatabase"</b> }]
+        });
+      </div><br><br>
+      </p>
+    </div>
+  </div>
+
+
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL vs Mongodb</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

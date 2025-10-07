@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Cheat Sheet</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Container */
+.adv-disadv-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+/* Individual Box Styles */
+.adv-box, .disadv-box {
+  background-color: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+/* Hover animation */
+.adv-box:hover, .disadv-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Headings */
+.adv-box h3 {
+  color: #16a34a; /* Green for advantage */
+  border-bottom: 2px solid #86efac;
+  padding-bottom: 6px;
+}
+
+.disadv-box h3 {
+  color: #dc2626; /* Red for disadvantage */
+  border-bottom: 2px solid #fca5a5;
+  padding-bottom: 6px;
+}
+
+/* List Styles */
+.adv-box ul,
+.disadv-box ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.adv-box li,
+.disadv-box li {
+  padding: 10px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.adv-box li:last-child,
+.disadv-box li:last-child {
+  border-bottom: none;
+}
+
+/* Tag style reuse */
+.tag {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  font-family: monospace;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+/* Responsive design for tablets and mobiles */
+@media (max-width: 800px) {
+  .adv-disadv-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="Git-performance-features.html">GIT And features</a>
+      <a href="Git-config.html">Git-configuration</a>
+      <a href="adv-disadv.html">advantages and disadvantages</a>
+      <a href="Git-commands.html">Git Commands</a>
+      
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q12"> •Git pros & cons </a>
+
+  </div>
+<div class="main-content">
+  <div id="q1">
+  <h2><u>Advantages and Disadvantages of Git</u></h2>
+  <div class="adv-disadv-container">
+    <div class="adv-box">
+      <h3>Advantages</h3>
+      <ul>
+        <li><span class="tag"><strong> Distributed System </strong></span><br> * Git allows each developer to have a full copy of the repository.</li><br>
+        <li><span class="tag"><strong> Fast Performance </strong></span><br> * Git is optimized for performance in terms of committing, branching, and merging.</li><br>
+        <li><span class="tag"><strong> Data Integrity</strong> </span><br> * Git ensures data is cryptographically secured using SHA-1.</li><br>
+        <li><span class="tag"><strong> & Merging</strong></span><br> * Git offers powerful branching and merging strategies.</li><br>
+        <li><span class="tag"><strong> Free & Open Source</strong></span><br> * Available to everyone with continuous community improvements.</li><br>
+      </ul>
+    </div>
+
+    <div class="disadv-box">
+      <h3>Disadvantages</h3>
+      <ul>
+        <li><span class="tag"><strong> Steep Learning Curve</strong></span><br> * Initial setup and concepts can be confusing for beginners.</li><br>
+        <li><span class="tag"><strong> Not Ideal for Large Binary Files</strong></span><br> * Git is not optimized for handling huge media files.</li><br>
+        <li><span class="tag"><strong> Limited Access Control</strong></span><br> * Git itself doesn’t have built-in access permission control.</li><br>
+        <li><span class="tag"><strong> Merge Conflicts </strong></span><br> * Resolving frequent merge conflicts can become complex.</li><br>
+        <li><span class="tag"><strong> Overhead for Small Projects</strong></span><br> * May be overkill for very small or one-person projects.</li><br>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+
+  <footer>
+      <p>© 2025 Gowthamraj Network | Git Cheat Sheet</p>
+    </footer>
+
+    <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

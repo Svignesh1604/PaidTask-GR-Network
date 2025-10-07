@@ -1,0 +1,286 @@
+<!-- datatypes.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL Tutorial - Data Types</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+   
+  </style>
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" >Home</a>
+      <a href="intro.html">Intro</a>
+      <a href="Rdbms.html"> Relational Databases & SQL Basics</a>
+      <a href="table.html">Working with Tables</a>
+      <a href="querying.html">Querying Data</a>
+      <a href="Advanced querying.html"> Advanced Querying</a>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">Creating a table</a>
+    <a href="#q2">Inserting data into a table</a>
+    <a href="#q3">Handling empty cell</a>
+    <a href="#q4">Unique and Primary keys</a>
+    <a href="#q5">Update data in a table</a>
+    <a href="#q6">Update a table structure</a>
+    <a href="#q7">Deleting data and tables</a>
+  </div>
+
+  <div class="main-content">
+    <h1><u>Working with Tables</u></h1>
+
+    <div id="q1" class="card">
+      <h2><u>Creating a table</u></h2>
+      <p> * A database is composed by one or more tables.<br><br>
+        * Creating a table in SQL is done using the CREATE TABLE command.<br><br>
+        * At creation time you need to specify the table columns names, and the type of
+        data they are going to hold.<br><br>
+        * SQL defines several kinds of data.<br><br>
+        * The most important and the ones you'll see more often are:<br><br>
+        <center> • CHAR<br><br>
+          • VARCHAR<br><br>
+          • DATE<br><br>
+          • TIME<br><br>
+          • DATETIME<br><br>
+          • TIMESTAMP<br><br></center>
+
+        Numeric types include:<br><br>
+
+        <center> • SMALLINT<br><br>
+          • INTEGER<br><br>
+          • DECIMAL<br><br>
+          • FLOAT<br><br> </center>
+
+        * Those above all hold numbers. What changes is the size that this number can
+        be.<br><br>
+        * Consult the manual of your DBMS to see the exact values because this is one
+        of the implementation details that can change.<br><br>
+        * Also, each DBMS can introduce non-standard types like BIGINT or TINYINT
+        or TEXT , and even advanced ones like JSON or array types.<br><br>
+        * You can absolutely use those, as long as you know that switching DBMS to a
+        different one, say from PostgreSQL to SQLite, could be problematic if those
+        nonstandard types (and features) are used.<br><br>
+        * This is the syntax to create a people table with 2 columns, one an integer
+        and the other a variable length string:<br><br>
+
+      <div class="tag">
+        <b style="color:violet;">CREATE TABLE </b> (<br>
+        age<b style="color:peru;"> INT</b>,<br>
+        name<b style="color: peru;"> VARCHAR(20)</b><br>
+        );
+      </div>
+
+      </p>
+    </div>
+
+    <div id="q2" class="card">
+      <h2><u>Inserting data into a table</u></h2>
+      <p> * Once you have a table, you can insert data into it.
+        Take this table:<br><br>
+
+      <div class="tag">
+        <b style="color:violet;">CREATE TABLE </b> (<br>
+        age<b style="color:peru;"> INT</b>,<br>
+        name<b style="color: peru;"> VARCHAR(20)</b><br>
+        );
+      </div><br>
+
+      * You can now start adding data into it with the INSERT INTO command:<br><br>
+      <div class="tag">
+      <b style="color: violet;">INSERT INTO</b> people <b style="color: violet;"> VALUES</b> (<b
+        style="color: peru;">37</b>, <b style="color: green;">'Joe'</b>)<br><br>
+      </div>
+      * You can insert multiple items separating each one with a comma:<br><br>
+      <div class="tag">
+      <b style="color: violet;">INSERT INTO</b> people <b style="color: violet;"> VALUES</b> (<b
+        style="color: peru;">37</b>, <b style="color: green;">'Joe'</b>), (<b style="color: peru;">8</b>, <b
+        style="color: green;">'Rupy'</b>);</div>
+
+      </p>
+    </div> 
+
+    <div id="q3" class="card">
+      <h2> <u>Handling empty cell</u></h2>
+      <p>* When we create a table in this way:<br><br>
+<div class="tag">
+        <b style="color:violet;">CREATE TABLE </b> (<br>
+        age<b style="color:peru;"> INT</b>,<br>
+        name<b style="color: peru;"> VARCHAR(20)</b><br>
+        );<br></div>
+
+        * SQL freely accepts empty values as records:<br><br>
+        <div class="tag">
+        <b style="color: violet;">INSERT INTO</b> people <b style="color: violet;">VALUES </b>(<b
+          style="color: violet;">null</b>,<b style="color: violet;"> null</b>);<br><br></div>
+
+        * This might be a problem, because now we have a row with null values:<br><br>
+        age | name<br>
+        -----+--------<br>
+        37 | Joe<br>
+        8 | Ruby<br><br>
+
+        * To solve this, we can declare constrains on our table rows. NOT NULL
+        prevents null values:<br><br>
+<div class="tag">
+        <b style="color: violet;">CREATE TABLE</b> people (<br>
+        age <b style="color: peru;"> INT</b><b style="color: violet;"> NOT NULL</b>,<br>
+        name <b style="color: peru;">VARCHAR(20)</b><b style="color: violet;"> NOT NULL</b><br>
+        );<br></div>
+        * If we try to execute this query again:<br><br>
+        <div class="tag">
+          <b style="color: violet;">INSERT INTO</b> people <b style="color: violet;">VALUES </b>(<b
+          style="color: violet;">null</b>,<b style="color: violet;"> null</b>);<br><br></div>
+
+        * We'd get an error, like this:<br><br>
+        ERROR: <b style="color: violet;">null value in column</b> "age" violates<b style="color: violet;"> not-null
+          constraint</b><br><br>
+        DETAIL: Failing<b style="color: peru;"> row</b> <b style="color: violet;">contains</b><b style="color: violet;">
+          NOT NULL</b><br><br>
+
+        <div class="tag"><center> <B
+            style="font-family: Georgia, 'Times New Roman', Times, serif;color: slategray;font-size: larger; font-style: italic;">Note
+            that an empty string is a valid non-null value.</B></center></div>
+      </p>
+
+    </div>
+
+    <div id="q4" class="card">
+      <h2><u>Unique and Primary keys</u></h2>
+      <p>
+        * With a table created with this command:<br><br>
+<div class="tag">
+        <b style="color: violet;">CREATE TABLE </b> (<br>
+        age<b style="color: peru;"> INT</b> <b style="color: violet;">NOT NULL</b>,<br>
+        name <b style="color: peru;">VARCHAR(20)</b> <b style="color: violet;">NOT NULL</b><br>
+        );<br><br></div>
+
+        * We can insert an item more than once.<br><br>
+        * And in particular, we can have columns that repeat the same value.<br><br>
+        * We can force a column to have only unique values using the UNIQUE key
+        constraint:<br><br>
+<div class="tag">
+        <b style="color: violet;">CREATE TABLE </b> (<br>
+        age<b style="color: peru;"> INT</b> <b style="color: violet;">NOT NULL</b>,<br>
+        name <b style="color: peru;">VARCHAR(20)</b> <b style="color: violet;">NOT NULL UNIQUE</b><br>
+        );<br><br></div>
+
+
+        * Now if you try to add the 'Joe' twice:<br><br>
+        <div class="tag">
+        <b style="color: violet;">INSERT INTO</b> people <b style="color: violet;"> VALUES </b> (<b
+          style="color: peru;">37</b>, <b style="color: green;">'Joe'</b>);<br><br>
+          
+        <b style="color: violet;">INSERT INTO</b> people <b style="color: violet;"> VALUES </b> (<b
+          style="color: peru;">20</b>, <b style="color: green;">'Joe'</b>);<br><br></div>
+
+        * You'd get an error:<br><br>
+        ERROR: duplicate key<b style="color: violet;"> value </b>violates <b style="color: violet;"> unique constraint
+        </b>"people_name_key"<br><br>
+        DETAIL: Key (name)=(Joe) already exists.<br><br>
+
+        * A <strong>primary key </strong> a unique key that has another property: it's the primary
+        way we identify a row in the table.<br><br>
+<div class="tag">
+        <b style="color: violet;">CREATE TABLE </b> (<br>
+        age<b style="color: peru;"> INT</b> <b style="color: violet;">NOT NULL</b>,<br>
+        name <b style="color: peru;">VARCHAR(20)</b> <b style="color: violet;">NOT NULL PRIMARY</b>KEY <br>
+        );<br><br></div>
+
+        * The primary key can be an email in a list of users, for example.<br><br>
+        * The primary key can be a unique id that we assign to each record<br><br>
+        automatically.<br><BR>
+        * Whatever that value is, we know we can use it to reference a row in the table.
+
+      </p>
+
+
+    </div>
+    <div id="q5" class="card">
+      <h2><u>Update data in a table</u></h2>
+      <p>
+        * The data stored in a table can be updated using the UPDATE command:<br><br>
+        UPDATE people <b style="color: violet;">SET</b>age=<b style="color: peru;">2</b> <b style="color: violet;">
+          WHERE </b> name= <b style="color: green;">'Ruby'</b><br><br>
+        * It's important to add the WHERE clause, otherwise this instruction:<br><br>
+        UPDATE people <b style="color: violet;">SET</b> age=<b style="color: peru;">2</b><br><br>
+        would update all rows in the table.
+
+      </p>
+
+
+    </div>
+    <div id="q6" class="card">
+      <h2> <u>Update a table structure</u></h2>
+
+      <p>
+        * We can alter an existing table structure using the ALTER TABLE command,
+        followed by the alteration you want to make:<br><br>
+        <b style="color: violet;"> ALTER TABLE </b> people <b style="color: violet;"> ADD COLUMN </b> born_year <b
+          style="color: peru;"> INT</b>;<br><br>
+        * This will add a new column with empty values:<br><br>
+        age | name | born_year<br><br>
+        -----+-----+-------<br><br>
+        37 | Joe |<br><br>
+        8 | Ruby |<br><br>
+<div class="tag">
+        <b style="color: violet;"> ALTER TABLE </b> people <b style="color: violet;"> DROP COLUMN </b> born_year
+        ;<br><br></div>
+
+        * This will result in:<br><br>
+        age | name<br><br>
+        -----+--------<br><br>
+        37 | Joe<br><br>
+        8 | Ruby<br><br>
+      </p>
+
+
+    </div>
+    <div id="q7" class="card">
+      <h2><u>Deleting data and tables</u></h2>
+      <p>
+
+        * To remove data from a table, use the DELETE FROM command.<br><br>
+        * This deletes all rows:<br><br>
+        <div class="tag">
+        <b style="color: violet;">DELETE FROM</b> people;<br><br></div>
+        * You can use the WHERE clause to only remove specific rows:<br><br>
+
+        <div class="tag">
+        <b style="color: violet;">DELETE FROM</b> people <b style="color: violet;">WHERE </b> name=<b
+          style="color: green;">'Joe'</b>;<br><br></div>
+        * To delete a table instead of the data inside the table, use the DROP TABLE
+        command:<br><br>
+       <div class="tag"> <b style="color: violet;">DROP TABLE</b> people;<br><br></div>
+      </p>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL Tutorial</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+</body>
+
+</html>

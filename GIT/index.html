@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Cheat Sheet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div> 
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="Git-performance-features.html">GIT And features</a>
+      <a href="Git-config.html">Git-configuration</a>
+      <a href="adv-disadv.html">advantages and disadvantages</a>
+      <a href="Git-commands.html">Git Commands</a>
+      <a href="Git-working-process.html">Git-process</a>
+      
+    </div>
+  </nav>
+
+  <!-- Sidebar with Git Sections -->
+  <div class="sidebar">
+    <a href="#q1"> • Introduction</a>
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div id="q1">
+      <h2>Git Intro</h2>
+      <img src="images/Git-Logo.png" alt="MySQL Logo"
+        style="max-width: 500px; width: 100%; margin: 10px 0; display: block;" />
+
+      * Git is a tool used to keep track of changes to files, especially the code of the projects. It is termed a
+      distributed version control system because of its behaviour to allow multiple people to work on the same project,
+      even if they are not connected to a common server.<br><br>
+
+      * It was created by a person named Linus Torvalds in 2005 for the development of the Linux kernel. In this
+      article, we will discuss Git, its features, advantages, and disadvantages.<br><br>
+
+      * Git is a powerful and widely used version control system that helps developers track changes in their code,
+      collaborate with others, and manage project history effectively.<br><br>
+
+       * Whether you are a professional developer or just starting out, understanding Git is important for modern software
+      development.<br><br>
+
+       * This article will introduce you to Git, explain its core concepts, and provide practical examples to help you get
+      started.<br><br>
+
+
+    </div>
+
+
+
+    <footer>
+      <p>© 2025 Gowthamraj Network | Git Cheat Sheet</p>
+    </footer>
+
+    <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

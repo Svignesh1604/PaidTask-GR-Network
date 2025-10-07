@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Cheat Sheet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="Git-performance-features.html">GIT And features</a>
+      <a href="Git-config.html">Git-configuration</a>
+      <a href="adv-disadv.html">advantages and disadvantages</a>
+      <a href="Git-commands.html">Git Commands</a>
+      <a href="Git-working-process.html">Git-process</a>
+
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1"> • GIT</a>
+    <a href="#q2"> • performance</a>
+    <a href="#q3"> • Features</a>
+
+  </div>
+
+  <div class="main-content">
+    <div id="q1">
+      <h2><u>Git</u></h2>
+      <p>
+        *  Git is a tool used to keep track of changes to files, especially the code of the projects.<br><br>
+
+         * It is termed a distributed version control system because of its behaviour to allow multiple people to work on
+        the same project, even if they are not connected to a common server.<br><br>
+
+         * It was created by a person named Linus Torvalds in 2005 for the development of the Linux kernel.<br><br>
+
+         * In this article, we will discuss Git, its features, advantages, and disadvantages.<br><br>
+
+         * Git is a tool that helps you manage changes to your code over time.<br><br>
+
+         * It keeps track of every little change or update you make, you can always look back at previous versions or undo
+        mistakes if needed.<br><br>
+
+         * In addition to being distributed, Git has been designed with performance, security and flexibility in mind.<br><br>
+      </p>
+    </div>
+
+    <div id="q2">
+      <h2>
+        <u>performance</u>
+      </h2>
+      <p>
+         * The raw performance characteristics of Git are very strong when compared to many alternatives.<b style="font-style: italic;color: darkslategray;"> Committing new
+        changes</b>,<b style="font-style: italic;color: darkslategray;"> branching</b>,<b style="font-style: italic;color: darkslategray;"> merging</b> and<b style="font-style: italic;color: darkslategray;"> comparing</b> past versions are all optimized for performance.<br><br>
+
+         * The algorithms implemented inside Git take advantage of deep knowledge about common attributes of real source
+        code file trees, how they are usually modified over time and what the access patterns are.<br><br>
+
+         * Unlike some version control software, Git is not fooled by the names of the files when determining what the
+        storage and version history of the file tree should be, instead, Git focuses on the file content itself. After
+        all, source code files are frequently renamed, split, and rearranged.<br><br>
+
+         * The object format of Git's repository files uses a combination of delta encoding (storing content differences),
+        compression and explicitly stores directory contents and version metadata objects.<br><br>
+
+         * Being distributed enables significant performance benefits as well.<br><br>
+
+        <strong style="color: green;"><u> Example:</u></strong> <br><br>
+        
+         * say a developer, Alice, makes changes to source code, adding a feature for the upcoming 2.0
+        release, then commits those changes with descriptive messages.<br><br>
+
+         * She then works on a second feature and commits those changes too. Naturally these are stored as separate pieces
+        of work in the version history.<br><br>
+
+         * Alice then switches to the version 1.3 branch of the same software to fix a bug that affects only that older
+        version.<br><br>
+
+        *  The purpose of this is to enable Alice's team to ship a bug fix release, version 1.3.1, before version 2.0 is
+        ready.<br><br>
+
+         * Alice can then return to the 2.0 branch to continue working on new features for 2.0 and all of this can occur
+        without any network access and is therefore fast and reliable.<br><br>
+
+         * She could even do it on an airplane. When she is ready to send all of the individually committed changes to the
+        remote repository, Alice can "push" them in one command.<br><br>
+      </p>
+    </div>
+
+    <div id="q3">
+      <h2><u>Features</u></h2>
+      <p>
+         * Version Control System: Git keeps track of every change you make to your project files. You can go back to
+        previous versions is any requirement arises.<br><br>
+
+        <b>Repositories:</b> <br><br>
+        
+         * A Git repository (or repo) is like a project's central hub where everything related to your work
+        is stored and managed.<br><br>
+        
+        There are two main types:<br><br>
+
+         * <b style="color: brown;">Local Repository: </b> This is a copy of the repository which is stored in your computer. You can work on your
+        project and make changes here.<br><br>
+
+        * <b  style="color: brown;"> Remote Repository: </b>  This is stored on a server, like GitHub, where you and others can share and work on a
+        project.<br><br>
+
+
+        * <b style="color: cornflowerblue;"> Commits:</b> Every time you make changes and save them in Git, these are called commits. The repository keeps track
+        of all the commits you have made.<br><br>
+
+
+         *<b style="color: cornflowerblue;"> Branches:</b> A repository allows you to create Branches and work on new features and fixes. For example, you can
+        have a "main" branch for stable code and a "feature" branch for new features you're developing.<br><br>
+
+
+        * <b style="color: cornflowerblue;"> Merging: </b> Once you are done with the branches you have made, you can merge those branches into main branch. This
+        adds the changes you have made in the rest of the project.<br><br>
+
+         *<b style="color: cornflowerblue;"> Cloning:</b> Cloning is a process of making a complete copy of Git repository. It's like copying the entire project
+        from central location ( like website) to your own computer.<br><br>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | Git Cheat Sheet</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

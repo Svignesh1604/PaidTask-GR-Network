@@ -1,0 +1,154 @@
+<!-- commands.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL Tutorial - Commands</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" >Home</a>
+      <a href="intro.html">Intro</a>
+      <a href="Rdbms.html"> Relational Databases & SQL Basics</a>
+      <a href="table.html">Working with Tables</a>
+      <a href="querying.html">Querying Data</a>
+      <a href="Advanced querying.html"> Advanced Querying</a>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#q1">Relational Databases</a>
+    <a href="#q2">Introduction to SQL</a>
+
+  </div>
+
+  <div class="main-content">
+    <h1> Relational Databases & SQL Basics</h1>
+
+    <div id="q1" class="card">
+      <h2>Relational Databases</h2>
+      <p> * We have many different kinds of DBMS.<br><br>
+        * Computer professionals experimented with many different options in the
+        past, and one of these options got very popular: the <b>Relational Database
+          Management System (RDBMS)</b>.<br><br>
+        * For simplicity we generally call them <b>relational databases.</b><br><br>
+        You might have heard of PostgreSQL, MySQL, Oracle, SQLite, MariaDB, SQL
+        Server.<br><br>
+        * Those are all relational databases.<br><br>
+        Note the “SQL” in their name. They are also called SQL databases, to contrast
+        NoSQL databases (like MongoDB or DynamoDB for example), which are
+        DBMS that do not use this relational model and do not use SQL as their
+        language.<br><br>
+        * Relational databases under the hood organize data using two simple
+        concepts:<b> tables </b> and <b>relations.</b><br><br>
+        * This makes them very intuitive to use, because we are used to using tables to
+        organize things. Think about an Excel or Google Sheets, for example.<br><br>
+        * A relational database, at a first glance, is similar.<br><br>
+        * Data is stored in one or more tables.<br><br>
+        A <strong> table </strong> is a collection of items organized in rows and columns:<br><br>
+        | Name | Age |<br>
+        | ------ | --- |<br>
+        | Tony | 36 |<br>
+        | Rose | 28 |<br>
+        | Juliet | 16 |<br><br>
+        * Each table contains one or more <strong> columns </strong>, that hold data of a specific <b>type</b>,
+        like strings, numbers and so on.<br><br>
+        * The set of a table and all the rules about its columns, like the type of data
+        stored, is called <b> schema.</b><br><br>
+        * Each table can define <b> constrains </b> the data that each row can contain.
+        For example, in the simplest case we can say that the value of a column
+        cannot be empty.<br><br>
+        * Tables can reference each other, forming relationships.<br><br>
+        * For example we can say the row of the car table with id 1 is owned by
+        the user assigned to id 2 in the table users .<br><br>
+        * In this way we can link data together and build more complex applications.<br><br>
+        * Relational databases offer us, users, the ability to interact with them through
+        the <strong>SQL language.</strong><br><br>
+        It looks like this:<br><br>
+<div class="tag" >
+        <b style="color: pink;">SELECT </b> * <b style="color: pink;">FROM</b> cars</div><br>
+<div class="tag">
+        <b style="color: pink;">INSERT INTO </b> cars <b style="color: pink;"> VALUES </b>(<b style="color: lightgreen;">'Lamborghini'</b>, <b style="color: orangered;">2010</b>)</div><br><br>
+
+        * We use this language to define the tables <strong>schema</strong>, fill tables with data, and
+        finally query the data when needed.<br><br>
+        * The rest of this handbook will be focused on SQL.<br><br>
+        * SQL is rather old, being born in 1986, and it's a battle-tested technology used
+        in all sorts of applications.<br><br>
+
+
+      </p>
+    </div>
+
+    <div id="q2" class="card">
+      <h2> Introduction to SQL</h2>
+      <p>
+        * SQL (Structured Query Language) is a language we use to interact with a
+        Database Management System (DBMS) to exchange information with it, in a
+        standardized way.<br><br>
+
+        * As the name suggests, it's not a programming language, but it was born as a
+        querying language, and later evolved to an interface to doing more advanced
+        operations with a database than just performing queries.<br><br>
+
+        * I said "evolved", but in reality SQL is always evolving. It's a standard that was
+        first published in 1986, then updated in 1989, 1992, 1999, 2003, 2006, 2008,
+        2011, 2016 and as its latest version, 2019.<br><br>
+        
+        * SQL is implemented in many popular DBMS: Postgres, MySQL, Oracle,
+        SQLite, MicroSoft SQL Server, and many more.<br><br>
+        
+        * Each different database implements the standard, or a particular version of
+        it, and adds custom features on top of it, to simplify creating queries or
+        adding a specific functionality.<br><br>
+
+        * SQL is a huge subject, and you can literally spend years to master all its
+        features.<br><br>
+
+        * In this handbook we'll only cover the basics to get you up and running.<br><br>
+
+         * I recommend you try running the SQL I explain in an online playground
+        experimenting tool like<strong style="color: cornflowerblue;"> DB Fiddle </strong> similar.<br><br>
+
+        * A great application to run SQL locally on your own database is <strong style="color: cornflowerblue;"> TablePlus.</strong><br><br>
+
+        * As a developer in your applications in your day-to-day you might use a ORM
+        (object relational mapping) library that abstracts SQL and simplifies your
+        life, but it's absolutely essential to know how things work under the hood,
+        and much of the terminology of ORMs reflect the underlying SQL naming
+        conventions.<br><br>
+
+        * Plus, some things are just doable using "plain SQL".<br><br>
+        So, let's go!<br><br>
+
+      </p>
+    </div>
+
+    
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL Tutorial</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+</body>
+
+</html>

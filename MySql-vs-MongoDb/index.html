@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MySQL vs MongoDB</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="MySQL.html">MySQL</a>
+      <a href="Mongodb.html">MongoDB</a>
+      <a href="mysql-vs-mongodb.html">MySQL vs MongoDB</a>
+      <a href="Example.html">Example Query</a>
+    </div>
+  </nav>
+
+  <!-- Sidebar with Comparison Questions -->
+  <div class="sidebar">
+    <a href="#q1"> • Intro</a>
+    <a href="#q2"> • Comparison</a>
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div id="q1">
+      <h2>Intro</h2>
+      <p> * Both <b style="color: cadetblue;">MongoDB</b> and <b style="color: cadetblue;">MySQL</b> are popular <b
+          style="color:darkgreen">Database management systems (DBMS)</b>, but they are built for different
+        purposes and have distinct features.<br><br>
+
+        * MongoDB is a NoSQL database, designed for handling unstructured data with
+        high scalability, while MySQL is a traditional relational database management system (RDBMS), ideal for
+        structured data with complex relationships.<br><br>
+
+        * In this article, we will explore the key differences between MongoDB and MySQL, their features, use cases, and
+        how to decide which one suits your project needs best.<br><br>
+
+        * We'll also provide insights into the strengths and
+        limitations of each, allowing us to make a more informed choice based on your specific application
+        requirements.<br><br>
+
+      </p>
+    </div>
+    <div id="q2">
+      <h2>Comparison</h2>
+      <p>* Storing and managing data is perhaps the most critical task in any industry. All businesses depend upon data
+        for all critical operations. As such, all businesses need a dependable way of storing data.<br><br>
+
+        * Databases fulfill all business requirements of storing, accessing, and managing data received or captured by
+        business processes.<br><br>
+
+        * That’s why you can find several popular database solutions in the market.<br><br>
+
+        * The challenge for a business is to select the best fit for its operations.<br><br>
+
+        * In this guide, we will compare MongoDB and MySQL, two very popular database options you can opt for.<br><br>
+
+        * We will go into the details of the MongoDB vs MySQL debate so that you can understand how these database
+        platforms differ.<br><br>
+
+        * Finally, we will answer the most critical question on your mind — which database should you pick?<br><br></p>
+    </div>
+
+
+  </div>
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL vs Mongodb</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
+
+
+
+
+</body>
+
+</html>

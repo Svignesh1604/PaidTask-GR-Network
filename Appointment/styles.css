@@ -1,0 +1,223 @@
+/* Reset & base setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #f3f4f6;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #1e293b;
+    padding: 20px 0;
+    color: #fff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #38bdf8;
+}
+
+.sidebar a {
+    display: block;
+    color: #e2e8f0;
+    padding: 14px 25px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.sidebar a:hover {
+    background-color: #334155;
+    color: #38bdf8;
+}
+
+/* Content */
+.content {
+    margin-left: 220px;
+    padding: 40px;
+    flex: 1;
+}
+
+.content h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #1e293b;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+table th {
+    background-color: #38bdf8;
+    color: white;
+    font-size: 16px;
+}
+
+table tr:hover {
+    background-color: #f1f5f9;
+    transition: background 0.3s;
+}
+
+/* Form Styling */
+form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    transition: border 0.3s ease;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    border-color: #38bdf8;
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    background-color: #0ea5e9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #0284c7;
+}
+
+
+td {
+    vertical-align: middle;
+}
+
+td form button {
+    padding: 6px 12px;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+td form button:hover {
+    background-color: #059669;
+}
+
+td:nth-child(8) {
+    font-weight: bold;
+    color: #334155;
+}
+
+.visitor-stats {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 300px;
+    margin: 20px auto;
+}
+
+.visitor-stats h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.visitor-stats ul {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.visitor-stats ul li {
+    padding: 5px 0;
+}
+.sidebar a.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .content {
+        margin-left: 180px;
+        padding: 20px;
+    }
+
+    form {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+}

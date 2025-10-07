@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Razorpay Payment</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <h2>Pay ₹500</h2>
+  <button id="payBtn">Pay Now</button>
+
+  <script>
+    document.getElementById('payBtn').onclick = function () {
+      var options = {
+        "key": "YOUR_KEY_ID", // Replace with your Razorpay key_id
+        "amount": "50000", // Amount in paise (₹500)
+        "currency": "INR",
+        "name": "Your Company",
+        "description": "Test Transaction",
+        "handler": function (response) {
+          // Send payment data to server
+          fetch("payment-success.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `payment_id=${response.razorpay_payment_id}`
+          }).then(res => res.text()).then(data => alert(data));
+        },
+        "prefill": {
+          "name": "Test User",
+          "email": "test@example.com",
+          "contact": "9999999999"
+        },
+        "theme": {
+          "color": "#3399cc"
+        }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
+    };
+  </script>
+</body>
+</html>

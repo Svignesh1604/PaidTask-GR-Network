@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Cheat Sheet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="Git-performance-features.html">GIT And features</a>
+      <a href="Git-config.html">Git-configuration</a>
+      <a href="adv-disadv.html">advantages and disadvantages</a>
+      <a href="Git-commands.html">Git Commands</a>
+      <a href="Git-working-process.html">Git-process</a>
+      
+    </div>
+  </nav>
+
+  <!-- Sidebar with Git Sections -->
+  <div class="sidebar">
+    <a href="#q1"> • New Repository </a>
+    <a href="#q2"> • Git Undo </a>
+    
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div id="q1">
+      <h2>Repository</h2>
+      <p> * Create a github account to create your remote repositories. Now,
+            create a new repo where we will be uploading our files from local repo.
+      </p><br>
+      <img src="images/Screenshot (369).png" alt="MySQL Logo"
+        style="max-width: 500px; width: 100%; margin: 10px 0; display: block;" />
+
+      <p>Note - Local repository (repo.) means the repo. which is on our system
+whereas, remote repo. means the one which is on other remote system/server,
+for eg. - GitHub, GitLab, Bitbucket, etc.</p>
+
+
+    </div><br>
+    <h2><u>Push local repo to GitHub</u> </h2><br>
+    <p>Copy the url or the link of the repo that we just created. As an
+example, it should look like this</p>
+<a href="https://github.com/durgeshm01722/example.git"> </a><br><p>Paste the copied url in the below git command.</p><br>
+<div class="tag">
+    <code>$ git remote add origin <paste copied URL here></paste></code>
+</div>
+<p>
+    'git remote add origin <URL>'specifies that we are adding a remote
+repository, with the specified URL, as an origin to our local Git repo.<br><br>
+ * Finally, pushing our master branch to the origin URL (remote repo)
+and set it as the default remote branch.
+
+</p><br>
+<div class="tag">
+    <code>$ git push --set-upstream origin master</code></div><br>
+    <p>Go back into GitHub and see that the repository has been updated.</p>
+
+<h3 style="color: green;font-size: x-large;">Pushing local repo to github after doing the above</h3>
+process at least once</h3><br>
+<p>First commit all the changes. Then push all the changes to our
+remote origin i.e. remote repo on github.</p>
+<div class="tag">
+<code>$ git push origin</code></div><br>
+
+
+<h2><u>Pull local repo from GitHub</u> </h2>
+<p> * Git pull is used to pull all changes from a remote repository into the
+branch we are working on. It is a combination of fetch and merge. Use it
+to update your local Git.</p><br>
+<div class="tag">
+<code>$ git pull origin</code></div><br>
+
+<h2><u>Pull branch from GitHub :</u> </h2>
+<p> * First, check which branches we have and where are we working at
+the moment by ‘git branch’ command. Since we do not have the new
+branch on out local Git which is to be pulled from the Github. So, to see all
+local and remote branches, use -</p><br>
+<div class="tag">
+<code>$ git branch -a</code></div><br>
+
+
+<h3 style="color: green;font-size: x-large;">Pushing local repo to github after doing the above</h3><br>
+<div class="tag">
+    <code>$ git branch -r</code></div><br>
+    <p> * Now, the new branch is seen in the console but it is not available on
+our local repo. So, let’s check it out using ‘git checkout <branch name>’.
+Now run ‘git pull’ to pull that branch on our local repo. We can now check
+the available branches using ‘git branch’.</p>
+<br>
+
+
+<h2><u>Push branch to GitHub </u></h2>
+<p> * First, let’s create a new local branch which we will be pushing to
+Github. Enter the command as ‘git checkout -b <branch name>’.. You can
+check the status of the files in this current branch using ‘git status’. Commit all the uncommitted changes for all the files in this branch using
+‘git commit -a -m “<Message>” ’. Now push this branch from our local
+repo to Github using ‘git push origin <branch name>’.</p>
+    
+
+<h2><u>Git clone from GitHub </u></h2>
+    <p> *  We can clone a forked repo from Github on our local repo. A clone is
+a full copy of a repository, including all logging and versions of files. Move  
+back to the original repository, and click the green "Code" button to get
+the URL to clone. Copy the URL.<br>
+</p><br>
+ 
+
+ 
+<p>Now in the git bash, enter the following command to clone the
+copied repo onto your local machine -</p><br>
+<div class="tag">
+    <code>$ git clone <copied URL>
+</code>
+</div><br>
+ 
+
+<p>To specify a specific folder to clone to, add the name of the folder
+after the repository URL, like this -</p>
+<div class="tag">
+    <code>$ git clone <copied URL> <folder name></folder></code>
+</div>
+
+
+
+
+
+    <footer>
+      <p>© 2025 Gowthamraj Network | Git Cheat Sheet</p>
+    </footer>
+
+    <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>

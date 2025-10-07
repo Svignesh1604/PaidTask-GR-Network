@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MySQL vs MongoDB</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Table Styling */
+    table {
+      width: 90%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+    }
+
+    thead {
+      background-color: #1e40af;
+      color: #ffffff;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    th {
+      font-size: 1.1em;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #f0f4ff;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+
+    /* Distinguish MySQL and MongoDB Columns */
+    tbody td:nth-child(2) {
+      background-color: #dbeafe;
+      /* Light blue for MySQL */
+      font-weight: 500;
+    }
+
+    tbody td:nth-child(3) {
+      background-color: #fef3c7;
+      /* Light yellow for MongoDB */
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="logo">Gowthamraj Network</div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Intro</a>
+      <a href="MySQL.html">MySQL</a>
+      <a href="Mongodb.html">MongoDB</a>
+      <a href="mysql-vs-mongodb.html">MySQL vs MongoDB</a>
+      <a href="Example.html">Example Query</a>
+    </div>
+  </nav>
+
+  <!-- Sidebar with Comparison Questions -->
+  <div class="sidebar">
+    <a href="q1"> • Difference Between MySQL and MongoDB</a>
+
+  </div>
+  <div class="main-content">
+    <div id="q1">
+      <h2>
+        <u>MySQL VS MongoDB</u>
+      </h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>MySQL</th>
+            <th>MongoDB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Database Type</td>
+            <td>Relational (SQL)</td>
+            <td>Non-relational (Document-based)</td>
+          </tr>
+          <tr>
+            <td>Schema</td>
+            <td>Fixed schema</td>
+            <td>Dynamic schema</td>
+          </tr>
+          <tr>
+            <td>Storage Format</td>
+            <td>Tables with rows and columns</td>
+            <td>JSON-like BSON documents</td>
+          </tr>
+          <tr>
+            <td>Query Language</td>
+            <td>Structured Query Language (SQL)</td>
+            <td>MongoDB Query Language (MQL)</td>
+          </tr>
+          <tr>
+            <td>Use Case</td>
+            <td>Structured data, transactional systems</td>
+            <td>Scalable apps, real-time analytics, flexible schema</td>
+          </tr>
+          <tr>
+            <td>Scalability</td>
+            <td>Vertical scaling</td>
+            <td>Horizontal scaling</td>
+          </tr>
+          <tr>
+            <td>Joins</td>
+            <td>Supported with JOIN keyword</td>
+            <td>Not natively supported (requires embedding or manual joins)</td>
+          </tr>
+          <tr>
+            <td>ACID Compliance</td>
+            <td>Fully ACID compliant</td>
+            <td>Partially (with limitations)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <footer>
+    <p>© 2025 Gowthamraj Network | SQL vs Mongodb</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // Auto-highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop(); // gets "index.html", etc.
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+
+</html>
